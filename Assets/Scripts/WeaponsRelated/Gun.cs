@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Gun : MonoBehaviour
@@ -18,6 +15,7 @@ public abstract class Gun : MonoBehaviour
     {
         if (Time.time > timeToFire)
         {
+            Debug.Log("Shooting");
             timeToFire = Time.time+1f/fireRate;
             RaycastShoot();
         }

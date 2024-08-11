@@ -10,8 +10,9 @@ public class PickableGun : MonoBehaviour
     {
         Debug.Log("Picking weapon");
         GunController controller = other.GetComponent<GunController>();
-        if (controller != null )
+        if (controller != null)
         {
+            GetComponent<Collider>().enabled = false;
             controller.EquipGun(gunPrefab);
             Destroy(gameObject);
         }

@@ -18,6 +18,7 @@ public class playerController : MonoBehaviour
     [Header("Checks & Validations")]
     [SerializeField] private bool IsGrounded;
     [SerializeField] private float groundedTimer;
+    public bool playerFacingRight = true;
     private bool jumpRequested;
 
     private void Start()
@@ -55,6 +56,14 @@ public class playerController : MonoBehaviour
         
         move.y = verticalVel;
         characterController.Move(move*Time.deltaTime);
+        if (Input.GetAxis("Horizontal") > 0)
+        {
+            playerFacingRight = true;
+        }
+        else if (Input.GetAxis("Horizontal") < 0)
+        {
+            playerFacingRight = false;
+        }
     }
 
     public void SetMass(float newMass)

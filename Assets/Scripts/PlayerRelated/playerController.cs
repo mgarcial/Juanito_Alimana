@@ -5,6 +5,7 @@ using UnityEngine;
 public class playerController : MonoBehaviour
 {
     CharacterController characterController;
+    public Joystick joystick;
     [Header("Character stats")]
     [SerializeField] private float speed;
     private float verticalVel;
@@ -28,9 +29,11 @@ public class playerController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 move = new Vector3 (Input.GetAxis("Horizontal"), 0, 0);
+        float horizontalInput = Mathf.Clamp(joystick.Horizontal, -1f, 1f);
+        Vector3 move = new Vector3 (horizontalInput, 0, 0) * speed;
         move *= speed;
         IsGrounded = characterController.isGrounded;
+
         if (IsGrounded)
         {
             move.x *= 1 - friction * Time.deltaTime;
@@ -56,19 +59,27 @@ public class playerController : MonoBehaviour
         
         move.y = verticalVel;
         characterController.Move(move*Time.deltaTime);
-        if (Input.GetAxis("Horizontal") > 0)
+
+        if (horizontalInput > 0 && !playerFacingRight)
         {
-            playerFacingRight = true;
+            Flip();
         }
-        else if (Input.GetAxis("Horizontal") < 0)
+        else if (horizontalInput < 0 && playerFacingRight)
         {
-            playerFacingRight = false;
+            Flip();
         }
     }
 
     public void SetMass(float newMass)
     {
         mass = newMass; 
+    }
+    private void Flip()
+    {
+        playerFacingRight = !playerFacingRight;
+        Vector3 playerScale = transform.localScale;
+        playerScale.x *= -1;
+        transform.localScale = playerScale;
     }
 
 }

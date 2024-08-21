@@ -6,7 +6,7 @@ public abstract class Gun : MonoBehaviour
     [Header("GunStats")]
     [SerializeField] private float range = 10f;
     [SerializeField] private float fireRate = 1f;
-    [SerializeField] private float impactForce = 20f;
+    [SerializeField] private float impactForce = 200f;
 
     public Transform firePoint;
 

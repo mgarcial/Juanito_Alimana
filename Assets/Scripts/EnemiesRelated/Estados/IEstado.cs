@@ -1,3 +1,5 @@
+//NO tocar
+
 public interface IEstado
 {
     void Tick();

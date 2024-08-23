@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class ReferenciasEnemigo : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    public Rigidbody _rigidbody;
+    public Animator _animator;
+
+    private void Awake()
     {
-        
+        _rigidbody = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
     }
 }

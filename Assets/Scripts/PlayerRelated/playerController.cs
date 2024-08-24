@@ -46,13 +46,12 @@ public class playerController : MonoBehaviour
 
         verticalVel -= (Gravity/mass) * Time.deltaTime;
 
-        jumpRequested = Input.GetButton("Jump");
-
         if (jumpRequested && groundedTimer > 0)
         {
             groundedTimer = 0;
             jumpTimer = Mathf.Max(jumpTimer-Time.deltaTime, 0);
             verticalVel += Mathf.Sqrt(jumpForce * 2 * Gravity / mass) * (jumpTimer > 0 ? 1f : 0.5f);
+            jumpRequested = false;
         }
 
         jumpTimer = jumpRequested ? Mathf.Max(jumpTimer - Time.deltaTime, 0) : 0;
@@ -73,6 +72,11 @@ public class playerController : MonoBehaviour
     public void SetMass(float newMass)
     {
         mass = newMass; 
+    }
+
+    public void OnJumpButtonPressed()
+    {
+        jumpRequested = true;
     }
     private void Flip()
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Gun : MonoBehaviour
+public abstract class Gun : MonoBehaviour, IPooledObject
 {
     private playerController player;
     [Header("GunStats")]

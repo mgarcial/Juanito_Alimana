@@ -1,89 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class playerController : MonoBehaviour
 {
-    CharacterController characterController;
+    [Header("PlayerStats")]
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private float gravityScale = 5f;
+
     public Joystick joystick;
-    [Header("Character stats")]
-    [SerializeField] private float speed;
-    private float verticalVel;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float jumpTime = 0.2f;
-    [SerializeField] private float jumpTimer;
-    [SerializeField] private float mass = 8.0f;
-    [Header("Forces")]
-    [SerializeField] private float Gravity = 9.81f;
-    [SerializeField] private float friction = 0.5f;
-    [Header("Checks & Validations")]
-    [SerializeField] private bool IsGrounded;
-    [SerializeField] private float groundedTimer;
-    public bool playerFacingRight = true;
-    private bool jumpRequested;
+    public Button jumpButton;
 
-    private void Start()
+    private Rigidbody rb;
+    private bool isGrounded;
+    public bool playerFacingRight;
+
+    void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        jumpButton.onClick.AddListener(OnJumpButtonPressed);
+        rb = GetComponent<Rigidbody>();
+        rb.useGravity = false;
     }
 
-    private void Update()
+    void Update()
     {
-        float horizontalInput = Mathf.Clamp(joystick.Horizontal, -1f, 1f);
-        Vector3 move = new Vector3 (horizontalInput, 0, 0) * speed;
-        move *= speed;
-        IsGrounded = characterController.isGrounded;
+        Move();
+        FlipCharacter();
+        ApplyCustomGravity();
+    }
 
-        if (IsGrounded)
+    private void Move()
+    {
+        float moveInput = joystick.Horizontal;
+        Vector3 moveDirection = new Vector3(moveInput, 0f, 0f) * moveSpeed;
+        rb.velocity = new Vector3(moveDirection.x,rb.velocity.y,rb.velocity.z);
+    }
+
+    private void OnJumpButtonPressed()
+    {
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+
+        if(isGrounded)
         {
-            move.x *= 1 - friction * Time.deltaTime;
-            move.z *= 1 - friction * Time.deltaTime;
-            groundedTimer = 0.2f;
-            verticalVel = 0;
-        }
-       
-        groundedTimer -= groundedTimer > 0 ? Time.deltaTime : 0;
-
-        verticalVel -= (Gravity/mass) * Time.deltaTime;
-
-        if (jumpRequested && groundedTimer > 0)
-        {
-            groundedTimer = 0;
-            jumpTimer = Mathf.Max(jumpTimer-Time.deltaTime, 0);
-            verticalVel += Mathf.Sqrt(jumpForce * 2 * Gravity / mass) * (jumpTimer > 0 ? 1f : 0.5f);
-            jumpRequested = false;
-        }
-
-        jumpTimer = jumpRequested ? Mathf.Max(jumpTimer - Time.deltaTime, 0) : 0;
-        
-        move.y = verticalVel;
-        characterController.Move(move*Time.deltaTime);
-
-        if (horizontalInput > 0 && !playerFacingRight)
-        {
-            Flip();
-        }
-        else if (horizontalInput < 0 && playerFacingRight)
-        {
-            Flip();
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         }
     }
 
-    public void SetMass(float newMass)
+    private void ApplyCustomGravity()
     {
-        mass = newMass; 
+        rb.AddForce(Vector3.down * gravityScale, ForceMode.Acceleration);
     }
 
-    public void OnJumpButtonPressed()
+    private void FlipCharacter()
     {
-        jumpRequested = true;
-    }
-    private void Flip()
-    {
-        playerFacingRight = !playerFacingRight;
-        Vector3 playerScale = transform.localScale;
-        playerScale.x *= -1;
-        transform.localScale = playerScale;
+        float moveInput = joystick.Horizontal;
+
+        if (moveInput > 0)
+        {
+            playerFacingRight = true;
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (moveInput < 0)
+        {
+            playerFacingRight = false;
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
     }
 
 }

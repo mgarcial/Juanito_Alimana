@@ -10,6 +10,7 @@ public class ReferenciasEnemigo : MonoBehaviour
     public Animator _animator;
     public BoxCollider revisiónSalto;
     public Transform centroDelMundo;
+    public playerController _jugador;
 
     private void Awake()
     {

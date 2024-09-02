@@ -218,6 +218,7 @@ MonoBehaviour:
   _animator: {fileID: 289875038}
   "revisi\xF3nSalto": {fileID: 289875040}
   centroDelMundo: {fileID: 1903977220}
+  _jugador: {fileID: 1256220946}
 --- !u!136 &289875033
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1036,15 +1037,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47e07d5453c0574caced04080ab3128, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 14
+  moveSpeed: 5
   jumpForce: 25
-  jumpTime: 0.2
-  jumpTimer: 0
-  mass: 0.2
-  Gravity: 14
-  friction: 0.5
-  IsGrounded: 0
-  groundedTimer: 0
+  gravityScale: 5
+  joystick: {fileID: 0}
+  jumpButton: {fileID: 0}
+  playerFacingRight: 0
 --- !u!143 &1256220947
 CharacterController:
   m_ObjectHideFlags: 0

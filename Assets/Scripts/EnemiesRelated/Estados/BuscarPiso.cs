@@ -26,7 +26,7 @@ public class BuscarPiso : IEstado
 
     public void Terminar()
     {
-        throw new System.NotImplementedException();
+        timerSaltos = enemigo.tiempoEntreSaltos;
     }
 
     public void Tick()

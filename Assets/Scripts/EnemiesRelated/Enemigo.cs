@@ -28,47 +28,18 @@ public class Enemigo : MonoBehaviour
 
         //definición de los estados que se usarán
         var buscarPiso = new BuscarPiso(this, misReferencias);
+        var buscarJugador = new BuscarJugador(this, misReferencias);
 
         //Trancisiones de estados
         maquinaDeEstado.AgregarCualquierTrancision(buscarPiso, NoTienePiso());
 
+        maquinaDeEstado.AgregarTrancision(buscarPiso, buscarJugador, TienePiso());
+
 
         //definición de las condiciones para cambiar de estado
         Func<bool> NoTienePiso() => () => !Physics.Raycast(checkPiso, Mathf.Infinity, layerPlataforma);
+        Func<bool> TienePiso() => () => Physics.Raycast(checkPiso, Mathf.Infinity, layerPlataforma);
     }
 
     private void Update() => maquinaDeEstado.Tick();
-
-    public void Saltar()
-    {
-        StartCoroutine(Espera(tiempoEntreSaltos));
-    }
-
-    IEnumerator Espera(float s)
-    {
-        Debug.Log(misReferencias._rigidbody.velocity);
-
-        yield return new WaitForSeconds(s);
-
-        if (misReferencias._transform.position.x - misReferencias.centroDelMundo.position.x < 0)
-        {
-            misReferencias._rigidbody.velocity = Vector3.zero;
-            misReferencias._rigidbody.angularVelocity = Vector3.zero;
-            misReferencias._rigidbody.AddForce(direccionSalto, ForceMode.Impulse);
-            //misReferencias._rigidbody.velocity = direccionSalto;
-            Debug.Log(misReferencias._rigidbody.velocity);
-            //Debug.Log("Salté");
-            saltos--;
-        }
-        else
-        {
-            misReferencias._rigidbody.velocity = Vector3.zero;
-            Debug.Log(misReferencias._rigidbody.velocity);
-            misReferencias._rigidbody.angularVelocity = Vector3.zero;
-            misReferencias._rigidbody.AddForce(-direccionSalto);
-            //Debug.Log("Salté");
-        }
-
-        
-    }
 }

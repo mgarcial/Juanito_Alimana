@@ -15,6 +15,13 @@ public class GunController : MonoBehaviour
             currentGun.Shoot();
         }
     }
+    public void OnShootButtonPressed()
+    {
+        if (currentGun != null)
+        {
+            currentGun.Shoot();
+        }
+    }
 
     public void EquipGun(Gun gun)
     {

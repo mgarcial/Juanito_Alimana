@@ -46,5 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponTags:
   - Pistols
-  spawnInterval: 5
-  spawnPoints: []
+  - Machine Guns
+  - Rifles
+  spawnInterval: 15
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}

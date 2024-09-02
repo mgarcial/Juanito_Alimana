@@ -48,4 +48,15 @@ MonoBehaviour:
   - tag: Pistols
     prefabs:
     - {fileID: 6355551157839720145, guid: da319ea968d2a8943a8df59a45c088d4, type: 3}
+    - {fileID: 4927467688311215351, guid: 91c33e6d6515bbe4a91f71353e6da6a1, type: 3}
+    size: 3
+  - tag: Rifles
+    prefabs:
+    - {fileID: 6224161465678413524, guid: c9f5c53f33d205d47a6a1608aaf9ceec, type: 3}
+    - {fileID: 2691520661309053224, guid: 4dc815eddb67f8241a22a05e11e5d265, type: 3}
+    size: 3
+  - tag: MachineGuns
+    prefabs:
+    - {fileID: 5456122734595865313, guid: 167ef0fda06bcc346a58cdc42e43f094, type: 3}
+    - {fileID: 2010482728592763987, guid: 6bab78c897ac32a46b18273ee6d1a89f, type: 3}
     size: 3

@@ -1,12 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource audioSource;
+    private AudioSource effectsSource; //Este es el source para los soniditos de OneShot
+    private AudioSource musicSource; //Este pa la bgm
+    [Header("Audios")] //Aqui se agregan los audios que se meten
+    [SerializeField] private AudioClip tampocoSe;
+    [SerializeField] private AudioClip idk;
+    [SerializeField] private AudioClip hit;
+    [SerializeField] private AudioClip jump;
+    [SerializeField] private AudioClip gunShot;
 
-    private static AudioManager instance;
+    public AudioClip backgroundMusicClip;
+
+    [SerializeField] private static AudioManager instance;
     public static AudioManager GetInstance() => instance;
 
     private void Awake()
@@ -19,7 +29,25 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            AudioEvents.OnShoot.AddListener(PlayShootSound);//Suscribirse al evento de AudioEvents
+            PlayBackgroundMusic();
         }
-        audioSource = GetComponent<AudioSource>();
+        effectsSource = GetComponent<AudioSource>();
+    }
+
+    private void PlayBackgroundMusic()
+    {
+        musicSource.clip = backgroundMusicClip;
+        musicSource.loop = true;  
+        musicSource.Play();
+    }
+
+    private void OnDestroy()
+    {
+        AudioEvents.OnShoot.RemoveListener(PlayShootSound);//No olvidar desuscribirlo
+    }
+    private void PlayShootSound()
+    {
+        effectsSource.PlayOneShot(gunShot); //Función de hacer sonar al sonidito
     }
 }

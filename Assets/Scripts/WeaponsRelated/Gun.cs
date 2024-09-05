@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Gun : MonoBehaviour, IPooledObject
 {
-    private playerController player;
+
     [Header("GunStats")]
     [SerializeField] private float range = 10f;
     [SerializeField] private float fireRate = 1f;
@@ -12,12 +12,20 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     [SerializeField] private float timeToFire = 0f;
 
-    private void Start()
+    private IPickableGun gunHolder;
+    private void OnTriggerEnter(Collider other)
     {
-        if (player == null)
+        gunHolder = other.GetComponent<IPickableGun>();
+        if (gunHolder != null )
         {
-            player = GetComponentInParent<playerController>();
+            gunHolder.PickUpGun(this);
+            Debug.Log($"I'm the gun holder {gunHolder}");
+            gameObject.SetActive(false);
         }
+    }
+    public void SetGunHolder(IPickableGun holder)
+    {
+        gunHolder = holder;
     }
 
     public virtual void Shoot()
@@ -35,7 +43,12 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
         RaycastHit hit;
         Debug.Log("Shooting for real");
-        Vector3 dir = player.playerFacingRight ? Vector3.right : Vector3.left; 
+        if (gunHolder == null)
+        {
+            Debug.LogError("GunHolder is null when trying to shoot!");
+            return;
+        }
+        Vector3 dir = gunHolder.IsFacingRight() ? Vector3.right : Vector3.left; 
         Debug.DrawRay(firePoint.position, dir * range, Color.green, 3.0f);
 
         if (Physics.Raycast(firePoint.position, dir, out hit, range))

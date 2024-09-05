@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    private AudioSource effectsSource; //Este es el source para los soniditos de OneShot
-    private AudioSource musicSource; //Este pa la bgm
+    [SerializeField] private AudioSource effectsSource; //Este es el source para los soniditos de OneShot
+    [SerializeField] private AudioSource musicSource; //Este pa la bgm
     [Header("Audios")] //Aqui se agregan los audios que se meten
     [SerializeField] private AudioClip tampocoSe;
     [SerializeField] private AudioClip idk;
@@ -14,7 +14,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip gunShot;
 
-    public AudioClip backgroundMusicClip;
+    [SerializeField] private AudioClip backgroundMusicClip;
 
     [SerializeField] private static AudioManager instance;
     public static AudioManager GetInstance() => instance;
@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
         effectsSource = GetComponent<AudioSource>();
     }
 
-    private void PlayBackgroundMusic()
+    public void PlayBackgroundMusic()
     {
         musicSource.clip = backgroundMusicClip;
         musicSource.loop = true;  

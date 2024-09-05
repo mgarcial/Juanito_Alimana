@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class playerController : MonoBehaviour
+public class playerController : MonoBehaviour, IPickableGun
 {
     [Header("PlayerStats")]
     [SerializeField] private float moveSpeed = 5f;
@@ -13,7 +13,10 @@ public class playerController : MonoBehaviour
     public Button jumpButton;
 
     private Rigidbody rb;
+    private Gun currentGun;
+    public Transform weaponHolder;
     private bool isGrounded;
+    private bool isEquipped = false;
     public bool playerFacingRight;
 
     void Start()
@@ -46,6 +49,13 @@ public class playerController : MonoBehaviour
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         }
     }
+    public void OnShootButtonPressed()
+    {
+        if (currentGun != null)
+        {
+            currentGun.Shoot();
+        }
+    }
 
     private void ApplyCustomGravity()
     {
@@ -68,4 +78,24 @@ public class playerController : MonoBehaviour
         }
     }
 
+    public void PickUpGun(Gun gun)
+    {
+        if (isEquipped)
+        {
+            Destroy(currentGun.gameObject);
+            Debug.Log($"Destroying {currentGun}");
+        }
+
+        currentGun = Instantiate(gun, weaponHolder.position, weaponHolder.rotation, weaponHolder);
+
+        currentGun.firePoint = currentGun.transform.Find("FirePoint");
+        currentGun.SetGunHolder(this);
+        isEquipped = true;
+        Debug.Log("Picked up gun: " + currentGun);
+    }
+
+    public bool IsFacingRight()
+    {
+        return playerFacingRight;
+    }
 }

@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 2113008880256843265}
   - component: {fileID: 5936097921851021223}
   - component: {fileID: 7338239421928687378}
-  - component: {fileID: -8842309451896239612}
   - component: {fileID: 4873711059309423709}
   m_Layer: 0
   m_Name: Rifle 2
@@ -133,7 +132,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -141,19 +140,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &-8842309451896239612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6224161465678413524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b32d85a62625a47bc564d8bc6b1819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 4873711059309423709}
 --- !u!114 &4873711059309423709
 MonoBehaviour:
   m_ObjectHideFlags: 0

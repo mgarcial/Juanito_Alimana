@@ -44,3 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fbbe3dd4f3adb46ace5bf6dddb2485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tampocoSe: {fileID: 0}
+  idk: {fileID: 0}
+  hit: {fileID: 0}
+  jump: {fileID: 0}
+  gunShot: {fileID: 0}
+  backgroundMusicClip: {fileID: 8300000, guid: 479f74efb7e39524883de188ea6150a7, type: 3}

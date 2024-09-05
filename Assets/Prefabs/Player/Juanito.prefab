@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 3825661527638616427}
   - component: {fileID: 8330810104489703248}
   - component: {fileID: 835453492872330194}
-  - component: {fileID: 8138108005347978408}
   m_Layer: 0
   m_Name: Juanito
   m_TagString: Untagged
@@ -128,20 +127,8 @@ MonoBehaviour:
   gravityScale: 5
   joystick: {fileID: 0}
   jumpButton: {fileID: 0}
+  weaponHolder: {fileID: 0}
   playerFacingRight: 1
---- !u!114 &8138108005347978408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4347763906897371752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a064cb5d6b7e74545827fd896f9ae147, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponHolder: {fileID: 6493817017219774956}
 --- !u!1 &5247221806740017037
 GameObject:
   m_ObjectHideFlags: 0

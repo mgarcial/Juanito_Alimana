@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 7620840566947831357}
   - component: {fileID: 1954509220458587758}
   - component: {fileID: -8156119988231770548}
-  - component: {fileID: -5228428522157142545}
   m_Layer: 0
   m_Name: Rifle 1
   m_TagString: Untagged
@@ -133,7 +132,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -158,16 +157,3 @@ MonoBehaviour:
   impactForce: 200
   firePoint: {fileID: 6841800739474158034}
   timeToFire: 0
---- !u!114 &-5228428522157142545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2691520661309053224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b32d85a62625a47bc564d8bc6b1819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunPrefab: {fileID: -8156119988231770548}

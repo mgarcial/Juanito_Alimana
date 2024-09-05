@@ -43,8 +43,7 @@ GameObject:
   - component: {fileID: 6386440171263649996}
   - component: {fileID: 9128734588987840747}
   - component: {fileID: 5227263493822012326}
-  - component: {fileID: 5814820276702386310}
-  - component: {fileID: -6069305172354398848}
+  - component: {fileID: 8777412148607007186}
   m_Layer: 0
   m_Name: MachineGun 1
   m_TagString: Untagged
@@ -133,7 +132,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -141,20 +140,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &5814820276702386310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2010482728592763987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b32d85a62625a47bc564d8bc6b1819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunPrefab: {fileID: -6069305172354398848}
---- !u!114 &-6069305172354398848
+--- !u!114 &8777412148607007186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

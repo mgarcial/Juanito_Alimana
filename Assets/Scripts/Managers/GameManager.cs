@@ -22,5 +22,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         player = FindAnyObjectByType<playerController>();
+        AudioManager.GetInstance().PlayBackgroundMusic();
     }
 }

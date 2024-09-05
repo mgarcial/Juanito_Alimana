@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 5300015744835003798}
   - component: {fileID: 814682382501621539}
   - component: {fileID: 6911253283987577024}
-  - component: {fileID: 7586599139005405061}
   m_Layer: 0
   m_Name: Gun1
   m_TagString: Untagged
@@ -158,16 +157,3 @@ MonoBehaviour:
   impactForce: 20
   firePoint: {fileID: 2898301578811695315}
   timeToFire: 0
---- !u!114 &7586599139005405061
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6355551157839720145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02b32d85a62625a47bc564d8bc6b1819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gunPrefab: {fileID: 6911253283987577024}

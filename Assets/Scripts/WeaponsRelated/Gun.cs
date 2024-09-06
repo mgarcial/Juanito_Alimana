@@ -13,6 +13,12 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     [SerializeField] private float timeToFire = 0f;
 
     private IPickableGun gunHolder;
+
+    public float Range
+    {
+        get { return range; }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         gunHolder = other.GetComponent<IPickableGun>();

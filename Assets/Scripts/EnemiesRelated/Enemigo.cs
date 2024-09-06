@@ -8,23 +8,31 @@ public class Enemigo : MonoBehaviour
     private Maquina_Estado maquinaDeEstado;
     private ReferenciasEnemigo misReferencias;
 
+    //Generales
     public int saltos = 2;
-    public float tiempoEntreSaltos = 5f;
-    public float maximaVelMovimiento = 15f;
-    public float velocidadBuscarPiso = 3f;
-    public Vector3 direccionSalto = new Vector3(1,1,0);
+    public float tiempoEntreSaltos;
+    public float maximaVelMovimiento;
+    public Vector3 direccionSalto;
+    public float velocidadHorizontal;
 
-    [Header("Buscar piso")]
+    //Cosas del arma
+    public Transform LugarDelArma;
+    public Gun ArmaInicial;
+    private bool Equipado = true;
+    //private Gun armaActual;
+
+    //Parametros del estado buscar piso
     [SerializeField] private LayerMask layerPlataforma;
-    private Ray checkPiso;
+
+    //Parametros del estado buscar al jugador
 
     private void Awake()
     {
         //Setup 
         misReferencias = GetComponent<ReferenciasEnemigo>();
         maquinaDeEstado = new Maquina_Estado();
-        checkPiso = new Ray(misReferencias._transform.position, -misReferencias._transform.up);
-
+        //armaActual = ArmaInicial;
+        //Instantiate(ArmaInicial, LugarDelArma.position, LugarDelArma.rotation, LugarDelArma);
 
         //definición de los estados que se usarán
         var buscarPiso = new BuscarPiso(this, misReferencias);
@@ -37,9 +45,33 @@ public class Enemigo : MonoBehaviour
 
 
         //definición de las condiciones para cambiar de estado
-        Func<bool> NoTienePiso() => () => !Physics.Raycast(checkPiso, Mathf.Infinity, layerPlataforma);
-        Func<bool> TienePiso() => () => Physics.Raycast(checkPiso, Mathf.Infinity, layerPlataforma);
+        Func<bool> NoTienePiso() => () => !Physics.Raycast(misReferencias._transform.position, -misReferencias._transform.up, Mathf.Infinity, layerPlataforma);
+        Func<bool> TienePiso() => () => Physics.Raycast(misReferencias._transform.position, -misReferencias._transform.up, Mathf.Infinity, layerPlataforma);
     }
 
-    private void Update() => maquinaDeEstado.Tick();
+    private void Update()
+    {
+        maquinaDeEstado.Tick();
+    }
+
+    /*public void PickUpGun(Gun arma)
+    {
+        if (Equipado)
+        {
+            Destroy(armaActual.gameObject);
+            Debug.Log($"Destroying {armaActual}");
+        }
+
+        armaActual = Instantiate(arma, LugarDelArma.position, LugarDelArma.rotation, LugarDelArma);
+
+        armaActual.firePoint = armaActual.transform.Find("FirePoint");
+        armaActual.SetGunHolder(this);
+        Equipado = true;
+        Debug.Log("Picked up gun: " + armaActual);
+    }
+
+    public bool IsFacingRight()
+    {
+        throw new NotImplementedException();
+    }*/
 }

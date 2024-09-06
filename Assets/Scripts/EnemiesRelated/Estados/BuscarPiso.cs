@@ -35,11 +35,11 @@ public class BuscarPiso : IEstado
 
         if (referenciasEnemigo._transform.position.x - centroDelMundo.position.x < 0)
         {
-            referenciasEnemigo._rigidbody.AddForce(new Vector3(enemigo.velocidadBuscarPiso, 0, 0));
+            referenciasEnemigo._rigidbody.AddForce(new Vector3(enemigo.velocidadHorizontal, 0, 0));
         }
         else
         {
-            referenciasEnemigo._rigidbody.AddForce(new Vector3(-enemigo.velocidadBuscarPiso, 0, 0));
+            referenciasEnemigo._rigidbody.AddForce(new Vector3(-enemigo.velocidadHorizontal, 0, 0));
         }
 
         if(enemigo.saltos > 0 && timerSaltos<0f)

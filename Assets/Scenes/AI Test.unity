@@ -173,7 +173,6 @@ GameObject:
   - component: {fileID: 289875040}
   - component: {fileID: 289875032}
   - component: {fileID: 289875031}
-  - component: {fileID: 289875039}
   m_Layer: 7
   m_Name: Enemigo
   m_TagString: Untagged
@@ -196,8 +195,10 @@ MonoBehaviour:
   saltos: 2
   tiempoEntreSaltos: 2
   maximaVelMovimiento: 100
-  velocidadBuscarPiso: 30
-  direccionSalto: {x: 5, y: 5, z: 0}
+  direccionSalto: {x: 5, y: 8, z: 0}
+  velocidadHorizontal: 0
+  LugarDelArma: {fileID: 289875037}
+  ArmaInicial: {fileID: 0}
   layerPlataforma:
     serializedVersion: 2
     m_Bits: 64
@@ -218,7 +219,7 @@ MonoBehaviour:
   _animator: {fileID: 289875038}
   "revisi\xF3nSalto": {fileID: 289875040}
   centroDelMundo: {fileID: 1903977220}
-  _jugador: {fileID: 1256220946}
+  _jugador: {fileID: 1256220945}
 --- !u!136 &289875033
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -328,10 +329,11 @@ Transform:
   m_GameObject: {fileID: 289875030}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -37.7, y: 11.2, z: 10}
+  m_LocalPosition: {x: -35.82, y: 15.99, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2090522790}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &289875038
@@ -355,32 +357,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!143 &289875039
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 289875030}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &289875040
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1032,7 +1008,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1256220941}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e47e07d5453c0574caced04080ab3128, type: 3}
   m_Name: 
@@ -1042,6 +1018,7 @@ MonoBehaviour:
   gravityScale: 5
   joystick: {fileID: 0}
   jumpButton: {fileID: 0}
+  weaponHolder: {fileID: 0}
   playerFacingRight: 0
 --- !u!143 &1256220947
 CharacterController:
@@ -1099,6 +1076,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2090522789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2090522790}
+  m_Layer: 7
+  m_Name: Lugar del arma
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2090522790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090522789}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 289875037}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

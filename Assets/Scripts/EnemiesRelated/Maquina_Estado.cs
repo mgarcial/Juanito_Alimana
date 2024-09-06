@@ -20,6 +20,7 @@ public class Maquina_Estado
         if (trancision != null)
             SetearEstado(trancision.A);
 
+        Debug.Log(estadoActual);
         estadoActual?.Tick();
     }
 

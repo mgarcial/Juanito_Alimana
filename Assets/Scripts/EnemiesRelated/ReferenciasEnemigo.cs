@@ -5,14 +5,14 @@ using UnityEngine;
 public class ReferenciasEnemigo : MonoBehaviour
 {
 
-    public Transform _transform;
-    public Rigidbody _rigidbody;
-    public Animator _animator;
-    public BoxCollider revisiónSalto;
+    [HideInInspector] public Transform _transform;
+    [HideInInspector] public Rigidbody _rigidbody;
+    [HideInInspector] public Animator _animator;
+    [HideInInspector] public BoxCollider revisiónSalto;
     public Transform centroDelMundo;
-    public playerController _jugador;
+    public Transform _jugador;
 
-    private void Awake()
+    private void Start()
     {
         _transform = GetComponent<Transform>();
         _rigidbody = GetComponent<Rigidbody>();

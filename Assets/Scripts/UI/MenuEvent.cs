@@ -8,7 +8,7 @@ public class MenuEvent : MonoBehaviour
 
     public void loadLevel()
     {
-        SceneManager.LoadScene("SpawnTest"); 
+        SceneManager.LoadScene("Testing 1"); 
     }
 
 }

@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class MenuEvent : MonoBehaviour
 {
 
-    public void loadLevel()
+    public void loadLevel1()
     {
         SceneManager.LoadScene("Testing 1"); 
+    }
+
+    public void loadLevel2()
+    {
+        SceneManager.LoadScene("Testing 2");
     }
 
 }

@@ -1347,6 +1347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: musicSource
       value: 
+      objectReference: {fileID: 68745752}
+    - target: {fileID: -70121887477982828, guid: c3880dd29b09bc446b4c07a9e3fd53cc,
+        type: 3}
+      propertyPath: effectsSource
+      value: 
       objectReference: {fileID: 68745753}
     - target: {fileID: 5168775202087061828, guid: c3880dd29b09bc446b4c07a9e3fd53cc,
         type: 3}
@@ -1516,7 +1521,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 104
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &2018078277 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 835453492872330194, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
@@ -1556,9 +1561,19 @@ PrefabInstance:
       objectReference: {fileID: 2072699223}
     - target: {fileID: 835453492872330194, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}
+      propertyPath: jumpForce
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 835453492872330194, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
       propertyPath: jumpButton
       value: 
       objectReference: {fileID: 1571427002}
+    - target: {fileID: 835453492872330194, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: gravityScale
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 835453492872330194, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}
       propertyPath: weaponHolder

@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: c1d58ce5eaa21a343bed3f242044d2e7
+guid: c3612e9dedebbca4f80a5b538ef48906
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: delineado
+    second: {fileID: 2100000, guid: de30b2070fe133f4fa3e0d3e4a2c89ea, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -78,7 +83,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []

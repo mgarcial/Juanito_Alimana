@@ -3,7 +3,12 @@ guid: c770922a82beec949b57cdc169bfc753
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: delineado.001
+    second: {fileID: 2100000, guid: de30b2070fe133f4fa3e0d3e4a2c89ea, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

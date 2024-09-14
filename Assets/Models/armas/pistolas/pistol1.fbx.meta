@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 085a1f688930baf43a49c5d1e3c9bb73
+guid: d1085ddd6415b0f46b8039a40c983c11
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: delineado
+      name: delineado.004
     second: {fileID: 2100000, guid: de30b2070fe133f4fa3e0d3e4a2c89ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: madera.003
+    second: {fileID: -52773429122680670, guid: c770922a82beec949b57cdc169bfc753, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0

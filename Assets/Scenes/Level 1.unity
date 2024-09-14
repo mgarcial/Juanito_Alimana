@@ -644,8 +644,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6911253283987577024, guid: da319ea968d2a8943a8df59a45c088d4,
         type: 3}
+      propertyPath: fireRate
+      value: 3.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6911253283987577024, guid: da319ea968d2a8943a8df59a45c088d4,
+        type: 3}
       propertyPath: impactForce
-      value: 649.4
+      value: 260
       objectReference: {fileID: 0}
     - target: {fileID: 8634109616653035746, guid: da319ea968d2a8943a8df59a45c088d4,
         type: 3}
@@ -838,6 +843,11 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1842638708}
+    - target: {fileID: 835453492872330194, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: jumpForce
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 835453492872330194, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}
       propertyPath: jumpButton
@@ -1292,7 +1302,12 @@ PrefabInstance:
     - target: {fileID: -6569699060920768819, guid: 91c33e6d6515bbe4a91f71353e6da6a1,
         type: 3}
       propertyPath: range
-      value: 44.7
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: -6569699060920768819, guid: 91c33e6d6515bbe4a91f71353e6da6a1,
+        type: 3}
+      propertyPath: fireRate
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: -6569699060920768819, guid: 91c33e6d6515bbe4a91f71353e6da6a1,
         type: 3}
@@ -1302,7 +1317,7 @@ PrefabInstance:
     - target: {fileID: -6569699060920768819, guid: 91c33e6d6515bbe4a91f71353e6da6a1,
         type: 3}
       propertyPath: impactForce
-      value: 691.5
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 276362285545934813, guid: 91c33e6d6515bbe4a91f71353e6da6a1,
         type: 3}

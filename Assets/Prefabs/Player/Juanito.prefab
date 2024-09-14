@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3336221123451759849}
   - component: {fileID: 4059231710330388757}
   - component: {fileID: 7108818220256343793}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Juanito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,12 +146,12 @@ MonoBehaviour:
   maxAcceleration: 52
   maxDecceleration: 52
   maxTurnSpeed: 80
-  maxAirAcceleration: 0
-  maxAirDeceleration: 0
+  maxAirAcceleration: 15.3
+  maxAirDeceleration: 6
   maxAirTurnSpeed: 80
   friction: 0
-  useAcceleration: 0
-  itsTheIntro: 1
+  useAcceleration: 1
+  itsTheIntro: 0
   directionX: 0
   velocity: {x: 0, y: 0, z: 0}
   onGround: 0
@@ -173,14 +173,14 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   moveLimit: {fileID: 6733254353482974291}
   jumpButton: {fileID: 0}
-  jumpHeight: 5.5
+  jumpHeight: 3.2
   timeToJumpApex: 0.2
-  upwardMovementMultiplier: 1
-  downwardMovementMultiplier: 6.17
+  upwardMovementMultiplier: 2.65
+  downwardMovementMultiplier: 10
   maxAirJumps: 0
   variableJumpHeight: 1
   jumpCutOff: 1
-  speedLimit: 5
+  speedLimit: 80
   coyoteTime: 0.15
   jumpBuffer: 0.15
 --- !u!114 &4059231710330388757

@@ -17,7 +17,7 @@ public class characterJump : MonoBehaviour
     [SerializeField, Range(2f, 5.5f)][Tooltip("Maximum jump height")] public float jumpHeight = 7.3f;
     [SerializeField, Range(0.2f, 1.25f)][Tooltip("How long it takes to reach the maximum height")] public float timeToJumpApex = 0.5f;
     [SerializeField, Range(0f, 5f)][Tooltip("Gravity multiplier when rising")] public float upwardMovementMultiplier = 1f;
-    [SerializeField, Range(1f, 10f)][Tooltip("Gravity multiplier when falling")] public float downwardMovementMultiplier = 6.17f;
+    [SerializeField, Range(1f, 20f)][Tooltip("Gravity multiplier when falling")] public float downwardMovementMultiplier = 6.17f;
     [SerializeField, Range(0, 1)][Tooltip("Air jumps allowed")] public int maxAirJumps = 0;
 
     [Header("Options")]

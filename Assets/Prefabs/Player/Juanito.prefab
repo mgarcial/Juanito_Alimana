@@ -12,8 +12,11 @@ GameObject:
   - component: {fileID: 2771569689760809974}
   - component: {fileID: 3825661527638616427}
   - component: {fileID: 8330810104489703248}
-  - component: {fileID: 835453492872330194}
-  - component: {fileID: 581139902348003582}
+  - component: {fileID: 6733254353482974291}
+  - component: {fileID: 3203164692028804979}
+  - component: {fileID: 3336221123451759849}
+  - component: {fileID: 4059231710330388757}
+  - component: {fileID: 7108818220256343793}
   m_Layer: 0
   m_Name: Juanito
   m_TagString: Untagged
@@ -111,7 +114,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &835453492872330194
+--- !u!114 &6733254353482974291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,17 +123,84 @@ MonoBehaviour:
   m_GameObject: {fileID: 4347763906897371752}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47e07d5453c0574caced04080ab3128, type: 3}
+  m_Script: {fileID: 11500000, guid: e02e88adbab2ffd4ab5e096c6cdb3a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
-  jumpForce: 10
-  gravityScale: 5
+  _initialCharacterCanMove: 1
+  CharacterCanMove: 1
+--- !u!114 &3203164692028804979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347763906897371752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79692da53062de44da07a6a861808542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveLimit: {fileID: 6733254353482974291}
   joystick: {fileID: 0}
-  jumpButton: {fileID: 0}
+  maxSpeed: 10
+  maxAcceleration: 52
+  maxDecceleration: 52
+  maxTurnSpeed: 80
+  maxAirAcceleration: 0
+  maxAirDeceleration: 0
+  maxAirTurnSpeed: 80
+  friction: 0
+  useAcceleration: 0
+  itsTheIntro: 1
+  directionX: 0
+  velocity: {x: 0, y: 0, z: 0}
+  onGround: 0
+  pressingKey: 0
   weaponHolder: {fileID: 6493817017219774956}
-  playerFacingRight: 1
---- !u!54 &581139902348003582
+--- !u!114 &3336221123451759849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347763906897371752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5835d8b8d643b214fb7e1c336ca8b78f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  body: {fileID: 0}
+  velocity: {x: 0, y: 0, z: 0}
+  moveLimit: {fileID: 6733254353482974291}
+  jumpButton: {fileID: 0}
+  jumpHeight: 5.5
+  timeToJumpApex: 0.2
+  upwardMovementMultiplier: 1
+  downwardMovementMultiplier: 6.17
+  maxAirJumps: 0
+  variableJumpHeight: 1
+  jumpCutOff: 1
+  speedLimit: 5
+  coyoteTime: 0.15
+  jumpBuffer: 0.15
+--- !u!114 &4059231710330388757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4347763906897371752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f0eaff04e554a444a2f95ebc8486bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLength: 0.95
+  colliderOffset: {x: 0, y: 0.2, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!54 &7108818220256343793
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -155,7 +225,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 72
+  m_Constraints: 104
   m_CollisionDetection: 1
 --- !u!1 &5247221806740017037
 GameObject:

@@ -4,80 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 public class playerController : MonoBehaviour, IPickableGun
 {
-    [Header("PlayerStats")]
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private float gravityScale = 5f;
 
-    public Joystick joystick;
-    public Button jumpButton;
-
-    private Rigidbody rb;
     private Gun currentGun;
     public Transform weaponHolder;
-    private bool isGrounded;
     private bool isEquipped = false;
     public bool playerFacingRight;
-
-    void Start()
-    {
-        jumpButton.onClick.AddListener(OnJumpButtonPressed);
-        rb = GetComponent<Rigidbody>();
-        rb.useGravity = false;
-    }
-
-    void Update()
-    {
-        Move();
-        FlipCharacter();
-        ApplyCustomGravity();
-    }
-
-    private void Move()
-    {
-        float moveInput = joystick.Horizontal;
-        Vector3 moveDirection = new Vector3(moveInput, 0f, 0f) * moveSpeed;
-        rb.velocity = new Vector3(moveDirection.x,rb.velocity.y,rb.velocity.z);
-    }
-
-    private void OnJumpButtonPressed()
-    {
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
-
-        if(isGrounded)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
-        }
-    }
-    public void OnShootButtonPressed()
-    {
-        if (currentGun != null)
-        {
-            currentGun.Shoot();
-        }
-    }
-
-    private void ApplyCustomGravity()
-    {
-        rb.AddForce(Vector3.down * gravityScale, ForceMode.Acceleration);
-    }
-
-    private void FlipCharacter()
-    {
-        float moveInput = joystick.Horizontal;
-
-        if (moveInput > 0)
-        {
-            playerFacingRight = true;
-            transform.localScale = new Vector3(1, 1, 1);
-        }
-        else if (moveInput < 0)
-        {
-            playerFacingRight = false;
-            transform.localScale = new Vector3(-1, 1, 1);
-        }
-    }
-
+    
     public void PickUpGun(Gun gun)
     {
         if (isEquipped)

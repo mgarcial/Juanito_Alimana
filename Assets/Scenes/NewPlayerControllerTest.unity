@@ -350,13 +350,28 @@ PrefabInstance:
       objectReference: {fileID: 1763093427}
     - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}
+      propertyPath: jumpCutOff
+      value: 31.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
       propertyPath: jumpHeight
-      value: 25
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}
       propertyPath: speedLimit
-      value: 20
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: timeToJumpApex
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: variableJumpHeight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}
@@ -372,6 +387,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Juanito
+      objectReference: {fileID: 0}
+    - target: {fileID: 4347763906897371752, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6234636342866708859, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}

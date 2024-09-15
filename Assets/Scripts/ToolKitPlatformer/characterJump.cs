@@ -14,15 +14,17 @@ public class characterJump : MonoBehaviour
     public Button jumpButton;
 
     [Header("Jumping Stats")]
-    [SerializeField, Range(2f, 5.5f)][Tooltip("Maximum jump height")] public float jumpHeight = 7.3f;
-    [SerializeField, Range(0.2f, 1.25f)][Tooltip("How long it takes to reach the maximum height")] public float timeToJumpApex = 0.5f;
+    [SerializeField, Range(2f, 25f)][Tooltip("Maximum jump height")] public float jumpHeight = 7.3f;
+    [SerializeField, Range(0.1f, 5.25f)][Tooltip("How long it takes to reach the maximum height")] public float timeToJumpApex = 0.5f;
     [SerializeField, Range(0f, 5f)][Tooltip("Gravity multiplier when rising")] public float upwardMovementMultiplier = 1f;
-    [SerializeField, Range(1f, 20f)][Tooltip("Gravity multiplier when falling")] public float downwardMovementMultiplier = 6.17f;
-    [SerializeField, Range(0, 1)][Tooltip("Air jumps allowed")] public int maxAirJumps = 0;
+    [SerializeField, Range(1f, 50f)][Tooltip("Gravity multiplier when falling")] public float downwardMovementMultiplier = 6.17f;
+    [SerializeField, Range(0, 4)][Tooltip("Air jumps allowed")] public int maxAirJumps = 0;
+    private float gravity;
+    private float initialJumpVelocity;
 
     [Header("Options")]
     [Tooltip("Variable jump height control")] public bool variableJumpHeight = true;
-    [SerializeField, Range(1f, 10f)][Tooltip("Gravity multiplier on jump release")] public float jumpCutOff = 2f;
+    [SerializeField, Range(1f, 50f)][Tooltip("Gravity multiplier on jump release")] public float jumpCutOff = 2f;
     [SerializeField, Tooltip("Max falling speed")] public float speedLimit = 20f;
     [SerializeField, Range(0f, 0.3f)][Tooltip("Coyote time duration")] public float coyoteTime = 0.15f;
     [SerializeField, Range(0f, 0.3f)][Tooltip("Jump buffer duration")] public float jumpBuffer = 0.15f;
@@ -36,6 +38,11 @@ public class characterJump : MonoBehaviour
     private bool onGround;
     private bool currentlyJumping;
 
+    private void Start()
+    {
+        gravity = (-2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+        initialJumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+    }
     void Awake()
     {
         jumpButton.onClick.AddListener(OnJumpButtonPressed);
@@ -64,6 +71,10 @@ public class characterJump : MonoBehaviour
             PerformJump();
             body.velocity = velocity;
             return;
+        }
+        if (body.velocity.y > 0.01f && !pressingJump)
+        {
+            velocity.y *= jumpCutOff; // Cut the jump short
         }
         CalculateGravity();
     }
@@ -102,10 +113,10 @@ public class characterJump : MonoBehaviour
             coyoteTimeCounter = 0;
             canJumpAgain = maxAirJumps > 0 && !canJumpAgain;
 
-            float jumpSpeed = Mathf.Sqrt(-2f * Physics.gravity.y * body.mass * jumpHeight);
+            float jumpSpeed = initialJumpVelocity;
 
             if (velocity.y > 0f) jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
-            else if (velocity.y < 0f) jumpSpeed += Mathf.Abs(body.velocity.y);
+            else if (velocity.y < 0f) jumpSpeed += Mathf.Abs(velocity.y);
 
             velocity.y += jumpSpeed;
             currentlyJumping = true;
@@ -114,7 +125,8 @@ public class characterJump : MonoBehaviour
 
     private void CalculateGravity()
     {
-        float gravityScale = upwardMovementMultiplier;
+
+        float gravityScale = 1f;
         if (body.velocity.y > 0.01f)
         {
             gravityScale = variableJumpHeight && pressingJump ? upwardMovementMultiplier : jumpCutOff;
@@ -123,6 +135,7 @@ public class characterJump : MonoBehaviour
         {
             gravityScale = downwardMovementMultiplier;
         }
+        velocity.y += gravity * gravityScale * Time.deltaTime;
         body.velocity = new Vector3(velocity.x, Mathf.Clamp(velocity.y, -speedLimit, float.MaxValue), velocity.z);
     }
 

@@ -15,7 +15,7 @@ public class EnemyDetection : MonoBehaviour, IPickableGun
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Jugador").transform;
         enemy = GetComponent<EnemyPatrol>();
     }
 
@@ -29,6 +29,7 @@ public class EnemyDetection : MonoBehaviour, IPickableGun
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= detectionRange)
         {
+            Debug.Log($"Found{player}");
             enemyGun.Shoot();
         }
     }

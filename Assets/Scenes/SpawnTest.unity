@@ -1468,6 +1468,11 @@ PrefabInstance:
       propertyPath: jumpButton
       value: 
       objectReference: {fileID: 1571427002}
+    - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 5.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4347763906897371752, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}
       propertyPath: m_Name

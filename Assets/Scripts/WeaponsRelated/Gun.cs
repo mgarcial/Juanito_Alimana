@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class Gun : MonoBehaviour, IPooledObject
 {
@@ -21,12 +22,15 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter(Collider other)
     {
+        transform.Rotate(new Vector3(0f, -90f, -90f));
         gunHolder = other.GetComponent<IPickableGun>();
         if (gunHolder != null )
         {
             gunHolder.PickUpGun(this);
             Debug.Log($"I'm the gun holder {gunHolder}");
             gameObject.SetActive(false);
+            
+            
         }
     }
     public void SetGunHolder(IPickableGun holder)

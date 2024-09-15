@@ -69,12 +69,12 @@ public class playerController : MonoBehaviour, IPickableGun
         if (moveInput > 0)
         {
             playerFacingRight = true;
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.forward = new Vector3(-1, 0, 0);
         }
         else if (moveInput < 0)
         {
             playerFacingRight = false;
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.forward = new Vector3(1, 0, 0); 
         }
     }
 

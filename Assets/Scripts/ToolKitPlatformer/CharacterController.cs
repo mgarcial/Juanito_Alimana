@@ -79,7 +79,7 @@ public class characterController : MonoBehaviour, IPickableGun
         else if (directionX < 0)
         {
             playerFacingRight = false;
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(1, 1, -1);
             pressingKey = true;
         }
         else

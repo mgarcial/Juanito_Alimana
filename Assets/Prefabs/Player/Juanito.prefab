@@ -144,8 +144,8 @@ MonoBehaviour:
   joystick: {fileID: 0}
   maxSpeed: 10
   maxAcceleration: 52
-  maxDecceleration: 52
-  maxTurnSpeed: 80
+  maxDecceleration: 80.3
+  maxTurnSpeed: 30.1
   maxAirAcceleration: 15.3
   maxAirDeceleration: 6
   maxAirTurnSpeed: 80
@@ -173,16 +173,18 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   moveLimit: {fileID: 6733254353482974291}
   jumpButton: {fileID: 0}
-  jumpHeight: 3.2
-  timeToJumpApex: 0.2
-  upwardMovementMultiplier: 2.65
-  downwardMovementMultiplier: 10
+  jumpHeight: 10
+  timeToJumpApex: 3
+  upwardMovementMultiplier: 0
+  downwardMovementMultiplier: 50
   maxAirJumps: 0
-  variableJumpHeight: 1
-  jumpCutOff: 1
-  speedLimit: 80
+  variableJumpHeight: 0
+  jumpCutOff: 31.5
+  speedLimit: 3
   coyoteTime: 0.15
   jumpBuffer: 0.15
+  jumpSpeed: 0
+  gravMultiplier: 0
 --- !u!114 &4059231710330388757
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundLength: 0.95
-  colliderOffset: {x: 0, y: 0.2, z: 0}
+  colliderOffset: {x: 0.5, y: 0.2, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

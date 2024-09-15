@@ -94,7 +94,7 @@ public class characterController : MonoBehaviour, IPickableGun
     private void FixedUpdate()
     {
         // Sync with Unity's physics engine
-        onGround = ground.GetOnGround(); // Adapt this method for 3D
+        onGround = ground.GetOnGround(); 
         velocity = body.velocity;
 
         if (useAcceleration)

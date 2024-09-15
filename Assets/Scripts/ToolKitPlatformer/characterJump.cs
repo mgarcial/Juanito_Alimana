@@ -48,7 +48,7 @@ public class characterJump : MonoBehaviour
         jumpButton.onClick.AddListener(OnJumpButtonPressed);
         body = GetComponent<Rigidbody>();
         ground = GetComponent<characterGround>();
-        setPhysics();
+        SetPhysics();
     }
 
     private void OnJumpButtonPressed()
@@ -58,7 +58,7 @@ public class characterJump : MonoBehaviour
 
     void Update()
     {
-        setPhysics();
+        SetPhysics();
         onGround = ground.GetOnGround(); 
         HandleJumpBuffer();
         HandleCoyoteTime();
@@ -75,7 +75,6 @@ public class characterJump : MonoBehaviour
             return;
         }
         CalculateGravity();
-        body.AddForce(Vector3.up * customGravityY * body.mass, ForceMode.Acceleration);
     }
 
     private void HandleJumpBuffer()
@@ -102,7 +101,7 @@ public class characterJump : MonoBehaviour
             coyoteTimeCounter = 0;
         }
     }
-    private void setPhysics()
+    private void SetPhysics()
     {
         //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
         customGravityY = (-2 * jumpHeight) / (timeToJumpApex * timeToJumpApex);
@@ -187,6 +186,7 @@ public class characterJump : MonoBehaviour
             gravMultiplier = defaultGravityScale;
         }
         body.velocity = new Vector3(velocity.x, Mathf.Clamp(velocity.y, -speedLimit, float.MaxValue), velocity.z);
+        body.AddForce(Vector3.up * customGravityY * body.mass, ForceMode.Acceleration);
     }
 
 }

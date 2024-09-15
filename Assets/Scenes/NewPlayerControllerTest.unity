@@ -333,11 +333,41 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1763093428}
+    - target: {fileID: 3203164692028804979, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: maxTurnSpeed
+      value: 30.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3203164692028804979, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: maxDecceleration
+      value: 80.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}
       propertyPath: jumpButton
       value: 
       objectReference: {fileID: 1763093427}
+    - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: speedLimit
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: upwardMovementMultiplier
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3336221123451759849, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
+        type: 3}
+      propertyPath: downwardMovementMultiplier
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4347763906897371752, guid: 61586e7bf8cd30b4b807f6f7d0ee5a17,
         type: 3}
       propertyPath: m_Name

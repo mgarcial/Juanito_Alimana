@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public abstract class Gun : MonoBehaviour, IPooledObject
 {
@@ -12,7 +13,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     [SerializeField] private float timeToFire = 0f;
 
-    private IPickableGun gunHolder;
+    protected IPickableGun gunHolder;
 
     public float Range
     {
@@ -21,12 +22,15 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter(Collider other)
     {
+        transform.Rotate(new Vector3(0f, -90f, 0f));
         gunHolder = other.GetComponent<IPickableGun>();
         if (gunHolder != null )
         {
             gunHolder.PickUpGun(this);
             Debug.Log($"I'm the gun holder {gunHolder}");
             gameObject.SetActive(false);
+            
+            
         }
     }
     public void SetGunHolder(IPickableGun holder)

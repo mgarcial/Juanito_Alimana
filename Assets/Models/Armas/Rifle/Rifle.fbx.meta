@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 7bb262054dba9ec4d9c8cfffaf281f4d
+guid: 5a2e0ac8347c2f1478e158ffd2a1f4cd
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: delineado.003
-    second: {fileID: 2100000, guid: de30b2070fe133f4fa3e0d3e4a2c89ea, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

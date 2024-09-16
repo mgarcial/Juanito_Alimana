@@ -15,6 +15,10 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     protected IPickableGun gunHolder;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip reloadSound;
+
     public float Range
     {
         get { return range; }
@@ -22,7 +26,6 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<playerController>() == null) return;
         transform.Rotate(new Vector3(0f, -90f, 0f));
         gunHolder = other.GetComponent<IPickableGun>();
         if (gunHolder != null )
@@ -46,6 +49,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             Debug.Log("Shooting");
             timeToFire = Time.time+1f/fireRate;
             RaycastShoot();
+            AudioManager.GetInstance().PlayShootSound(shootSound);
         }
     }
 

@@ -194,8 +194,8 @@ MonoBehaviour:
   maxAcceleration: 52
   maxDecceleration: 52
   maxTurnSpeed: 80
-  maxAirAcceleration: 0
-  maxAirDeceleration: 0
+  maxAirAcceleration: 50.6
+  maxAirDeceleration: 48.3
   maxAirTurnSpeed: 80
   friction: 0
   useAcceleration: 0
@@ -235,14 +235,14 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   moveLimit: {fileID: 9048242891479964606}
   jumpButton: {fileID: 0}
-  jumpHeight: 7.3
-  timeToJumpApex: 1.99
-  upwardMovementMultiplier: 1
-  downwardMovementMultiplier: 1
+  jumpHeight: 25
+  timeToJumpApex: 2.06
+  upwardMovementMultiplier: 3.01
+  downwardMovementMultiplier: 45
   maxAirJumps: 0
   variableJumpHeight: 0
   jumpCutOff: 2
-  speedLimit: 1
+  speedLimit: 3.57
   coyoteTime: 0.15
   jumpBuffer: 0.15
   jumpSpeed: 0

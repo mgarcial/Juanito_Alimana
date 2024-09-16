@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fbbe3dd4f3adb46ace5bf6dddb2485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectsSource: {fileID: 0}
+  musicSource: {fileID: 0}
   tampocoSe: {fileID: 0}
   idk: {fileID: 0}
-  hit: {fileID: 0}
+  hit: {fileID: 8300000, guid: 6c734814772de884b8af70992492b15f, type: 3}
   jump: {fileID: 0}
-  gunShot: {fileID: 0}
+  gunShot: {fileID: 8300000, guid: c8cc4aa6c2c961b4f86d1b930c0eb537, type: 3}
   backgroundMusicClip: {fileID: 8300000, guid: 479f74efb7e39524883de188ea6150a7, type: 3}

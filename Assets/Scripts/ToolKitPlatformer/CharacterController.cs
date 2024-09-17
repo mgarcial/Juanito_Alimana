@@ -2,7 +2,7 @@
 
 //This script handles moving the character on the X axis, both on the ground and in the air.
 
-public class characterController : MonoBehaviour, IPickableGun
+public class characterController : MonoBehaviour, IPickableGun, IDamageable
 {
 
     [Header("Components")]
@@ -10,6 +10,7 @@ public class characterController : MonoBehaviour, IPickableGun
     private Rigidbody body; // Use Rigidbody for 3D
     private characterGround ground; // Update ground check for 3D
     public Joystick joystick;
+    public GameObject hitEffects;
 
 
     [Header("Movement Stats")]
@@ -174,4 +175,21 @@ public class characterController : MonoBehaviour, IPickableGun
         return playerFacingRight;
     }
 
+    public void TakeHit()
+    {
+        if(hitEffects != null)
+        {
+            hitEffects.SetActive(true);
+            Invoke("DeactivateParticles", 1f);
+        }
+    }
+
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+    private void DeactivateParticles()
+    {
+        hitEffects.SetActive(false);
+    }
 }

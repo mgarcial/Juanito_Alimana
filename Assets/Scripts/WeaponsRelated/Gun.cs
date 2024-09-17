@@ -32,9 +32,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
         {
             gunHolder.PickUpGun(this);
             Debug.Log($"I'm the gun holder {gunHolder}");
-            gameObject.SetActive(false);
-            
-            
+            gameObject.SetActive(false);            
         }
     }
     public void SetGunHolder(IPickableGun holder)
@@ -69,9 +67,10 @@ public abstract class Gun : MonoBehaviour, IPooledObject
         if (Physics.Raycast(firePoint.position, dir, out hit, range))
         {
             Debug.Log(hit.transform.name);
-
-            if (hit.rigidbody != null)
+            IDamageable damageable = hit.transform.GetComponent<IDamageable>();
+            if (damageable != null)
             {
+                damageable.TakeHit();
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
         }

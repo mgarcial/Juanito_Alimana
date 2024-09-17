@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject hitEffects;
+    public void TakeHit()
     {
-        
+        if (hitEffects != null)
+        {
+            hitEffects.SetActive(true);
+            Invoke("DeactivateParticles", 1f);
+        }
+    }
+    private void DeactivateParticles()
+    {
+        hitEffects.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

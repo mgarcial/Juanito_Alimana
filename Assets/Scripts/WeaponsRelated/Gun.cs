@@ -22,7 +22,6 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<playerController>() == null) return;
         transform.Rotate(new Vector3(0f, -90f, 0f));
         gunHolder = other.GetComponent<IPickableGun>();
         if (gunHolder != null )
@@ -30,7 +29,6 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             gunHolder.PickUpGun(this);
             Debug.Log($"I'm the gun holder {gunHolder}");
             gameObject.SetActive(false);
-            
             
         }
     }

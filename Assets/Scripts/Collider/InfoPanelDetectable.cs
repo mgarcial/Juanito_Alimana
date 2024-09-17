@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI; 
 
-public class Collider : MonoBehaviour
+public class IndoPanelDetectable : MonoBehaviour
 {
-    [SerializeField] public GameObject infoPanel; 
+    public GameObject infoPanel; 
     
 
     void Start()

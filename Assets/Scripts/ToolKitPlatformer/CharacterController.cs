@@ -2,7 +2,7 @@
 
 //This script handles moving the character on the X axis, both on the ground and in the air.
 
-public class characterController : MonoBehaviour, IPickableGun, IDamageable
+public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
 {
 
     [Header("Components")]
@@ -40,12 +40,12 @@ public class characterController : MonoBehaviour, IPickableGun, IDamageable
     public bool onGround;
     public bool pressingKey;
     private bool playerFacingRight;
+    public bool isDead = false;
 
     [Header("GunThings")]
     private Gun currentGun;
     public Transform weaponHolder;
     private bool isEquipped = false;
-
 
     private void Awake()
     {
@@ -186,7 +186,10 @@ public class characterController : MonoBehaviour, IPickableGun, IDamageable
 
     public void Die()
     {
-        Destroy(gameObject);
+       if(isDead)
+        {
+            Destroy(gameObject);
+        }
     }
     private void DeactivateParticles()
     {

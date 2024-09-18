@@ -26,6 +26,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Platforms")) return;
         transform.Rotate(new Vector3(0f, -90f, 0f));
         gunHolder = other.GetComponent<IPickableGun>();
         if (gunHolder != null )

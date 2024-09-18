@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class playerController : MonoBehaviour, IPickableGun
+public class characterController : MonoBehaviour, IPickableGun
 {
     [Header("PlayerStats")]
     [SerializeField] private float moveSpeed = 5f;

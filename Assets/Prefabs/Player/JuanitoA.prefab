@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9037114601057091463}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,9 +48,9 @@ GameObject:
   - component: {fileID: 9048242891479964606}
   - component: {fileID: 5499347021051898642}
   - component: {fileID: 7278871662877034499}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: JuanitoA
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,11 +192,11 @@ MonoBehaviour:
   moveLimit: {fileID: 9048242891479964606}
   joystick: {fileID: 0}
   hitEffects: {fileID: 8253835360195901904}
-  maxSpeed: 10
-  maxAcceleration: 52
+  maxSpeed: 14.1
+  maxAcceleration: 71
   maxDecceleration: 52
   maxTurnSpeed: 80
-  maxAirAcceleration: 50.6
+  maxAirAcceleration: 65.9
   maxAirDeceleration: 48.3
   maxAirTurnSpeed: 80
   friction: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   velocity: {x: 0, y: 0, z: 0}
   onGround: 0
   pressingKey: 0
+  isDead: 0
   weaponHolder: {fileID: 9037114601057091463}
 --- !u!114 &9048242891479964606
 MonoBehaviour:

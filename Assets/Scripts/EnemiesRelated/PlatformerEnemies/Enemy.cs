@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPickableGun, IDamageable
 {
-    [SerializeField] private float shootingRange = 6f; 
+    [Header("Enemy stats")]
+    [SerializeField] private float shootingRange = 6f;
+    [Header("Enemy Checks")]
     [SerializeField] private Gun enemyGun;
-    private bool isEquipped = false;
-    private bool enemyFacingRight;
-    private CharacterController player;
+    [SerializeField] private bool isEquipped = false;
+    [SerializeField] private bool enemyFacingRight;
     private EnemyPatrol enemy;
+    [Header("Things to assign")]
     public GameObject hitEffects;
     [SerializeField] private Transform weaponHolder;
 

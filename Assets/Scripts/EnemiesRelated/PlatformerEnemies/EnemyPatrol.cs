@@ -29,7 +29,7 @@ public class EnemyPatrol : MonoBehaviour
     public Transform pointA;
     public Transform pointB;
 
-    [SerializeField] private Vector3 startingPosition;
+    private Vector3 startingPosition;
     private Rigidbody rb;
 
     private void Awake()

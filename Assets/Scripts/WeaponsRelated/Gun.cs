@@ -9,6 +9,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private float impactForce = 200f;
 
+    [Header("Assign this")]
     public Transform firePoint;
 
     [SerializeField] private float timeToFire = 0f;

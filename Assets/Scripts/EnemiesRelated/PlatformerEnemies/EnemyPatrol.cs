@@ -1,3 +1,5 @@
+using Cinemachine.Utility;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,18 +10,26 @@ public class EnemyPatrol : MonoBehaviour
     private enum State
     {
         Patrolling,
-        ChasePlayer
+        ChasePlayer,
+        BackToStart
     }
+    [Header("EnemyyStats")]
     public float speed = 2f;
-    public Transform pointA;
-    public Transform pointB;
     public float distanceToPoint = 2f;
     public float detectionRange = 10f;
+    public float stopChaseDistance = 15f;
+    [Header("Enemy Checks")]
     [SerializeField] private Transform currentTarget;
-    public Vector3 playerPosition;
-    private State state;
-    private bool playerDetected = false;
+    [SerializeField] private State state;
+    [SerializeField] private bool playerDetected = false;
     public bool movingRight = true;
+    public Vector3 playerPosition;
+    [Header("Things to Assign")]
+    [SerializeField] private Transform startingTarget;
+    public Transform pointA;
+    public Transform pointB;
+
+    [SerializeField] private Vector3 startingPosition;
     private Rigidbody rb;
 
     private void Awake()
@@ -29,7 +39,8 @@ public class EnemyPatrol : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        currentTarget = pointB;
+        currentTarget = startingTarget;
+        startingPosition = transform.position;
     }
 
     private void Update()
@@ -44,8 +55,22 @@ public class EnemyPatrol : MonoBehaviour
             case State.ChasePlayer:
                 ChasePlayer();
                 break;
+            case State.BackToStart:
+                BackToStart();
+                break;
         }
 
+    }
+
+    private void BackToStart()
+    {
+        currentTarget = startingTarget;
+        Vector3 direction = (startingPosition - transform.position).normalized;
+        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+        if (Vector3.Distance(transform.position, startingPosition) < 2f)
+        {
+            state = State.Patrolling;
+        }
     }
 
     private void Patrol()
@@ -62,14 +87,10 @@ public class EnemyPatrol : MonoBehaviour
 
     private void ChasePlayer()
     {
-        currentTarget.position = playerPosition;
+        currentTarget = CharacterController.Instance.GetTransform();
         Vector3 direction = (currentTarget.position - transform.position).normalized;
         rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
         movingRight = direction.x > 0;
-        if (Vector3.Distance(transform.position, currentTarget.position) < detectionRange)
-        {
-            playerDetected = true;  
-        }
         if (direction.x > 0 && transform.localScale.x < 0)
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
@@ -78,15 +99,22 @@ public class EnemyPatrol : MonoBehaviour
         {
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
         }
+        if (Vector3.Distance(transform.position, playerPosition) > detectionRange)
+        {
+            playerDetected = false;
+            state = State.BackToStart;
+        }
     }
     private void FindPlayer()
     {
         playerPosition = CharacterController.Instance.GetPosition();
         if (Vector3.Distance(transform.position, playerPosition) < detectionRange)
         {
+            playerDetected = true;
             state = State.ChasePlayer;
-        }
+        }    
     }
+
     private void Flip()
     {
         transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);

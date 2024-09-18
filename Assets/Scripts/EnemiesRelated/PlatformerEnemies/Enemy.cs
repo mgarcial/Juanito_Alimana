@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPickableGun, IDamageable
 {
-    [SerializeField] private float detectionRange = 10f; 
+    [SerializeField] private float shootingRange = 6f; 
     [SerializeField] private Gun enemyGun;
     private bool isEquipped = false;
     private bool enemyFacingRight;
@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
     private void DetectPlayerAndShoot()
     {
         float distanceToPlayer = Vector3.Distance(transform.position, CharacterController.Instance.GetPosition());
-        if (distanceToPlayer <= detectionRange)
+        if (distanceToPlayer <= shootingRange)
         {
             Debug.Log($"Found{player}");
             enemyGun.Shoot();
@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red; 
-        Gizmos.DrawWireSphere(transform.position, detectionRange); 
+        Gizmos.DrawWireSphere(transform.position, shootingRange); 
     }
     public bool IsFacingRight()
     {

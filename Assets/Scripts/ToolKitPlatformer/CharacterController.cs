@@ -206,6 +206,10 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
     {
         return transform.position;
     }
+    public Transform GetTransform()
+    {
+        return transform;
+    }
     private void DeactivateParticles()
     {
         hitEffects.SetActive(false);

@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851300203723166764}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: 0.345, y: 0.078, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalPosition: {x: 0.345, y: 0.078, z: -0.691}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3805366699288151383}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!1 &2873281789482247819
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 6019871482407960014}
   - component: {fileID: 2619627764881968559}
   - component: {fileID: -3606452347638616333}
-  - component: {fileID: 6845452479413869283}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -63,8 +62,8 @@ Transform:
   m_GameObject: {fileID: 2873281789482247819}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -7.12, y: -3.4551744, z: 10}
-  m_LocalScale: {x: 1, y: 2.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1287127365308070071}
@@ -182,10 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectionRange: 10
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 256
   enemyGun: {fileID: 0}
+  hitEffects: {fileID: 4435232435372630235}
   weaponHolder: {fileID: 1287127365308070071}
 --- !u!114 &-3606452347638616333
 MonoBehaviour:
@@ -202,24 +199,11 @@ MonoBehaviour:
   speed: 7
   pointA: {fileID: 0}
   pointB: {fileID: 0}
+  distanceToPoint: 2
+  detectionRange: 10
   currentTarget: {fileID: 0}
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  playerPosition: {x: 0, y: 0, z: 0}
   movingRight: 1
---- !u!114 &6845452479413869283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2873281789482247819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4d57160153c7664ab5099da0a249fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitEffects: {fileID: 4435232435372630235}
 --- !u!1001 &4435643106183129141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -231,6 +215,10 @@ PrefabInstance:
     - target: {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
       propertyPath: m_Name
       value: BloodSprayFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000013355911406, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4000011382548710, guid: d32aa916f50cac94db11e6f19821a58f, type: 3}
       propertyPath: m_LocalPosition.x

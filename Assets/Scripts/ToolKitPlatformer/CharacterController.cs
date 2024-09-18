@@ -4,6 +4,7 @@
 
 public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
 {
+    public static CharacterController Instance { get; private set; }
 
     [Header("Components")]
     [SerializeField] private movementLimiter moveLimit; // Updated for 3D
@@ -49,6 +50,15 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+
+        if (Instance != this)
+        {
+            Destroy(gameObject);
+        }
         // Find the character's Rigidbody and ground detection script
         body = GetComponent<Rigidbody>(); // Use Rigidbody for 3D physics
         ground = GetComponent<characterGround>(); // Make sure this is adapted for 3D
@@ -190,6 +200,11 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
         {
             Destroy(gameObject);
         }
+    }
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
     }
     private void DeactivateParticles()
     {

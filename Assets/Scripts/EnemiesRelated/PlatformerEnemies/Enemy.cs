@@ -30,7 +30,6 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
         float distanceToPlayer = Vector3.Distance(transform.position, CharacterController.Instance.GetPosition());
         if (distanceToPlayer <= shootingRange)
         {
-            Debug.Log($"Found{player}");
             enemyGun.Shoot();
         }
     }

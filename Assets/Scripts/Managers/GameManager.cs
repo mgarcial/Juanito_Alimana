@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Search;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     [SerializeField] private  CharacterController player;
+
     private void Awake()
     {
         if (Instance == null)
@@ -25,13 +26,15 @@ public class GameManager : MonoBehaviour
     {
         player = FindAnyObjectByType<CharacterController>();
         AudioManager.GetInstance().PlayBackgroundMusic();
+
     }
 
+    /*
     public void RestartGame()
     {
         if(player.isDead)
         {
-            StartCoroutine(ReloadScene());
+            SceneManager.LoadScene("level 1"); 
         }
     }
 
@@ -40,5 +43,5 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
+    */
 }

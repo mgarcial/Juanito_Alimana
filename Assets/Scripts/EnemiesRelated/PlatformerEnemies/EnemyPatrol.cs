@@ -19,6 +19,10 @@ public class EnemyPatrol : MonoBehaviour
     public float detectionRange = 10f;
     public float stopChaseDistance = 15f;
     [Header("Enemy Checks")]
+    [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private float checkDistance = 1.0f;
+    [SerializeField] private LayerMask groundLayer; 
+    [SerializeField] private bool aboutToFall;
     [SerializeField] private Transform currentTarget;
     [SerializeField] private State state;
     [SerializeField] private bool playerDetected = false;
@@ -50,9 +54,11 @@ public class EnemyPatrol : MonoBehaviour
             default:
             case State.Patrolling:
                 Patrol();
+                CheckGround();
                 FindPlayer();
                 break;
             case State.ChasePlayer:
+                CheckGround();
                 ChasePlayer();
                 break;
             case State.BackToStart:
@@ -113,6 +119,25 @@ public class EnemyPatrol : MonoBehaviour
             playerDetected = true;
             state = State.ChasePlayer;
         }    
+    }
+
+    private void CheckGround()
+    {
+        RaycastHit hit;
+        Debug.DrawRay(groundCheckPoint.position, Vector3.down, Color.yellow, 3.0f);
+        if (Physics.Raycast(groundCheckPoint.position, Vector3.down, out hit, checkDistance, groundLayer))
+        {
+            aboutToFall = false;
+        }
+        else
+        {
+            aboutToFall = true;
+            state = State.BackToStart;
+        }
+    }
+    public bool IsAboutToFall()
+    {
+        return aboutToFall;
     }
 
     private void Flip()

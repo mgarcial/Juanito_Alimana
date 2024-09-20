@@ -29,7 +29,6 @@ public class AudioManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-            AudioEvents.OnShoot.AddListener(PlayShootSound);//Suscribirse al evento de AudioEvents
             PlayBackgroundMusic();
         }
         effectsSource = GetComponent<AudioSource>();
@@ -42,12 +41,8 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    private void OnDestroy()
+    public void PlayShootSound(AudioClip clip)
     {
-        AudioEvents.OnShoot.RemoveListener(PlayShootSound);//No olvidar desuscribirlo
-    }
-    private void PlayShootSound()
-    {
-        effectsSource.PlayOneShot(gunShot); //Función de hacer sonar al sonidito
+        effectsSource.PlayOneShot(clip); //Función de hacer sonar al sonidito
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,12 +10,18 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     [SerializeField] private float fireRate = 1f;
     [SerializeField] private float impactForce = 200f;
 
+    [Header("Assign this")]
     public Transform firePoint;
 
     [SerializeField] private float timeToFire = 0f;
 
     protected IPickableGun gunHolder;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip reloadSound;
+
+    [SerializeField] GameObject bulletTrailPrefab;
     public float Range
     {
         get { return range; }
@@ -22,14 +29,14 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Platforms")) return;
         transform.Rotate(new Vector3(0f, -90f, 0f));
         gunHolder = other.GetComponent<IPickableGun>();
         if (gunHolder != null )
         {
             gunHolder.PickUpGun(this);
             Debug.Log($"I'm the gun holder {gunHolder}");
-            gameObject.SetActive(false);
-            
+            gameObject.SetActive(false);            
         }
     }
     public void SetGunHolder(IPickableGun holder)
@@ -44,6 +51,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             Debug.Log("Shooting");
             timeToFire = Time.time+1f/fireRate;
             RaycastShoot();
+            AudioManager.GetInstance().PlayShootSound(shootSound);
         }
     }
 
@@ -60,14 +68,20 @@ public abstract class Gun : MonoBehaviour, IPooledObject
         Vector3 dir = gunHolder.IsFacingRight() ? Vector3.right : Vector3.left; 
         Debug.DrawRay(firePoint.position, dir * range, Color.green, 3.0f);
 
+        GameObject bulletTrail = Instantiate(bulletTrailPrefab, firePoint.position, Quaternion.identity);
+        BulletTrail trailScript = bulletTrail.GetComponent<BulletTrail>();
+        Vector3 targetPosition = firePoint.position + dir * range;
         if (Physics.Raycast(firePoint.position, dir, out hit, range))
         {
             Debug.Log(hit.transform.name);
-
-            if (hit.rigidbody != null)
+            targetPosition = hit.point;
+            IDamageable damageable = hit.transform.GetComponent<IDamageable>();
+            if (damageable != null)
             {
+                damageable.TakeHit();
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
         }
-    }
+        trailScript.targetPosition = targetPosition;
+    }   
 }

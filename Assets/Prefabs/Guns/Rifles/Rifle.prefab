@@ -97,7 +97,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 8591716094129169735, guid: 5a2e0ac8347c2f1478e158ffd2a1f4cd, type: 3}
   - {fileID: 1976401976174913689, guid: 5a2e0ac8347c2f1478e158ffd2a1f4cd, type: 3}
-  - {fileID: -5285040195099784736, guid: 5a2e0ac8347c2f1478e158ffd2a1f4cd, type: 3}
+  - {fileID: 2100000, guid: de30b2070fe133f4fa3e0d3e4a2c89ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -157,3 +157,5 @@ MonoBehaviour:
   impactForce: 200
   firePoint: {fileID: 6399703340429489630}
   timeToFire: 0
+  shootSound: {fileID: 0}
+  reloadSound: {fileID: 0}

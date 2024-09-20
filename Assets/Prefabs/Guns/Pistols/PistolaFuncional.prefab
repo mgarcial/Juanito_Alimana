@@ -98,7 +98,7 @@ MeshRenderer:
   - {fileID: -5270045561393808702, guid: 5ea5720be85838042bbb86856dd299b0, type: 3}
   - {fileID: 2033795834678647130, guid: 5ea5720be85838042bbb86856dd299b0, type: 3}
   - {fileID: 2819774572246290386, guid: 5ea5720be85838042bbb86856dd299b0, type: 3}
-  - {fileID: -6044283807562040907, guid: 5ea5720be85838042bbb86856dd299b0, type: 3}
+  - {fileID: 2100000, guid: de30b2070fe133f4fa3e0d3e4a2c89ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,3 +158,7 @@ MonoBehaviour:
   impactForce: 200
   firePoint: {fileID: 4134455097812641381}
   timeToFire: 0
+  shootSound: {fileID: 8300000, guid: c8cc4aa6c2c961b4f86d1b930c0eb537, type: 3}
+  reloadSound: {fileID: 8300000, guid: efcdce21795397049a9152b9ef03e733, type: 3}
+  bulletTrailPrefab: {fileID: 1801005539186797718, guid: 897e6b7a31cda794b91623feb1abe858,
+    type: 3}

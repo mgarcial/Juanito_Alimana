@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -20,6 +21,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip reloadSound;
 
+    [SerializeField] GameObject bulletTrailPrefab;
     public float Range
     {
         get { return range; }
@@ -66,9 +68,13 @@ public abstract class Gun : MonoBehaviour, IPooledObject
         Vector3 dir = gunHolder.IsFacingRight() ? Vector3.right : Vector3.left; 
         Debug.DrawRay(firePoint.position, dir * range, Color.green, 3.0f);
 
+        GameObject bulletTrail = Instantiate(bulletTrailPrefab, firePoint.position, Quaternion.identity);
+        BulletTrail trailScript = bulletTrail.GetComponent<BulletTrail>();
+        Vector3 targetPosition = firePoint.position + dir * range;
         if (Physics.Raycast(firePoint.position, dir, out hit, range))
         {
             Debug.Log(hit.transform.name);
+            targetPosition = hit.point;
             IDamageable damageable = hit.transform.GetComponent<IDamageable>();
             if (damageable != null)
             {
@@ -76,5 +82,6 @@ public abstract class Gun : MonoBehaviour, IPooledObject
                 hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
         }
-    }
+        trailScript.targetPosition = targetPosition;
+    }   
 }

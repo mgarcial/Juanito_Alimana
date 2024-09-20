@@ -142,7 +142,7 @@ public class EnemyPatrol : MonoBehaviour
 
     private void Flip()
     {
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+        transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -transform.localScale.z);
     }
     public bool IsMovingRight()
     {

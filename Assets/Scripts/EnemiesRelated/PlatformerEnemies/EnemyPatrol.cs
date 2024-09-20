@@ -73,6 +73,15 @@ public class EnemyPatrol : MonoBehaviour
         currentTarget = startingTarget;
         Vector3 direction = (startingPosition - transform.position).normalized;
         rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+        movingRight = direction.x > 0;
+        if (direction.x > 0 && transform.localScale.z < 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, Mathf.Abs(transform.localScale.z));
+        }
+        else if (direction.x < 0 && transform.localScale.z > 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -Mathf.Abs(transform.localScale.z));
+        }
         if (Vector3.Distance(transform.position, startingPosition) < 2f)
         {
             state = State.Patrolling;
@@ -97,13 +106,13 @@ public class EnemyPatrol : MonoBehaviour
         Vector3 direction = (currentTarget.position - transform.position).normalized;
         rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
         movingRight = direction.x > 0;
-        if (direction.x > 0 && transform.localScale.x < 0)
+        if (direction.x > 0 && transform.localScale.z < 0)
         {
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, Mathf.Abs(transform.localScale.z));
         }
-        else if (direction.x < 0 && transform.localScale.x > 0)
+        else if (direction.x < 0 && transform.localScale.z > 0)
         {
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -Mathf.Abs(transform.localScale.z));
         }
         if (Vector3.Distance(transform.position, playerPosition) > detectionRange)
         {

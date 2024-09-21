@@ -8,8 +8,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource effectsSource; //Este es el source para los soniditos de OneShot
     [SerializeField] private AudioSource musicSource; //Este pa la bgm
     [Header("Audios")] //Aqui se agregan los audios que se meten
-    [SerializeField] private AudioClip tampocoSe;
-    [SerializeField] private AudioClip idk;
+    [SerializeField] private AudioClip hitEnemy;
+    [SerializeField] private AudioClip death;
     [SerializeField] private AudioClip hit;
     [SerializeField] private AudioClip jump;
     [SerializeField] private AudioClip gunShot;
@@ -45,4 +45,9 @@ public class AudioManager : MonoBehaviour
     {
         effectsSource.PlayOneShot(clip); //Función de hacer sonar al sonidito
     }
+
+    public void PlayHitEnemySound() => effectsSource.PlayOneShot(hitEnemy);
+    public void PlayHitPlayerSound() => effectsSource.PlayOneShot(hit);
+    public void PlayDeathSound() => effectsSource.PlayOneShot(death);
+
 }

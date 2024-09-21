@@ -48,12 +48,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectsSource: {fileID: -6839937445039612484}
   musicSource: {fileID: 6149265073955719073}
-  tampocoSe: {fileID: 0}
-  idk: {fileID: 0}
-  hit: {fileID: 8300000, guid: 6c734814772de884b8af70992492b15f, type: 3}
+  hitEnemy: {fileID: 8300000, guid: cf427e641c98a564b97773d21d9102d7, type: 3}
+  death: {fileID: 8300000, guid: e36528c8f3d4e2b4b93fd68f417f1c80, type: 3}
+  hit: {fileID: 8300000, guid: b0e83a539da33484c9bc3a78c5c67b26, type: 3}
   jump: {fileID: 0}
   gunShot: {fileID: 8300000, guid: c8cc4aa6c2c961b4f86d1b930c0eb537, type: 3}
-  backgroundMusicClip: {fileID: 8300000, guid: 479f74efb7e39524883de188ea6150a7, type: 3}
+  backgroundMusicClip: {fileID: 8300000, guid: e8aec186589f3d0439e72d9365b92b0e, type: 3}
 --- !u!82 &-6839937445039612484
 AudioSource:
   m_ObjectHideFlags: 0

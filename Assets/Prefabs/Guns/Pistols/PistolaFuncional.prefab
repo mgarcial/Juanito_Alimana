@@ -158,7 +158,7 @@ MonoBehaviour:
   impactForce: 200
   firePoint: {fileID: 4134455097812641381}
   timeToFire: 0
-  shootSound: {fileID: 8300000, guid: c8cc4aa6c2c961b4f86d1b930c0eb537, type: 3}
-  reloadSound: {fileID: 8300000, guid: efcdce21795397049a9152b9ef03e733, type: 3}
+  shootSound: {fileID: 8300000, guid: d683d5d4bdd8312419d1fcc4ee0a18ab, type: 3}
+  reloadSound: {fileID: 8300000, guid: a4db2bf6916f283428e474be80feeb39, type: 3}
   bulletTrailPrefab: {fileID: 1801005539186797718, guid: 897e6b7a31cda794b91623feb1abe858,
     type: 3}

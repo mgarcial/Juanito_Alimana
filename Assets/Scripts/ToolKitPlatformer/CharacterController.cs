@@ -189,6 +189,7 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
     {
         if(hitEffects != null)
         {
+            AudioManager.GetInstance().PlayHitPlayerSound();
             hitEffects.SetActive(true);
             Invoke("DeactivateParticles", 1f);
         }
@@ -198,6 +199,7 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
     {
        if(isDead)
         {
+            AudioManager.GetInstance().PlayDeathSound();
             Destroy(gameObject);
         }
     }

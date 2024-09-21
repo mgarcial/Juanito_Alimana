@@ -14,8 +14,8 @@ public class KillPlayer : MonoBehaviour
         {
             gameOverPanel.SetActive(true);
             Time.timeScale = 0f;
-            // Debug.Log($"Ahi ta {player}");
-            // player = other.GetComponent<CharacterController>();
+            Debug.Log($"Ahi ta {player}");
+            player = other.GetComponent<CharacterController>();
             player.isDead = true;
             // gameManager.RestartGame();
         }

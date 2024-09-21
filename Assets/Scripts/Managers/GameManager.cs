@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
         AudioManager.GetInstance().PlayBackgroundMusic();
     }
 
+    /*
     public void RestartGame()
     {
         if(player.isDead)
@@ -40,5 +41,5 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
-
+    */
 }

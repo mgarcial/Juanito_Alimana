@@ -7,32 +7,24 @@ public class KillPlayer : MonoBehaviour
 {
     public CharacterController player;
     public GameManager gameManager;
-
-    public GameObject gameOverPanel;
-
-    public void Start()
-    {
-        gameOverPanel.SetActive(false);
-    }
-
+    public GameObject gameOverPanel; 
     private void OnTriggerEnter(Collider other)
     {   
         if(other.CompareTag("Player"))
         {
             gameOverPanel.SetActive(true);
-            /*Debug.Log($"Ahi ta {player}");
+            Time.timeScale = 0f;
+            Debug.Log($"Ahi ta {player}");
             player = other.GetComponent<CharacterController>();
             player.isDead = true;
-            gameManager.RestartGame(); */
-            Time.timeScale = 0; 
-            
+            // gameManager.RestartGame();
         }
     }
+
     public void Retry()
     {
         SceneManager.LoadScene("Level 1");
-        gameOverPanel.SetActive(false);
+        gameOverPanel.SetActive(false); 
         Time.timeScale = 1f; 
     }
-
 }

@@ -54,6 +54,7 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
     {
         if (hitEffects != null)
         {
+            AudioManager.GetInstance().PlayHitEnemySound();
             hitEffects.SetActive(true);
             Invoke("DeactivateParticles", 1f);
         }

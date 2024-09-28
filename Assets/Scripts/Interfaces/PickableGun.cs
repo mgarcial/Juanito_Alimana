@@ -6,4 +6,5 @@ public interface IPickableGun
 {
     void PickUpGun(Gun gun);
     bool IsFacingRight();
+    bool IsWeaponEquipped();
 }

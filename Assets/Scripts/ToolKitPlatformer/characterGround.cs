@@ -16,7 +16,7 @@ public class characterGround : MonoBehaviour
         private void Update()
         {
             //Determine if the player is stood on objects on the ground layer, using a pair of raycasts
-            onGround = Physics.Raycast(transform.position + colliderOffset, Vector3.down, groundLength, groundLayer) || Physics.Raycast(transform.position - colliderOffset, Vector3.down, groundLength, groundLayer);
+            onGround = Physics2D.Raycast(transform.position + colliderOffset, Vector3.down, groundLength, groundLayer) || Physics.Raycast(transform.position - colliderOffset, Vector3.down, groundLength, groundLayer);
     }
 
         private void OnDrawGizmos()

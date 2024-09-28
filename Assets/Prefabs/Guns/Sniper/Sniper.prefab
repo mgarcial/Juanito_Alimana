@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 9073951116080563839}
   - component: {fileID: 7159923029490347021}
   - component: {fileID: 7179698851577873957}
-  - component: {fileID: 5801498512964503409}
   - component: {fileID: 1603214729707391681}
+  - component: {fileID: 2632794409836858036}
   m_Layer: 0
   m_Name: Sniper
   m_TagString: Untagged
@@ -89,27 +89,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &5801498512964503409
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059579031269060689}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.6141622, y: 0.697623, z: 0.17974973}
-  m_Center: {x: 0.534979, y: -0.02438891, z: -0.0022527725}
 --- !u!114 &1603214729707391681
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,8 +106,57 @@ MonoBehaviour:
   impactForce: 200
   firePoint: {fileID: 478105818561520802}
   timeToFire: 0
+  layerShooted:
+    serializedVersion: 2
+    m_Bits: 0
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
+  bulletTrailPrefab: {fileID: 0}
+--- !u!61 &2632794409836858036
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059579031269060689}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.5395137, y: -0.01963894}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.606308, y: 0.6923517}
+  m_EdgeRadius: 0
 --- !u!1 &2749541468789997982
 GameObject:
   m_ObjectHideFlags: 0

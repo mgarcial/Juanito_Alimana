@@ -7,9 +7,9 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
     public static CharacterController Instance { get; private set; }
 
     [Header("Components")]
-    [SerializeField] private movementLimiter moveLimit; // Updated for 3D
-    private Rigidbody body; // Use Rigidbody for 3D
-    private characterGround ground; // Update ground check for 3D
+    [SerializeField] private movementLimiter moveLimit; 
+    private Rigidbody2D body;
+    private characterGround ground; 
     public Joystick joystick;
     public GameObject hitEffects;
 
@@ -46,7 +46,7 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
     [Header("GunThings")]
     private Gun currentGun;
     public Transform weaponHolder;
-    private bool isEquipped = false;
+    private bool isGunEquipped = false;
 
     private void Awake()
     {
@@ -60,7 +60,7 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
             Destroy(gameObject);
         }
         // Find the character's Rigidbody and ground detection script
-        body = GetComponent<Rigidbody>(); // Use Rigidbody for 3D physics
+        body = GetComponent<Rigidbody2D>(); // Use Rigidbody for 3D physics
         ground = GetComponent<characterGround>(); // Make sure this is adapted for 3D
     }
 
@@ -126,18 +126,18 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
     }
     public void PickUpGun(Gun gun)
     {
-        if (isEquipped)
+        if (!isGunEquipped)
         {
-            Destroy(currentGun.gameObject);
-            Debug.Log($"Destroying {currentGun}");
+            currentGun = Instantiate(gun, weaponHolder.position, weaponHolder.rotation, weaponHolder);
+            currentGun.SetGunHolder(this);
+            isGunEquipped = true;
+            Debug.Log("Picked up gun: " + currentGun);           
         }
-
-        currentGun = Instantiate(gun, weaponHolder.position, weaponHolder.rotation, weaponHolder);
-
-        currentGun.firePoint = currentGun.transform.Find("FirePoint");
-        currentGun.SetGunHolder(this);
-        isEquipped = true;
-        Debug.Log("Picked up gun: " + currentGun);
+    }
+    
+    public bool IsWeaponEquipped()
+    {
+        return isGunEquipped;
     }
     public void OnShootButtonPressed()
     {

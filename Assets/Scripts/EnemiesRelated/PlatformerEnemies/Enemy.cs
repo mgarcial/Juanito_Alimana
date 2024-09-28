@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
     [SerializeField] private float shootingRange = 6f;
     [Header("Enemy Checks")]
     [SerializeField] private Gun enemyGun;
-    [SerializeField] private bool isEquipped = false;
+    [SerializeField] private bool isGunEquipped = false;
     [SerializeField] private bool enemyFacingRight;
     private EnemyPatrol enemy;
     [Header("Things to assign")]
@@ -22,7 +22,10 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
 
     private void Update()
     {
-        DetectPlayerAndShoot(); 
+        if (enemyGun != null)
+        {
+            DetectPlayerAndShoot();
+        }
     }
 
     private void DetectPlayerAndShoot()
@@ -36,19 +39,25 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
 
     public void PickUpGun(Gun gun)
     {
-        if (isEquipped)
+        if (isGunEquipped)
         {
             Destroy(enemyGun.gameObject);
             Debug.Log($"Destroying {enemyGun}");
+            isGunEquipped=false;
         }
 
-        enemyGun = Instantiate(gun, weaponHolder.position, weaponHolder.rotation, weaponHolder);
-
-        enemyGun.firePoint = enemyGun.transform.Find("FirePoint");
-        enemyGun.SetGunHolder(this);
-        isEquipped = true;
+        if (!isGunEquipped) 
+        {
+            enemyGun = Instantiate(gun, weaponHolder.position, weaponHolder.rotation, weaponHolder);
+            enemyGun.SetGunHolder(this);
+            isGunEquipped = true; 
+        }
        
         Debug.Log("Picked up gun: " + enemyGun);
+    }
+    public bool IsWeaponEquipped()
+    {
+        return isGunEquipped;
     }
     public void TakeHit()
     {

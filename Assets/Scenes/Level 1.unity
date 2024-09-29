@@ -2281,7 +2281,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 588730070}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1843169027}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79692da53062de44da07a6a861808542, type: 3}
@@ -4308,7 +4308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 147.03313, y: 151.94586}
+  scrollPos: {x: 106.53076, y: 196.97235}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
@@ -4319,8 +4319,7 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1188449832}
+  selectedBlocks: []
   selectedCommands: []
   variables: []
   description: 
@@ -4528,8 +4527,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 132.09488
-    y: 121.97724
+    x: 125.156364
+    y: 107.16443
     width: 102.43901
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -6168,6 +6167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flowChart: {fileID: 1188449827}
   blockName: Inicial
+  player: {fileID: 1843169027}
 --- !u!65 &1595340240
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6196,7 +6196,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595340238}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6888,6 +6888,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1843169027 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5390656699505450255, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 588730070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1873092744
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -978,7 +978,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 108.2, y: 0}
@@ -7196,11 +7196,31 @@ PrefabInstance:
       propertyPath: jumpButton
       value: 
       objectReference: {fileID: 1420731804}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 11.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: timeToJumpApex
+      value: 1.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: downwardMovementMultiplier
+      value: 245.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: joystick
       value: 
       objectReference: {fileID: 1842638708}
+    - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: useAcceleration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8280213112619816616, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: m_Constraints

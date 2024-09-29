@@ -5,15 +5,21 @@ using UnityEngine.UIElements;
 public abstract class Gun : MonoBehaviour, IPooledObject
 {
 
-    [Header("GunStats")]
+    [Header("GunStats that change")]
     [SerializeField] private int range = 10;
-    [SerializeField] private float fireRate = 1f;
+    [SerializeField] private float timeBetweenShooting;
+    [Tooltip("Este es para la semi auto, los otros en 0")][SerializeField] private float timeBetweenShots;
     [SerializeField] private float impactForce = 200f;
-
+    [SerializeField] private float recoilForce = 5f;
+    [SerializeField] private float reloadTime;
+    [SerializeField] private int magazineSize;
+    public int bulletPerTap;
+    
+    private int bulletsLeft;
+    [HideInInspector] public int bulletsShot;
+     public bool shooting, canShoot, reloading;
     [Header("Assign this")]
     public Transform firePoint;
-
-    [SerializeField] private float timeToFire = 0f;
 
     [SerializeField] protected IPickableGun gunHolder;
     [SerializeField] private LayerMask layerShooted;
@@ -23,6 +29,12 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     [SerializeField] private AudioClip reloadSound;
 
     [SerializeField] GameObject bulletTrailPrefab;
+
+    private void Awake()
+    {
+        bulletsLeft = magazineSize;
+        canShoot = true;
+    }
     public float Range
     {
         get { return range; }
@@ -47,15 +59,39 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     public virtual void Shoot()
     {
-        if (Time.time > timeToFire )
+        if (bulletsLeft >= bulletsShot)
         {
-            Debug.Log("Shooting");
-            timeToFire = Time.time+1f/fireRate;
+            //Debug.Log("Shooting");
             RaycastShoot();
             AudioManager.GetInstance().PlayShootSound(shootSound);
+            bulletsLeft--;
+            bulletsShot--;
+            Invoke("ResetShot", timeBetweenShooting);
+            if(bulletsShot > 0 && bulletsLeft > 0) 
+            Invoke("Shoot", timeBetweenShots); 
+        }
+        else
+        {
+            Reload();
         }
     }
+    public void ResetShot()
+    {
+        canShoot = true;
+    }
 
+    public void Reload()
+    {
+        reloading = true;
+        AudioManager.GetInstance().PlayReloadSound(reloadSound);
+        Invoke("ReloadFinished", reloadTime);
+    }
+    public void ReloadFinished()
+    {
+        reloading = false;
+        bulletsLeft = magazineSize;
+        canShoot = true;
+    }
     private void RaycastShoot()
     {
 

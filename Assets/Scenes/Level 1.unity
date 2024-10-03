@@ -2252,7 +2252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &530591448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7475,7 +7475,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5390656699505450255, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 783127225}
   m_SourcePrefab: {fileID: 100100000, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb, type: 3}
 --- !u!114 &588730075 stripped
 MonoBehaviour:
@@ -12990,6 +12994,24 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 588730070}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &783127225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783127217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9628b1fdef57c041a9893bb3148309c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHolder: {fileID: 2103566218}
+  character: {fileID: 588730080}
+  groundCheckDistance: 0.1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &791467464 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9148764808226549658, guid: 26f15b6c0baf76445a515e8b820fc0df,
@@ -16036,9 +16058,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 64.84122
-    y: 29.511805
-    width: 80.26315
+    x: 62.56849
+    y: 30.468744
+    width: 81.249985
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16069,11 +16091,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  scrollPos: {x: 119.514755, y: 155.73183}
+  scrollPos: {x: 30.630676, y: 138.7954}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
   blockViewHeight: 400
-  zoom: 0.7600002
+  zoom: 0.64000034
   scrollViewRect:
     serializedVersion: 2
     x: -343
@@ -16259,7 +16281,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 168.87724
     y: 29.34983
-    width: 109.21051
+    width: 110.93747
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16287,7 +16309,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -50.66358
     y: 29.879116
-    width: 80.26315
+    width: 79.687485
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -16552,7 +16574,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 69.95883
     y: 99.53122
-    width: 69.73683
+    width: 70.312485
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -18052,6 +18074,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9148764808226549658, guid: 26f15b6c0baf76445a515e8b820fc0df,
     type: 3}
   m_PrefabInstance: {fileID: 2070943648}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2103566218 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9037114601057091463, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 588730070}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2115512952
 PrefabInstance:

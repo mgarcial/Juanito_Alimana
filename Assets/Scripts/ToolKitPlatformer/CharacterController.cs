@@ -69,7 +69,7 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
         // Get movement input using the old Input System's GetAxis method
         if (moveLimit.CharacterCanMove)
         {
-            Debug.Log("I can move");
+
             directionX = joystick.Horizontal;
         }
 
@@ -202,7 +202,7 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
        if(isDead)
         {
             AudioManager.GetInstance().PlayDeathSound();
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 

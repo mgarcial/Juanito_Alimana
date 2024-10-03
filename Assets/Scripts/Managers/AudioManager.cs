@@ -45,6 +45,10 @@ public class AudioManager : MonoBehaviour
     {
         effectsSource.PlayOneShot(clip); //Función de hacer sonar al sonidito
     }
+    public void PlayReloadSound(AudioClip clip)
+    {
+        effectsSource.PlayOneShot(clip); //Función de hacer sonar al sonidito
+    }
 
     public void PlayHitEnemySound() => effectsSource.PlayOneShot(hitEnemy);
     public void PlayHitPlayerSound() => effectsSource.PlayOneShot(hit);

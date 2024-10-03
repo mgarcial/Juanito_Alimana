@@ -33,7 +33,9 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
         float distanceToPlayer = Vector3.Distance(transform.position, CharacterController.Instance.GetPosition());
         if (distanceToPlayer <= shootingRange)
         {
+            enemyGun.bulletsShot = enemyGun.bulletPerTap;
             enemyGun.Shoot();
+            enemyGun.canShoot = false;
         }
     }
 

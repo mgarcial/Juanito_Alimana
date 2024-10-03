@@ -141,9 +141,11 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
     }
     public void OnShootButtonPressed()
     {
-        if (currentGun != null)
+        if (currentGun != null && currentGun.canShoot)
         {
+            currentGun.bulletsShot = currentGun.bulletPerTap;
             currentGun.Shoot();
+            currentGun.canShoot = false;
         }
     }
 

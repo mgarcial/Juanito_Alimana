@@ -132,16 +132,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 10
-  fireRate: 1
+  timeBetweenShooting: 0
+  timeBetweenShots: 0
   impactForce: 200
+  recoilForce: 5
+  reloadTime: 0
+  magazineSize: 0
+  bulletPerTap: 0
+  bulletsShot: 0
+  shooting: 0
+  canShoot: 0
+  reloading: 0
   firePoint: {fileID: 6399703340429489630}
-  timeToFire: 0
   layerShooted:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
-  bulletTrailPrefab: {fileID: 0}
+  bulletTrailPrefab: {fileID: 1801005539186797718, guid: 897e6b7a31cda794b91623feb1abe858,
+    type: 3}
 --- !u!61 &3136113253003680903
 BoxCollider2D:
   m_ObjectHideFlags: 0

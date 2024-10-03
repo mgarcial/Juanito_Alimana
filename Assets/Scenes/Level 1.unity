@@ -7234,22 +7234,32 @@ PrefabInstance:
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: maxSpeed
-      value: 12.9
+      value: 17.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: maxTurnSpeed
+      value: 76.7
       objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: maxAcceleration
-      value: 35
+      value: 55.6
       objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: maxAirTurnSpeed
-      value: 48.4
+      value: 67.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: maxDecceleration
+      value: 33.5
       objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: maxAirAcceleration
-      value: 22.2
+      value: 68.4
       objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}

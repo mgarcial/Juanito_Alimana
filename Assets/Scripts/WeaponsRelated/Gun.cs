@@ -103,7 +103,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
         {
             Debug.LogError("GunHolder is null when trying to shoot!");
         }
-        Vector3 dir = gunHolder.IsFacingRight() ? Vector3.right : Vector3.left; 
+        Vector3 dir =  firePoint.right; 
         Debug.DrawRay(firePoint.position, dir * range, Color.green, 3.0f);
 
         GameObject bulletTrail = Instantiate(bulletTrailPrefab, firePoint.position, Quaternion.identity);

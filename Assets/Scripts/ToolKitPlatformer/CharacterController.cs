@@ -199,11 +199,7 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
 
     public void Die()
     {
-       if(isDead)
-        {
-            AudioManager.GetInstance().PlayDeathSound();
-            Destroy(gameObject);
-        }
+        Destroy(gameObject);
     }
 
     public Vector3 GetPosition()

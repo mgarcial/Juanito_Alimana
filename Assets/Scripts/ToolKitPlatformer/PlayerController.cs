@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
     public static PlayerController Instance { get; private set; }
 
     [Header("Components")]
-    [SerializeField] private movementLimiter moveLimit; 
+    [SerializeField] private MovementLimiter moveLimit; 
     private Rigidbody2D body;
-    private characterGround ground; 
+    private CharacterGround ground; 
     public Joystick joystick;
     public GameObject hitEffects;
 
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
         }
         // Find the character's Rigidbody and ground detection script
         body = GetComponent<Rigidbody2D>(); // Use Rigidbody for 3D physics
-        ground = GetComponent<characterGround>(); // Make sure this is adapted for 3D
+        ground = GetComponent<CharacterGround>(); // Make sure this is adapted for 3D
     }
 
     private void Update()

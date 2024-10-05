@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent (typeof(Collider))]
-public class characterJump : MonoBehaviour
+public class CharacterJump : MonoBehaviour
 {
     [Header("Components")]
     [HideInInspector] public Rigidbody2D body;
-    private characterGround ground; 
+    private CharacterGround ground; 
     [HideInInspector] public Vector2 velocity;
-    [SerializeField] movementLimiter moveLimit;
+    [SerializeField] MovementLimiter moveLimit;
     public Button jumpButton;
 
     [Header("Jumping Stats")]
@@ -48,7 +48,7 @@ public class characterJump : MonoBehaviour
     {
         jumpButton.onClick.AddListener(OnJumpButtonPressed);
         body = GetComponent<Rigidbody2D>();
-        ground = GetComponent<characterGround>();
+        ground = GetComponent<CharacterGround>();
         defaultGravityScale = 1f;
     }
 
@@ -70,7 +70,7 @@ public class characterJump : MonoBehaviour
         velocity = body.velocity;
         if (desiredJump)
         {
-            Debug.Log("I jumped");
+            //Debug.Log("I jumped");
             PerformJump();
             jumpButton.interactable = false;
             body.velocity = velocity;

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 771531088732895338}
   - component: {fileID: 4720180342967066784}
   m_Layer: 6
-  m_Name: GameObject
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,12 +76,12 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 6.0071926, y: 1.0164981}
-      - {x: 3.8985925, y: 0.98309493}
-      - {x: -7.0016427, y: 1.0124576}
-      - {x: -7.075119, y: -4.068204}
+    - - {x: 6.1184244, y: 1.113826}
+      - {x: 6.1174693, y: 1.1224885}
+      - {x: -7.08492, y: 1.1233952}
+      - {x: -7.075119, y: -4.096713}
       - {x: -0.4986099, y: -2.0506117}
-      - {x: 6.072635, y: -4.0055256}
+      - {x: 6.072635, y: -4.1195626}
   m_UseDelaunayMesh: 0
 --- !u!1001 &2438547926731911668
 PrefabInstance:

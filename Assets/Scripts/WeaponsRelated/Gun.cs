@@ -42,13 +42,13 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log($"i touched{other.name} ");
+        //Debug.Log($"i touched{other.name} ");
         if (other.CompareTag("Platforms")) return;
         gunHolder = other.GetComponent<IPickableGun>();
         if (gunHolder != null && !gunHolder.IsWeaponEquipped())
         {
             gunHolder.PickUpGun(this);
-            Debug.Log($"I'm the gun holder {gunHolder}");
+            //Debug.Log($"I'm the gun holder {gunHolder}");
             gameObject.SetActive(false);            
         }
     }
@@ -98,7 +98,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     private void RaycastShoot()
     {
 
-        Debug.Log("Shooting for real");
+        //Debug.Log("Shooting for real");
         if (gunHolder == null)
         {
             Debug.LogError("GunHolder is null when trying to shoot!");

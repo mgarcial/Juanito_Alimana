@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class KillPlayer : MonoBehaviour
 {
-    public CharacterController player;
-    public GameManager gameManager;
+    private PlayerController player;
+    [SerializeField] private GameManager gameManager;
     private void OnTriggerEnter2D(Collider2D other)
     {   
         if(other.CompareTag("Player"))
         {
-            Debug.Log($"Ahi ta {player}");
-            player = other.GetComponent<CharacterController>();
+            player = other.GetComponent<PlayerController>();
+            //Debug.Log($"Ahi ta {player}");
             gameManager.GameOver();
         }
     }

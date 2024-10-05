@@ -16,7 +16,7 @@ public class FungusCollider : MonoBehaviour
         {
             flowchart.ExecuteBlock(blockName); 
             player.GetComponent<PlayerController>().enabled = false;
-            player.GetComponent<characterJump>().enabled = false;
+            player.GetComponent<CharacterJump>().enabled = false;
             hasActivated = true;
         }
     }
@@ -26,7 +26,7 @@ public class FungusCollider : MonoBehaviour
         if(!flowchart.HasExecutingBlocks()) 
         { 
             player.GetComponent<PlayerController>().enabled = true;
-            player.GetComponent<characterJump>().enabled = true;
+            player.GetComponent<CharacterJump>().enabled = true;
         }
     }
 }

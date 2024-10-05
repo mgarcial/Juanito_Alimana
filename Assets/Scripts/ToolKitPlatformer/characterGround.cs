@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class characterGround : MonoBehaviour
+public class CharacterGround : MonoBehaviour
 {
         private bool onGround;
        

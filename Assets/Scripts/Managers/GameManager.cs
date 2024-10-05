@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    [SerializeField] private  CharacterController player;
+    [SerializeField] private  PlayerController player;
     public GameObject gameOverPanel;
     private void Awake()
     {
@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        player = FindAnyObjectByType<CharacterController>();
+        player = FindAnyObjectByType<PlayerController>();
         AudioManager.GetInstance().PlayBackgroundMusic();
     }
     public void GameOver()

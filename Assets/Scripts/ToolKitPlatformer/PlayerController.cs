@@ -2,9 +2,9 @@
 
 //This script handles moving the character on the X axis, both on the ground and in the air.
 
-public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
+public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
 {
-    public static CharacterController Instance { get; private set; }
+    public static PlayerController Instance { get; private set; }
 
     [Header("Components")]
     [SerializeField] private movementLimiter moveLimit; 

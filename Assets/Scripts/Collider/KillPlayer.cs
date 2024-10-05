@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class KillPlayer : MonoBehaviour
 {
-    public CharacterController player;
+    public PlayerController player;
     public GameManager gameManager;
     public GameObject gameOverPanel; 
     private void OnTriggerEnter2D(Collider2D other)
@@ -15,7 +15,7 @@ public class KillPlayer : MonoBehaviour
             gameOverPanel.SetActive(true);
             Time.timeScale = 0f;
             Debug.Log($"Ahi ta {player}");
-            player = other.GetComponent<CharacterController>();
+            player = other.GetComponent<PlayerController>();
             player.isDead = true;
             // gameManager.RestartGame();
         }

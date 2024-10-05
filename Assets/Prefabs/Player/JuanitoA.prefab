@@ -137,18 +137,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5390656699505450255}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79692da53062de44da07a6a861808542, type: 3}
+  m_Script: {fileID: 11500000, guid: 527a6222be9de1048aaf21bf72131c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveLimit: {fileID: 9048242891479964606}
   joystick: {fileID: 0}
   hitEffects: {fileID: 8253835360195901904}
-  maxSpeed: 14.1
-  maxAcceleration: 71
+  maxSpeed: 10
+  maxAcceleration: 52
   maxDecceleration: 52
   maxTurnSpeed: 80
-  maxAirAcceleration: 65.9
-  maxAirDeceleration: 48.3
+  maxAirAcceleration: 0
+  maxAirDeceleration: 0
   maxAirTurnSpeed: 80
   friction: 0
   useAcceleration: 0
@@ -213,8 +213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f0eaff04e554a444a2f95ebc8486bdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLength: 0.2
-  colliderOffset: {x: 0.44, y: 0, z: 0}
+  groundLength: 0.1
+  colliderOffset: {x: 0.18, y: 0, z: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

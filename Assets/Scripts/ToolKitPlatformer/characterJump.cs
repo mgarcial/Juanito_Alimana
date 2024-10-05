@@ -72,6 +72,7 @@ public class characterJump : MonoBehaviour
         {
             Debug.Log("I jumped");
             PerformJump();
+            jumpButton.interactable = false;
             body.velocity = velocity;
             return;
         }
@@ -115,7 +116,7 @@ public class characterJump : MonoBehaviour
             desiredJump = false;
             jumpBufferCounter = 0;
             coyoteTimeCounter = 0;
-            canJumpAgain = maxAirJumps > 0 && !canJumpAgain;
+            canJumpAgain = (maxAirJumps == 1 && canJumpAgain == false);
             jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * body.gravityScale * jumpHeight);
             if (velocity.y > 0f)
             {
@@ -186,6 +187,7 @@ public class characterJump : MonoBehaviour
             if (onGround)
             {
                 currentlyJumping = false;
+                jumpButton.interactable = true;
             }
 
             gravMultiplier = defaultGravityScale;

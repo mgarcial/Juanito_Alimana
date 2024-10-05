@@ -104,7 +104,7 @@ public class EnemyPatrol : MonoBehaviour
 
     private void ChasePlayer()
     {
-        currentTarget = CharacterController.Instance.GetTransform();
+        currentTarget = PlayerController.Instance.GetTransform();
         Vector3 direction = (currentTarget.position - transform.position).normalized;
         rb.MovePosition(transform.position + direction * chaseSpeed * Time.deltaTime);
         movingRight = direction.x > 0;
@@ -124,7 +124,7 @@ public class EnemyPatrol : MonoBehaviour
     }
     private void FindPlayer()
     {
-        playerPosition = CharacterController.Instance.GetPosition();
+        playerPosition = PlayerController.Instance.GetPosition();
         if (Vector3.Distance(transform.position, playerPosition) < detectionRange)
         {
             playerDetected = true;

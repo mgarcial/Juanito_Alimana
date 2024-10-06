@@ -64,7 +64,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             //Debug.Log("Shooting");
             RaycastShoot();
             Rigidbody2D holder = GetComponentInParent<Rigidbody2D>();
-            Vector3 dir = gunHolder.IsFacingRight() ? Vector3.right : Vector3.left;
+            Vector3 dir = firePoint.right;
             holder.AddForce(-dir * recoilForce, ForceMode2D.Impulse);
             AudioManager.GetInstance().PlayShootSound(shootSound);
             bulletsLeft--;

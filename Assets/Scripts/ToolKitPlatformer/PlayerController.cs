@@ -2,14 +2,14 @@
 
 //This script handles moving the character on the X axis, both on the ground and in the air.
 
-public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
+public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
 {
-    public static CharacterController Instance { get; private set; }
+    public static PlayerController Instance { get; private set; }
 
     [Header("Components")]
-    [SerializeField] private movementLimiter moveLimit; 
+    [SerializeField] private MovementLimiter moveLimit; 
     private Rigidbody2D body;
-    private characterGround ground; 
+    private CharacterGround ground; 
     public Joystick joystick;
     public GameObject hitEffects;
 
@@ -61,7 +61,7 @@ public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
         }
         // Find the character's Rigidbody and ground detection script
         body = GetComponent<Rigidbody2D>(); // Use Rigidbody for 3D physics
-        ground = GetComponent<characterGround>(); // Make sure this is adapted for 3D
+        ground = GetComponent<CharacterGround>(); // Make sure this is adapted for 3D
     }
 
     private void Update()

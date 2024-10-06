@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 9048242891479964606}
   - component: {fileID: 5499347021051898642}
   - component: {fileID: 7278871662877034499}
+  - component: {fileID: 5631872273055430038}
   - component: {fileID: 6977545310290177341}
   - component: {fileID: 3374453734813121591}
   m_Layer: 8
@@ -215,6 +216,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundLength: 0.1
   colliderOffset: {x: 0.18, y: 0, z: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!114 &5631872273055430038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390656699505450255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9628b1fdef57c041a9893bb3148309c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponHolder: {fileID: 9037114601057091463}
+  character: {fileID: 8855826701058218613}
+  groundCheckDistance: 0.1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

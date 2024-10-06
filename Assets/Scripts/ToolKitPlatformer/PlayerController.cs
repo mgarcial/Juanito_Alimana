@@ -2,14 +2,14 @@
 
 //This script handles moving the character on the X axis, both on the ground and in the air.
 
-public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
+public class CharacterController : MonoBehaviour, IPickableGun, IDamageable
 {
-    public static PlayerController Instance { get; private set; }
+    public static CharacterController Instance { get; private set; }
 
     [Header("Components")]
-    [SerializeField] private MovementLimiter moveLimit; 
+    [SerializeField] private movementLimiter moveLimit; 
     private Rigidbody2D body;
-    private CharacterGround ground; 
+    private characterGround ground; 
     public Joystick joystick;
     public GameObject hitEffects;
 
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
         }
         // Find the character's Rigidbody and ground detection script
         body = GetComponent<Rigidbody2D>(); // Use Rigidbody for 3D physics
-        ground = GetComponent<CharacterGround>(); // Make sure this is adapted for 3D
+        ground = GetComponent<characterGround>(); // Make sure this is adapted for 3D
     }
 
     private void Update()
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
         // Get movement input using the old Input System's GetAxis method
         if (moveLimit.CharacterCanMove)
         {
-            Debug.Log("I can move");
+
             directionX = joystick.Horizontal;
         }
 
@@ -199,7 +199,11 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
 
     public void Die()
     {
-        Destroy(gameObject);
+       if(isDead)
+        {
+            AudioManager.GetInstance().PlayDeathSound();
+            //Destroy(gameObject);
+        }
     }
 
     public Vector3 GetPosition()

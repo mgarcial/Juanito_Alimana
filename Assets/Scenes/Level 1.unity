@@ -7223,9 +7223,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
+      propertyPath: coyoteTime
+      value: 0.152
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: jumpBuffer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
       propertyPath: jumpButton
       value: 
       objectReference: {fileID: 1420731804}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: jumpCutOff
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: jumpHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: speedLimit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: timeToJumpApex
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: variableJumpHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: upwardMovementMultiplier
+      value: 1.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 5499347021051898642, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: downwardMovementMultiplier
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: joystick
@@ -7234,12 +7279,17 @@ PrefabInstance:
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: maxSpeed
-      value: 17.24
+      value: 18.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: itsTheIntro
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: maxTurnSpeed
-      value: 76.7
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
@@ -7249,7 +7299,12 @@ PrefabInstance:
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: maxAirTurnSpeed
-      value: 67.6
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
+        type: 3}
+      propertyPath: useAcceleration
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
@@ -7259,12 +7314,12 @@ PrefabInstance:
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: maxAirAcceleration
-      value: 68.4
+      value: 72
       objectReference: {fileID: 0}
     - target: {fileID: 6930510211849682215, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
       propertyPath: maxAirDeceleration
-      value: 53.5
+      value: 38.9
       objectReference: {fileID: 0}
     - target: {fileID: 8280213112619816616, guid: 1c04a25e769eabf4aa8afc2b2bf2b9eb,
         type: 3}
@@ -13464,8 +13519,8 @@ Transform:
   m_GameObject: {fileID: 1037859362}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.17, y: 0.25, z: 8.920524}
-  m_LocalScale: {x: 57.002808, y: 28.66346, z: 1}
+  m_LocalPosition: {x: -0.17, y: 0.25, z: 10.5}
+  m_LocalScale: {x: 67.22877, y: 32.77915, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 69477752}

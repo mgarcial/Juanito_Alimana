@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void CleanLevel()
     {
-        EnemyManager.instance.ClearEnemiesList();
+        //EnemyManager.instance.ClearEnemiesList();
         Time.timeScale = 1f;
     }
 

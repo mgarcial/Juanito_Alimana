@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         AudioManager.GetInstance().PlayDeathSound();
+        AudioManager.GetInstance().PlayDeathMusic();
         Time.timeScale = 0f;
         player.Die();
     }

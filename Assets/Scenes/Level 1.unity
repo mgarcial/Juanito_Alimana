@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1383,9 +1383,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1130254146}
-        m_TargetAssemblyTypeName: WinPanelScript, Assembly-CSharp
-        m_MethodName: backToHome
+      - m_Target: {fileID: 1545550958}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: Home
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1688,8 +1688,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1130254146}
-        m_TargetAssemblyTypeName: WinPanelScript, Assembly-CSharp
+      - m_Target: {fileID: 1545550958}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
@@ -15389,8 +15389,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1130254146}
-        m_TargetAssemblyTypeName: WinPanelScript, Assembly-CSharp
+      - m_Target: {fileID: 1545550958}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
@@ -15745,6 +15745,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 886228075}
     m_Modifications:
+    - target: {fileID: -7289516438876025461, guid: ee9c7780ef56b7445a65da5a90893a3c,
+        type: 3}
+      propertyPath: gameOverPanel
+      value: 
+      objectReference: {fileID: 1953637612}
     - target: {fileID: 2011565031367806975, guid: ee9c7780ef56b7445a65da5a90893a3c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16289,7 +16294,7 @@ PrefabInstance:
         type: 3}
       propertyPath: backgroundMusicClip
       value: 
-      objectReference: {fileID: 8300000, guid: e8aec186589f3d0439e72d9365b92b0e, type: 3}
+      objectReference: {fileID: 8300000, guid: 612caa5fa0660b947bb5e1b4981de815, type: 3}
     - target: {fileID: 5168775202087061828, guid: c3880dd29b09bc446b4c07a9e3fd53cc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -16715,8 +16720,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 93860547}
-        m_TargetAssemblyTypeName: KillPlayer, Assembly-CSharp
+      - m_Target: {fileID: 1545550958}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: Retry
         m_Mode: 1
         m_Arguments:

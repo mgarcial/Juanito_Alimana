@@ -71,6 +71,7 @@ public class CharacterJump : MonoBehaviour
         if (desiredJump)
         {
             //Debug.Log("I jumped");
+            AudioManager.GetInstance().PlayJumpSound();
             PerformJump();
             jumpButton.interactable = false;
             body.velocity = velocity;

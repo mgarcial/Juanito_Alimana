@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8167732933015227509}
   - component: {fileID: 8418507711299466402}
   - component: {fileID: 708101354805136533}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Subfusil
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -19,9 +19,9 @@ TagManager:
   - Enemigo
   - Jugador
   - BulletsCollider
-  - 
-  - 
-  - 
+  - Bullet
+  - FungusColl
+  - Guns
   - 
   - 
   - 

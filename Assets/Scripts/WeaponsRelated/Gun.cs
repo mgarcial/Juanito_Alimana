@@ -43,7 +43,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Debug.Log($"i touched{other.name} ");
-        if (other.CompareTag("Platforms")) return;
+        if (other.GetComponent<IPickableGun>() == null) return;
         gunHolder = other.GetComponent<IPickableGun>();
         if (gunHolder != null && !gunHolder.IsWeaponEquipped())
         {
@@ -114,6 +114,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
         {
             Debug.Log(hit.transform.name);
             targetPosition = hit.point;
+            trailScript.targetPosition = targetPosition;
             IDamageable damageable = hit.transform.GetComponentInParent<IDamageable>();
             if (damageable != null)
             {

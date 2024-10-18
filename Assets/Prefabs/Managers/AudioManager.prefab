@@ -51,9 +51,12 @@ MonoBehaviour:
   hitEnemy: {fileID: 8300000, guid: cf427e641c98a564b97773d21d9102d7, type: 3}
   death: {fileID: 8300000, guid: e36528c8f3d4e2b4b93fd68f417f1c80, type: 3}
   hit: {fileID: 8300000, guid: b0e83a539da33484c9bc3a78c5c67b26, type: 3}
-  jump: {fileID: 0}
+  jump: {fileID: 8300000, guid: 2a8762630caedce4bad4a9ad7f8481ac, type: 3}
   gunShot: {fileID: 8300000, guid: c8cc4aa6c2c961b4f86d1b930c0eb537, type: 3}
-  backgroundMusicClip: {fileID: 8300000, guid: e8aec186589f3d0439e72d9365b92b0e, type: 3}
+  fallDeath: {fileID: 0}
+  bodyHit: {fileID: 0}
+  lost: {fileID: 8300000, guid: 3b2e419875f3d254a89dc0cb9cf6cc73, type: 3}
+  backgroundMusicClip: {fileID: 8300000, guid: 612caa5fa0660b947bb5e1b4981de815, type: 3}
 --- !u!82 &-6839937445039612484
 AudioSource:
   m_ObjectHideFlags: 0
@@ -68,7 +71,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

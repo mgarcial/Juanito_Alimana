@@ -45,7 +45,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
         //Debug.Log($"i touched{other.name} ");
         if (other.GetComponent<IPickableGun>() == null) return;
         gunHolder = other.GetComponent<IPickableGun>();
-        if (gunHolder != null && !gunHolder.IsWeaponEquipped())
+        if (gunHolder != null && !gunHolder.IsWeaponEquipped() || other.CompareTag("Player"))
         {
             gunHolder.PickUpGun(this);
             //Debug.Log($"I'm the gun holder {gunHolder}");

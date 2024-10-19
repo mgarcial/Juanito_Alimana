@@ -133,6 +133,18 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
             isGunEquipped = true;
             Debug.Log("Picked up gun: " + currentGun);           
         }
+        if (isGunEquipped && currentGun != null)
+        {
+            Gun previousGun = currentGun;
+            isGunEquipped=false;
+            currentGun = Instantiate(gun, weaponHolder.position, weaponHolder.rotation, weaponHolder);
+            currentGun.SetGunHolder(this);
+            isGunEquipped = true;
+            Debug.Log("Changed up last gun for: " + currentGun);
+            Debug.Log($"now the last gun is{previousGun}");
+            Destroy(previousGun.gameObject);
+        }
+        
     }
     
     public bool IsWeaponEquipped()

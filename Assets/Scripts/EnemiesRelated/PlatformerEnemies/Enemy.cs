@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
 
     private void Update()
     {
-        if (enemyGun != null)
+        if (enemyGun != null && enemyGun.canShoot)
         {
             DetectPlayerAndShoot();
         }

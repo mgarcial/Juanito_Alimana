@@ -101,13 +101,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc27118f810fb44ba8888cfaafc51d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
-  timeBetweenShooting: 0.5
+  range: 20
+  timeBetweenShooting: 0.2
   timeBetweenShots: 0
-  impactForce: 200
-  recoilForce: 5
-  reloadTime: 0.2
-  magazineSize: 45
+  impactForce: 2000
+  recoilForce: 3
+  reloadTime: 0.8
+  magazineSize: 25
   bulletPerTap: 1
   bulletsShot: 0
   shooting: 0

@@ -132,10 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad7c39815f1e57e4499cbf6cfc2ba727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 50
-  timeBetweenShooting: 1
+  range: 25
+  timeBetweenShooting: 0.8
   timeBetweenShots: 0
-  impactForce: 200
+  impactForce: 2000
   recoilForce: 5
   reloadTime: 1
   magazineSize: 8

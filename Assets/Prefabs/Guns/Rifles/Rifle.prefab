@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 5731377350497717562}
   - component: {fileID: 4242951602247389181}
   - component: {fileID: 838237521182020550}
-  - component: {fileID: 2472949905145873350}
   - component: {fileID: 4040693747431105065}
-  m_Layer: 0
+  - component: {fileID: 3136113253003680903}
+  m_Layer: 12
   m_Name: Rifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,27 +119,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &2472949905145873350
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7005957456040490854}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 2.9508753, y: 0.85947967, z: 0.32568306}
-  m_Center: {x: 0.7580924, y: -0.040581584, z: 0.00043961406}
 --- !u!114 &4040693747431105065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,10 +131,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3ada0d073821042824ff0eb3b0e1d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
-  fireRate: 1
-  impactForce: 200
+  range: 30
+  timeBetweenShooting: 0.4
+  timeBetweenShots: 0
+  impactForce: 4000
+  recoilForce: 5
+  reloadTime: 0.8
+  magazineSize: 30
+  bulletPerTap: 1
+  bulletsShot: 0
+  shooting: 0
+  canShoot: 0
+  reloading: 0
   firePoint: {fileID: 6399703340429489630}
-  timeToFire: 0
+  layerShooted:
+    serializedVersion: 2
+    m_Bits: 512
   shootSound: {fileID: 0}
   reloadSound: {fileID: 0}
+  bulletTrailPrefab: {fileID: 1801005539186797718, guid: 897e6b7a31cda794b91623feb1abe858,
+    type: 3}
+--- !u!61 &3136113253003680903
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005957456040490854}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.7709279, y: -0.042046204}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.9360461, y: 0.8450799}
+  m_EdgeRadius: 0

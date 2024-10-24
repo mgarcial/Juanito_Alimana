@@ -5,26 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class KillPlayer : MonoBehaviour
 {
-    public CharacterController player;
-    public GameManager gameManager;
-    public GameObject gameOverPanel; 
-    private void OnTriggerEnter(Collider other)
+    private PlayerController player;
+    [SerializeField] private GameManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = FindAnyObjectByType<GameManager>();
+    }
+    private void OnTriggerEnter2D(Collider2D other)
     {   
         if(other.CompareTag("Player"))
         {
-            gameOverPanel.SetActive(true);
-            Time.timeScale = 0f;
-            Debug.Log($"Ahi ta {player}");
-            player = other.GetComponent<CharacterController>();
-            player.isDead = true;
-            // gameManager.RestartGame();
+            player = other.GetComponent<PlayerController>();
+            //Debug.Log($"Ahi ta {player}");
+            gameManager.GameOver();
         }
-    }
-
-    public void Retry()
-    {
-        SceneManager.LoadScene("Level 1");
-        gameOverPanel.SetActive(false); 
-        Time.timeScale = 1f; 
     }
 }

@@ -14,7 +14,9 @@ public class EnemyPatrol : MonoBehaviour
         BackToStart
     }
     [Header("EnemyyStats")]
-    public float speed = 2f;
+    public float patrolSpeed = 2f;
+    public float chaseSpeed = 1f;
+
     public float distanceToPoint = 2f;
     public float detectionRange = 10f;
     public float stopChaseDistance = 15f;
@@ -34,7 +36,7 @@ public class EnemyPatrol : MonoBehaviour
     public Transform pointB;
 
     private Vector3 startingPosition;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
 
     private void Awake()
     {
@@ -42,7 +44,7 @@ public class EnemyPatrol : MonoBehaviour
     }
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody2D>();
         currentTarget = startingTarget;
         startingPosition = transform.position;
     }
@@ -72,7 +74,7 @@ public class EnemyPatrol : MonoBehaviour
     {
         currentTarget = startingTarget;
         Vector3 direction = (startingPosition - transform.position).normalized;
-        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+        rb.MovePosition(transform.position + direction * patrolSpeed * Time.deltaTime);
         movingRight = direction.x > 0;
         if (direction.x > 0 && transform.localScale.z < 0)
         {
@@ -91,7 +93,7 @@ public class EnemyPatrol : MonoBehaviour
     private void Patrol()
     {
         Vector3 direction = (currentTarget.position - transform.position).normalized;
-        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+        rb.MovePosition(transform.position + direction * patrolSpeed * Time.deltaTime);
         movingRight = direction.x > 0;
         if (Vector3.Distance(transform.position, currentTarget.position) < distanceToPoint)
         {
@@ -102,19 +104,19 @@ public class EnemyPatrol : MonoBehaviour
 
     private void ChasePlayer()
     {
-        currentTarget = CharacterController.Instance.GetTransform();
+        currentTarget = PlayerController.Instance.GetTransform();
         Vector3 direction = (currentTarget.position - transform.position).normalized;
-        rb.MovePosition(transform.position + direction * speed * Time.deltaTime);
+        rb.MovePosition(transform.position + direction * chaseSpeed * Time.deltaTime);
         movingRight = direction.x > 0;
-        if (direction.x > 0 && transform.localScale.z < 0)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, Mathf.Abs(transform.localScale.z));
-        }
-        else if (direction.x < 0 && transform.localScale.z > 0)
+        if (direction.x > 0 && transform.localScale.z > 0)
         {
             transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -Mathf.Abs(transform.localScale.z));
         }
-        if (Vector3.Distance(transform.position, playerPosition) > detectionRange)
+        else if (direction.x < 0 && transform.localScale.z < 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, Mathf.Abs(transform.localScale.z));
+        }
+        if (Vector2.Distance(transform.position, currentTarget.position) > detectionRange)
         {
             playerDetected = false;
             state = State.BackToStart;
@@ -122,19 +124,22 @@ public class EnemyPatrol : MonoBehaviour
     }
     private void FindPlayer()
     {
-        playerPosition = CharacterController.Instance.GetPosition();
+        playerPosition = PlayerController.Instance.GetPosition();
         if (Vector3.Distance(transform.position, playerPosition) < detectionRange)
         {
             playerDetected = true;
             state = State.ChasePlayer;
-        }    
+        }  
+        else
+        {
+            playerDetected = false;
+        }
     }
 
     private void CheckGround()
     {
-        RaycastHit hit;
         Debug.DrawRay(groundCheckPoint.position, Vector3.down, Color.yellow, 3.0f);
-        if (Physics.Raycast(groundCheckPoint.position, Vector3.down, out hit, checkDistance, groundLayer))
+        if (Physics2D.Raycast(groundCheckPoint.position, Vector3.down, checkDistance, groundLayer))
         {
             aboutToFall = false;
         }

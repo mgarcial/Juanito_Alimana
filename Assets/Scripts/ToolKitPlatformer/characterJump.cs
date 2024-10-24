@@ -4,13 +4,15 @@ using UnityEngine.UI;
 
 //This script handles moving the character on the Y axis, for jumping and gravity
 
-public class characterJump : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent (typeof(Collider))]
+public class CharacterJump : MonoBehaviour
 {
     [Header("Components")]
-    [HideInInspector] public Rigidbody body;
-    private characterGround ground; 
-    [HideInInspector] public Vector3 velocity;
-    [SerializeField] movementLimiter moveLimit;
+    [HideInInspector] public Rigidbody2D body;
+    private CharacterGround ground; 
+    [HideInInspector] public Vector2 velocity;
+    [SerializeField] MovementLimiter moveLimit;
     public Button jumpButton;
 
     [Header("Jumping Stats")]
@@ -32,7 +34,6 @@ public class characterJump : MonoBehaviour
     public float jumpSpeed;
     private float defaultGravityScale;
     public float gravMultiplier;
-    private float customGravityY;
 
     [Header("Current State")]
     private bool canJumpAgain = false;
@@ -46,9 +47,9 @@ public class characterJump : MonoBehaviour
     void Awake()
     {
         jumpButton.onClick.AddListener(OnJumpButtonPressed);
-        body = GetComponent<Rigidbody>();
-        ground = GetComponent<characterGround>();
-        SetPhysics();
+        body = GetComponent<Rigidbody2D>();
+        ground = GetComponent<CharacterGround>();
+        defaultGravityScale = 1f;
     }
 
     private void OnJumpButtonPressed()
@@ -69,8 +70,10 @@ public class characterJump : MonoBehaviour
         velocity = body.velocity;
         if (desiredJump)
         {
-            Debug.Log("I jumped");
+            //Debug.Log("I jumped");
+            AudioManager.GetInstance().PlayJumpSound();
             PerformJump();
+            jumpButton.interactable = false;
             body.velocity = velocity;
             return;
         }
@@ -103,10 +106,8 @@ public class characterJump : MonoBehaviour
     }
     private void SetPhysics()
     {
-        //Determine the character's gravity scale, using the stats provided. Multiply it by a gravMultiplier, used later
-        customGravityY = (-2 * jumpHeight) / (timeToJumpApex * timeToJumpApex);
-        customGravityY *= gravMultiplier;
-
+        Vector2 newGravity = new Vector2(0, (-2 * jumpHeight) / (timeToJumpApex * timeToJumpApex));
+        body.gravityScale = (newGravity.y / Physics2D.gravity.y) * gravMultiplier;
     }
 
     private void PerformJump()
@@ -116,10 +117,16 @@ public class characterJump : MonoBehaviour
             desiredJump = false;
             jumpBufferCounter = 0;
             coyoteTimeCounter = 0;
-            canJumpAgain = maxAirJumps > 0 && !canJumpAgain;
-            jumpSpeed = Mathf.Sqrt(-2f * Physics.gravity.y * jumpHeight);
-            if (velocity.y > 0f) jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
-            else if (velocity.y < 0f) jumpSpeed += Mathf.Abs(velocity.y);
+            canJumpAgain = (maxAirJumps == 1 && canJumpAgain == false);
+            jumpSpeed = Mathf.Sqrt(-2f * Physics2D.gravity.y * body.gravityScale * jumpHeight);
+            if (velocity.y > 0f)
+            {
+                jumpSpeed = Mathf.Max(jumpSpeed - velocity.y, 0f);
+            }
+            else if (velocity.y < 0f)
+            {
+                jumpSpeed += Mathf.Abs(body.velocity.y);
+            }
 
             velocity.y += jumpSpeed;
             currentlyJumping = true;
@@ -181,12 +188,12 @@ public class characterJump : MonoBehaviour
             if (onGround)
             {
                 currentlyJumping = false;
+                jumpButton.interactable = true;
             }
 
             gravMultiplier = defaultGravityScale;
         }
-        body.velocity = new Vector3(velocity.x, Mathf.Clamp(velocity.y, -speedLimit, float.MaxValue), velocity.z);
-        body.AddForce(Vector3.up * customGravityY * body.mass, ForceMode.Acceleration);
+        body.velocity = new Vector3(velocity.x, Mathf.Clamp(velocity.y, -speedLimit, 100));
     }
 
 }

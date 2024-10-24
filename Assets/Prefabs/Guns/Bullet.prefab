@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1801005539186797718}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.906, y: -2.1025946, z: 17.980476}
-  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
+  m_LocalPosition: {x: 0.612, y: 0, z: 0}
+  m_LocalScale: {x: 0.07, y: 0.07, z: 0.07}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10308, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: f0b8fb3ecbc2cb048825486e3d63f1ba, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -127,7 +127,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Time: 0.1
+  m_Time: 0.2
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -144,15 +144,6 @@ TrailRenderer:
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.7846219
-        value: 0.044937134
-        inSlope: -0.73081404
-        outSlope: -0.73081404
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.15677074
-        outWeight: 0.18630564
       - serializedVersion: 3
         time: 1
         value: 0
@@ -175,7 +166,7 @@ TrailRenderer:
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 47031
+      ctime0: 60331
       ctime1: 64571
       ctime2: 65535
       ctime3: 0
@@ -183,8 +174,8 @@ TrailRenderer:
       ctime5: 0
       ctime6: 0
       ctime7: 0
-      atime0: 0
-      atime1: 29684
+      atime0: 31997
+      atime1: 55319
       atime2: 65535
       atime3: 0
       atime4: 0
@@ -199,7 +190,7 @@ TrailRenderer:
     numCapVertices: 0
     alignment: 0
     textureMode: 0
-    textureScale: {x: 1, y: 1}
+    textureScale: {x: 0.1, y: 4}
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1

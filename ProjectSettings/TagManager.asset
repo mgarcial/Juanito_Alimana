@@ -18,10 +18,10 @@ TagManager:
   - Ground
   - Enemigo
   - Jugador
-  - 
-  - 
-  - 
-  - 
+  - BulletsCollider
+  - Bullet
+  - FungusColl
+  - Guns
   - 
   - 
   - 

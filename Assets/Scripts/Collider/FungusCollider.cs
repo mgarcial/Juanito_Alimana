@@ -1,33 +1,32 @@
-using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Fungus; 
 
 public class FungusCollider : MonoBehaviour
 {
-    public Flowchart flowChart;
+    public Flowchart flowchart;
     public string blockName;
     public GameObject player;
     private bool hasActivated = false;
 
-    public void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player") && !hasActivated)
+        if(other.CompareTag("Player") && !hasActivated) 
         {
-            flowChart.ExecuteBlock(blockName);
-            player.GetComponent<CharacterController>().enabled = false;
-            player.GetComponent<characterJump>().enabled = false;
-
+            flowchart.ExecuteBlock(blockName); 
+            player.GetComponent<PlayerController>().enabled = false;
+            player.GetComponent<CharacterJump>().enabled = false;
             hasActivated = true;
         }
     }
 
-    private void Update()
+    void Update()
     {
-        if(!flowChart.HasExecutingBlocks())
-        {
-            player.GetComponent<CharacterController>().enabled = true;
-            player.GetComponent<characterJump>().enabled = true;
+        if(!flowchart.HasExecutingBlocks()) 
+        { 
+            player.GetComponent<PlayerController>().enabled = true;
+            player.GetComponent<CharacterJump>().enabled = true;
         }
     }
 }

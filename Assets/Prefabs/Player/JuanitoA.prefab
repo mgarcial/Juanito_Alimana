@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 5631872273055430038}
   - component: {fileID: 6977545310290177341}
   - component: {fileID: 3374453734813121591}
+  - component: {fileID: 3857836761512098538}
   m_Layer: 8
   m_Name: JuanitoA
   m_TagString: Player
@@ -299,6 +300,27 @@ CapsuleCollider2D:
   m_Offset: {x: 615049, y: 0.14}
   m_Size: {x: 0.0001, y: 0.3}
   m_Direction: 1
+--- !u!95 &3857836761512098538
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5390656699505450255}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 2107c718144ee3c4bbb5b4bb82a8101d, type: 3}
+  m_Controller: {fileID: 9100000, guid: e0b56fbf48c3dae4aa6664a13855157f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8333720140524078040
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 //This script handles moving the character on the X axis, both on the ground and in the air.
-
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
 {
     public static PlayerController Instance { get; private set; }
@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
     private CharacterGround ground; 
     public Joystick joystick;
     public GameObject hitEffects;
+
+    private Animator anim; 
 
 
     [Header("Movement Stats")]
@@ -62,6 +64,8 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
         // Find the character's Rigidbody and ground detection script
         body = GetComponent<Rigidbody2D>(); // Use Rigidbody for 3D physics
         ground = GetComponent<CharacterGround>(); // Make sure this is adapted for 3D
+        anim = GetComponent<Animator>(); 
+        anim.SetBool("Jump", false);  
     }
 
     private void Update()

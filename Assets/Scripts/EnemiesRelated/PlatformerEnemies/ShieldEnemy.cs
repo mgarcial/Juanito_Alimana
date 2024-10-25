@@ -31,6 +31,13 @@ public class NoShieldEnemy : Enemy
         if (hitPoints <= 0)
         {
             AudioManager.GetInstance().PlayEnemyDeath();
+            gameObject.SetActive(false);
+            Invoke("Death", 1f);
         }
+    }
+
+    private void Death()
+    {
+        Destroy(gameObject);
     }
 }

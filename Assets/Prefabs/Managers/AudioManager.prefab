@@ -56,6 +56,11 @@ MonoBehaviour:
   fallDeath: {fileID: 0}
   bodyHit: {fileID: 0}
   lost: {fileID: 8300000, guid: 3b2e419875f3d254a89dc0cb9cf6cc73, type: 3}
+  buttonJump: {fileID: 8300000, guid: 08e4aa5f0f6e1614c977de444682d86f, type: 3}
+  shootJump: {fileID: 8300000, guid: e79db24b0ed538a409af9cd018d15bdd, type: 3}
+  enemyDeath: {fileID: 8300000, guid: ce9c7107d410fc74d837db92190b854d, type: 3}
+  buttonSound: {fileID: 8300000, guid: 7107e4c358482964fb47bcaf95b81589, type: 3}
+  confirmButton: {fileID: 8300000, guid: e0b20cd6cbaaa184e98333f975b3497a, type: 3}
   backgroundMusicClip: {fileID: 8300000, guid: 612caa5fa0660b947bb5e1b4981de815, type: 3}
 --- !u!82 &-6839937445039612484
 AudioSource:

@@ -5,12 +5,13 @@ using UnityEngine.UI;
 //This script handles moving the character on the Y axis, for jumping and gravity
 
 [RequireComponent(typeof(Rigidbody2D))]
-[RequireComponent (typeof(Collider))]
+// [RequireComponent (typeof(Collider))]
 public class CharacterJump : MonoBehaviour
 {
     [Header("Components")]
     [HideInInspector] public Rigidbody2D body;
     private CharacterGround ground; 
+    private Animator anim;
     [HideInInspector] public Vector2 velocity;
     [SerializeField] MovementLimiter moveLimit;
     public Button jumpButton;
@@ -48,6 +49,7 @@ public class CharacterJump : MonoBehaviour
     {
         jumpButton.onClick.AddListener(OnJumpButtonPressed);
         body = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         ground = GetComponent<CharacterGround>();
         defaultGravityScale = 1f;
     }
@@ -63,6 +65,7 @@ public class CharacterJump : MonoBehaviour
         onGround = ground.GetOnGround(); 
         HandleJumpBuffer();
         HandleCoyoteTime();
+        anim.SetTrigger("Jump");
     }
 
     void FixedUpdate()

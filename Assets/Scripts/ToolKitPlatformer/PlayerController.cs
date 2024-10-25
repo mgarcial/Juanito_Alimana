@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
         ground = GetComponent<CharacterGround>(); // Make sure this is adapted for 3D
         anim = GetComponent<Animator>(); 
         anim.SetBool("Jump", false);  
+        anim.SetBool("Run", false); 
     }
 
     private void Update()
@@ -104,6 +105,8 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
 
         // Calculate the desired velocity in 3D (X-axis movement only)
         desiredVelocity = new Vector3(directionX, 0f, 0f) * Mathf.Max(maxSpeed - friction, 0f);
+
+        anim.SetBool("Run", pressingKey && onGround);
     }
 
     private void FixedUpdate()
@@ -127,6 +130,8 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
                 RunWithAcceleration();
             }
         }
+
+        anim.SetBool("Jump", !onGround);
     }
     public void PickUpGun(Gun gun)
     {

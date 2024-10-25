@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
     [Header("Things to assign")]
     public GameObject hitEffects;
     [SerializeField] private Transform weaponHolder;
+    public bool enemyHasHealth = false;
 
     private void Start()
     {

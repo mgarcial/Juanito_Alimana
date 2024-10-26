@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BossBehaviour : MonoBehaviour
+public class BossBehaviour : MonoBehaviour, IDamageable
 {
     private enum pedroStates
     {
@@ -15,17 +15,25 @@ public class BossBehaviour : MonoBehaviour
     }
 
     [Header("Stats")]
-    private int hitPoints;
+    [SerializeField] private int hitPoints;
     [SerializeField] private int maxHitPoints;
     [Header("Checks")]
     private Transform playerPos;
     HealthbarBehaviour healthBar;
     [SerializeField] private pedroStates state;
 
+    [SerializeField] private GameObject WinPanel;
+
+    public bool isPushOnly => throw new System.NotImplementedException();
+
     private void Awake()
     {
         state = pedroStates.Awaken;
-        healthBar = GetComponent<HealthbarBehaviour>();
+        healthBar = GetComponentInChildren<HealthbarBehaviour>();
+    }
+    private void Start()
+    {
+        hitPoints = maxHitPoints;
     }
 
     private void Update()
@@ -37,20 +45,10 @@ public class BossBehaviour : MonoBehaviour
             break;
         }
     }
-    internal void TakeDamage(int dmg)
-    {
-        hitPoints -= dmg;
-        healthBar.SetHealth(hitPoints, maxHitPoints);
-        if (hitPoints <= 0)
-        {
-            AudioManager.GetInstance().PlayEnemyDeath();
-            gameObject.SetActive(false);
-            Invoke("Death", 1f);
-        }
-    }
     private void Death()
     {
-        Destroy(gameObject);
+        state = pedroStates.Dead;
+        WinGame();
     }
 
     void Awaken()
@@ -58,4 +56,19 @@ public class BossBehaviour : MonoBehaviour
         //Trigger appeareance animation
     }
 
+    void WinGame()
+    {
+        WinPanel.SetActive(true);
+    }
+
+    public void TakeHit(int dmg)
+    {
+        hitPoints -= dmg;
+        healthBar.SetHealth(hitPoints, maxHitPoints);
+        if (hitPoints <= 0)
+        {
+            AudioManager.GetInstance().PlayEnemyDeath();
+            Invoke("Death", 1f);
+        }
+    }
 }

@@ -4,5 +4,6 @@ using UnityEngine;
 
 public interface IDamageable
 {
-    public void TakeHit();
+    public void TakeHit(int dmg);
+    public bool isPushOnly { get; }
 }

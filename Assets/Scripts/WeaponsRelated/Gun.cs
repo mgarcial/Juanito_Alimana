@@ -120,14 +120,9 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             IDamageable damageable = hit.transform.GetComponentInParent<IDamageable>();
             NoShieldEnemy noShieldEnemy = hit.transform.GetComponentInParent<NoShieldEnemy>();
             if (damageable != null)
-            {
-                damageable.TakeHit();
+            { 
+                damageable.TakeHit(weaponDamage);
                 hit.rigidbody.AddForce(-hit.normal * impactForce, ForceMode2D.Impulse);
-                if (noShieldEnemy != null)
-                {
-                    Debug.Log($"I did {weaponDamage} to {noShieldEnemy}");
-                    noShieldEnemy.TakeDamage(weaponDamage);
-                }
             }
         }
         

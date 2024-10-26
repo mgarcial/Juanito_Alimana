@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NoShieldEnemy : Enemy
 {
+    public bool IsPushOnly => false;
     [SerializeField] float maxHitPoints;
     private float hitPoints;
     public HealthbarBehaviour healthBar;
@@ -24,7 +25,7 @@ public class NoShieldEnemy : Enemy
         healthBar.SetHealth(hitPoints, maxHitPoints);
     }
 
-    internal void TakeDamage(int dmg)
+    public void TakeHit(int dmg)
     {
         hitPoints -= dmg;
         healthBar.SetHealth(hitPoints, maxHitPoints);

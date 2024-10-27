@@ -10,6 +10,7 @@ Library: C:\Users\willa\Juanito_Alimana\Temp\BurstOutput\tempburstlibs\armeabi-v
 --target-framework=NetFramework
 --float-mode=Fast
 --assembly-defines=UnityEngine;
+--assembly-defines=Assembly-CSharp-firstpass;
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
@@ -34,6 +35,7 @@ Library: C:\Users\willa\Juanito_Alimana\Temp\BurstOutput\tempburstlibs\armeabi-v
 --assembly-defines=Cinemachine;
 --assembly-defines=Fungus;
 --assembly-defines=FungusExamples;
+--assembly-defines=DOTween;
 --assembly-defines=Unity.VisualScripting.Antlr3.Runtime;
 --assembly-defines=Unity.Burst.Unsafe;
 --assembly-defines=System.Runtime;
@@ -76,6 +78,7 @@ Library: C:\Users\willa\Juanito_Alimana\Temp\BurstOutput\tempburstlibs\armeabi-v
 --float-precision=Standard
 --target-framework=NetFramework
 --assembly-defines=UnityEngine;
+--assembly-defines=Assembly-CSharp-firstpass;
 --assembly-defines=Assembly-CSharp;
 --assembly-defines=Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary;
 --assembly-defines=Unity.RenderPipelines.Core.Runtime;
@@ -100,6 +103,7 @@ Library: C:\Users\willa\Juanito_Alimana\Temp\BurstOutput\tempburstlibs\armeabi-v
 --assembly-defines=Cinemachine;
 --assembly-defines=Fungus;
 --assembly-defines=FungusExamples;
+--assembly-defines=DOTween;
 --assembly-defines=Unity.VisualScripting.Antlr3.Runtime;
 --assembly-defines=Unity.Burst.Unsafe;
 --assembly-defines=System.Runtime;

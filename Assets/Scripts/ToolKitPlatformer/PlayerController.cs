@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
 {
     public static PlayerController Instance { get; private set; }
 
+    public bool isPushOnly => true;
+
     [Header("Components")]
     [SerializeField] private MovementLimiter moveLimit; 
     private Rigidbody2D body;
@@ -208,7 +210,7 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
         return playerFacingRight;
     }
 
-    public void TakeHit()
+    public void TakeHit(int dmg)
     {
         if(hitEffects != null)
         {

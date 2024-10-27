@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour, IPickableGun, IDamageable
 {
+
     [Header("Enemy stats")]
     [SerializeField] private float shootingRange = 6f;
     [Header("Enemy Checks")]
@@ -14,6 +15,9 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
     [Header("Things to assign")]
     public GameObject hitEffects;
     [SerializeField] private Transform weaponHolder;
+    public bool enemyHasHealth = false;
+
+    public bool isPushOnly => true;
 
     private void Start()
     {
@@ -61,7 +65,7 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
     {
         return isGunEquipped;
     }
-    public void TakeHit()
+    public void TakeHit(int dmg)
     {
         if (hitEffects != null)
         {

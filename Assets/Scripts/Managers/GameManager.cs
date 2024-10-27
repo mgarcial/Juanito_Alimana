@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     [SerializeField] private  PlayerController player;
     public GameObject gameOverPanel;
+    public GameObject winPanel;
     private void Awake()
     {
         if (Instance == null)
@@ -59,6 +60,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0f;
         UnlockNextLevel();
+        winPanel.SetActive(true);
 
     }
     public void Home()

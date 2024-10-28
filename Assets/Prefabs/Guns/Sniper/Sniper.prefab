@@ -108,6 +108,7 @@ MonoBehaviour:
   recoilForce: 8
   reloadTime: 1.2
   magazineSize: 12
+  weaponDamage: 20
   bulletPerTap: 1
   bulletsShot: 0
   shooting: 0

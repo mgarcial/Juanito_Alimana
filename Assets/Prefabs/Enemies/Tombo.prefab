@@ -543,7 +543,7 @@ MonoBehaviour:
   hitEffects: {fileID: 3189780160019153032}
   weaponHolder: {fileID: 5467234664047895910}
   enemyHasHealth: 0
-  maxHitPoints: 10
+  maxHitPoints: 20
   healthBar: {fileID: 2181225836095298732}
 --- !u!114 &4742170808886673346
 MonoBehaviour:

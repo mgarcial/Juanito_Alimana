@@ -14,18 +14,21 @@ public class PauseMenuScript : MonoBehaviour
     
     public void Pause()
     {
+        AudioManager.GetInstance().PlaySoundButton();
         pausePanel.SetActive(true);
         Time.timeScale = 0;
     }
 
     public void Resume()
     {
+        AudioManager.GetInstance().PlayConfirmButton();
         pausePanel.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void Home()
     {
+        AudioManager.GetInstance().PlaySoundButton();
         SceneManager.LoadScene("Menu"); 
     }
 }

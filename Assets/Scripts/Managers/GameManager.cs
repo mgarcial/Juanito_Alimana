@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
 
     public void Retry()
     {
+        AudioManager.GetInstance().PlaySoundButton();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameOverPanel.SetActive(false);
         CleanLevel();
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
     }
     public void WinLevel()
     {
+        AudioManager.GetInstance().PlayConfirmButton();
         Time.timeScale = 0f;
         UnlockNextLevel();
         winPanel.SetActive(true);
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
     }
     public void Home()
     {
+        AudioManager.GetInstance().PlaySoundButton();
         SceneManager.LoadScene("Menu");
     }
     private void UnlockNextLevel()

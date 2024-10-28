@@ -157,6 +157,7 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
     {
         if (currentGun != null && currentGun.canShoot)
         {
+            AudioManager.GetInstance().PlayShootButton();
             currentGun.bulletsShot = currentGun.bulletPerTap;
             currentGun.Shoot();
             currentGun.canShoot = false;

@@ -138,6 +138,7 @@ MonoBehaviour:
   recoilForce: 5
   reloadTime: 0.8
   magazineSize: 30
+  weaponDamage: 0
   bulletPerTap: 1
   bulletsShot: 0
   shooting: 0
@@ -147,8 +148,8 @@ MonoBehaviour:
   layerShooted:
     serializedVersion: 2
     m_Bits: 512
-  shootSound: {fileID: 0}
-  reloadSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 7560069e9de7e5f419466257e01778cd, type: 3}
+  reloadSound: {fileID: 8300000, guid: 0269385c0312d974b990f7e0ddd94a8c, type: 3}
   bulletTrailPrefab: {fileID: 1801005539186797718, guid: 897e6b7a31cda794b91623feb1abe858,
     type: 3}
 --- !u!61 &3136113253003680903

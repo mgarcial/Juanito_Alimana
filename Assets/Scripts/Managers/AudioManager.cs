@@ -20,6 +20,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip shootJump;
     [SerializeField] private AudioClip enemyDeath;
     [SerializeField] private AudioClip buttonSound;
+    [SerializeField] private AudioClip bossBGM;
     [SerializeField] private AudioClip confirmButton;
 
     [SerializeField] private AudioClip backgroundMusicClip;
@@ -49,6 +50,11 @@ public class AudioManager : MonoBehaviour
     public void PlayDeathMusic()
     {
         musicSource.clip = lost;
+        musicSource.Play();
+    }
+    public void PlayBossMusic()
+    {
+        musicSource.clip = bossBGM;
         musicSource.Play();
     }
     public void PlayShootSound(AudioClip clip)

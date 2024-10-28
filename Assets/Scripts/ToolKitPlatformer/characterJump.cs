@@ -54,6 +54,7 @@ public class CharacterJump : MonoBehaviour
 
     private void OnJumpButtonPressed()
     {
+        AudioManager.GetInstance().PlayJumpButton();
         desiredJump = true;
     }
 

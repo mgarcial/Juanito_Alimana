@@ -22,9 +22,12 @@ public class BossBehaviour : MonoBehaviour, IDamageable
     HealthbarBehaviour healthBar;
     [SerializeField] private pedroStates state;
 
+    [SerializeField] private Transform boss;
     [SerializeField] private GameObject WinPanel;
-
-    public bool isPushOnly => throw new System.NotImplementedException();
+    public Vector3 growSize = new Vector3(5f, 5f, 5f);
+    public float growthDuration = 2f;
+    private Vector3 initialSize;
+    public bool isPushOnly => true;
 
     private void Awake()
     {
@@ -33,6 +36,7 @@ public class BossBehaviour : MonoBehaviour, IDamageable
     }
     private void Start()
     {
+        initialSize = boss.localScale;
         hitPoints = maxHitPoints;
     }
 
@@ -41,7 +45,10 @@ public class BossBehaviour : MonoBehaviour, IDamageable
         switch(state)
         {
             case pedroStates.Awaken:
-                Awaken();
+                StartCoroutine(Awaken());
+            break;
+            case pedroStates.Normal:
+
             break;
         }
     }
@@ -51,9 +58,20 @@ public class BossBehaviour : MonoBehaviour, IDamageable
         WinGame();
     }
 
-    void Awaken()
+    private IEnumerator Awaken()
     {
-        //Trigger appeareance animation
+        float elapsedTime = 0;
+        while (elapsedTime < growthDuration)
+        {
+            boss.localScale = Vector3.Lerp(initialSize, growSize, elapsedTime / growthDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        boss.localScale = growSize;
+        if (boss.localScale == growSize) 
+        {
+            state = pedroStates.Normal;
+        }
     }
 
     void WinGame()

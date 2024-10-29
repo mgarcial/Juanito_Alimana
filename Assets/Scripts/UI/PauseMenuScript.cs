@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
-    public GameObject pausePanel; 
+    public GameObject pausePanel;
 
     void Update()
     {
@@ -17,7 +18,6 @@ public class PauseMenuScript : MonoBehaviour
         AudioManager.GetInstance().PlaySoundButton();
         pausePanel.SetActive(true);
         Time.timeScale = 0;
-        Fungus.Flowchart.BroadcastFungusMessage("PauseDialogues");
     }
 
     public void Resume()
@@ -25,7 +25,6 @@ public class PauseMenuScript : MonoBehaviour
         AudioManager.GetInstance().PlayConfirmButton();
         pausePanel.SetActive(false);
         Time.timeScale = 1;
-        Fungus.Flowchart.BroadcastFungusMessage("ResumeDialogues"); 
     }
 
     public void Home()

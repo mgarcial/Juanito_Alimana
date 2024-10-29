@@ -17,6 +17,7 @@ public class PauseMenuScript : MonoBehaviour
         AudioManager.GetInstance().PlaySoundButton();
         pausePanel.SetActive(true);
         Time.timeScale = 0;
+        Fungus.Flowchart.BroadcastFungusMessage("PauseDialogues");
     }
 
     public void Resume()
@@ -24,6 +25,7 @@ public class PauseMenuScript : MonoBehaviour
         AudioManager.GetInstance().PlayConfirmButton();
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+        Fungus.Flowchart.BroadcastFungusMessage("ResumeDialogues"); 
     }
 
     public void Home()

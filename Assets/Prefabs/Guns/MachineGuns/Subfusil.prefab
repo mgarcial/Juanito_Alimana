@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8167732933015227509}
   - component: {fileID: 8418507711299466402}
   - component: {fileID: 708101354805136533}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Subfusil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,14 +101,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fc27118f810fb44ba8888cfaafc51d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
-  timeBetweenShooting: 0.5
-  timeBetweenShots: 0
-  impactForce: 200
-  recoilForce: 5
-  reloadTime: 0.2
-  magazineSize: 45
-  bulletPerTap: 1
+  range: 20
+  timeBetweenShooting: 0.2
+  timeBetweenShots: 0.1
+  impactForce: 2000
+  recoilForce: 3
+  reloadTime: 0.8
+  magazineSize: 25
+  weaponDamage: 2
+  bulletPerTap: 3
   bulletsShot: 0
   shooting: 0
   canShoot: 0
@@ -117,8 +118,8 @@ MonoBehaviour:
   layerShooted:
     serializedVersion: 2
     m_Bits: 512
-  shootSound: {fileID: 0}
-  reloadSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: 975a57a77f26e2444bce667780f3f4a7, type: 3}
+  reloadSound: {fileID: 8300000, guid: 2c24870d8c107294297d757b1482cea3, type: 3}
   bulletTrailPrefab: {fileID: 1801005539186797718, guid: 897e6b7a31cda794b91623feb1abe858,
     type: 3}
 --- !u!61 &708101354805136533

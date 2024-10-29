@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     [SerializeField] private  PlayerController player;
     public GameObject gameOverPanel;
+    public GameObject winPanel;
     private void Awake()
     {
         if (Instance == null)
@@ -31,12 +32,14 @@ public class GameManager : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
         AudioManager.GetInstance().PlayDeathSound();
+        AudioManager.GetInstance().PlayDeathMusic();
         Time.timeScale = 0f;
         player.Die();
     }
 
     public void Retry()
     {
+        AudioManager.GetInstance().PlaySoundButton();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameOverPanel.SetActive(false);
         CleanLevel();
@@ -56,12 +59,15 @@ public class GameManager : MonoBehaviour
     }
     public void WinLevel()
     {
+        AudioManager.GetInstance().PlayConfirmButton();
         Time.timeScale = 0f;
         UnlockNextLevel();
+        winPanel.SetActive(true);
 
     }
     public void Home()
     {
+        AudioManager.GetInstance().PlaySoundButton();
         SceneManager.LoadScene("Menu");
     }
     private void UnlockNextLevel()

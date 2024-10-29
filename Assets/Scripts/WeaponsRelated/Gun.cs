@@ -13,6 +13,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     [SerializeField] private float recoilForce = 5f;
     [SerializeField] private float reloadTime;
     [SerializeField] private int magazineSize;
+    [SerializeField] private int weaponDamage;
     public int bulletPerTap;
     
     private int bulletsLeft;
@@ -43,9 +44,9 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Debug.Log($"i touched{other.name} ");
-        if (other.CompareTag("Platforms")) return;
+        if (other.GetComponent<IPickableGun>() == null) return;
         gunHolder = other.GetComponent<IPickableGun>();
-        if (gunHolder != null && !gunHolder.IsWeaponEquipped())
+        if (gunHolder != null && !gunHolder.IsWeaponEquipped() || other.CompareTag("Player"))
         {
             gunHolder.PickUpGun(this);
             //Debug.Log($"I'm the gun holder {gunHolder}");
@@ -110,17 +111,20 @@ public abstract class Gun : MonoBehaviour, IPooledObject
         BulletTrail trailScript = bulletTrail.GetComponent<BulletTrail>();
         Vector3 targetPosition = firePoint.position + dir * range;
         RaycastHit2D hit = Physics2D.Raycast(firePoint.position, dir, range, layerShooted);
+        trailScript.targetPosition = targetPosition;
         if (hit.collider)
         {
             Debug.Log(hit.transform.name);
             targetPosition = hit.point;
+            trailScript.targetPosition = targetPosition;
             IDamageable damageable = hit.transform.GetComponentInParent<IDamageable>();
+            NoShieldEnemy noShieldEnemy = hit.transform.GetComponentInParent<NoShieldEnemy>();
             if (damageable != null)
-            {
-                damageable.TakeHit();
-                hit.rigidbody.AddForce(-hit.normal * impactForce);
+            { 
+                damageable.TakeHit(weaponDamage);
+                hit.rigidbody.AddForce(-hit.normal * impactForce, ForceMode2D.Impulse);
             }
         }
-        trailScript.targetPosition = targetPosition;
+        
     }   
 }

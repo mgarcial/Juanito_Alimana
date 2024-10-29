@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
 {
     public static PlayerController Instance { get; private set; }
 
+    public bool isPushOnly => true;
+
     [Header("Components")]
     [SerializeField] private MovementLimiter moveLimit; 
     private Rigidbody2D body;
@@ -133,6 +135,18 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
             isGunEquipped = true;
             Debug.Log("Picked up gun: " + currentGun);           
         }
+        if (isGunEquipped && currentGun != null)
+        {
+            Gun previousGun = currentGun;
+            isGunEquipped=false;
+            currentGun = Instantiate(gun, weaponHolder.position, weaponHolder.rotation, weaponHolder);
+            currentGun.SetGunHolder(this);
+            isGunEquipped = true;
+            Debug.Log("Changed up last gun for: " + currentGun);
+            Debug.Log($"now the last gun is{previousGun}");
+            Destroy(previousGun.gameObject);
+        }
+        
     }
     
     public bool IsWeaponEquipped()
@@ -143,6 +157,7 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
     {
         if (currentGun != null && currentGun.canShoot)
         {
+            AudioManager.GetInstance().PlayShootButton();
             currentGun.bulletsShot = currentGun.bulletPerTap;
             currentGun.Shoot();
             currentGun.canShoot = false;
@@ -187,7 +202,7 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
         return playerFacingRight;
     }
 
-    public void TakeHit()
+    public void TakeHit(int dmg)
     {
         if(hitEffects != null)
         {

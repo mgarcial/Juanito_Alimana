@@ -24,6 +24,7 @@ public class LevelSelector : MonoBehaviour
     }
     public void LoadLevel(int levelNum)
     {
+        AudioManager.GetInstance().PlayConfirmButton();
         Preferences.SetCurrentLvl(levelNum);
         StartCoroutine(LoadLevelAfterDelay(levelNum));
     }

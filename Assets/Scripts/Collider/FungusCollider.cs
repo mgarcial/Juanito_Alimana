@@ -23,7 +23,7 @@ public class FungusCollider : MonoBehaviour
 
     void Update()
     {
-        if(!flowchart.HasExecutingBlocks()) 
+        if(hasActivated && !flowchart.HasExecutingBlocks()) 
         { 
             player.GetComponent<PlayerController>().enabled = true;
             player.GetComponent<CharacterJump>().enabled = true;

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7179698851577873957}
   - component: {fileID: 1603214729707391681}
   - component: {fileID: 2632794409836858036}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,14 +101,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6ae9e5e05a727947bc063bd82f276a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 10
-  timeBetweenShooting: 0
+  range: 35
+  timeBetweenShooting: 1.1
   timeBetweenShots: 0
-  impactForce: 200
-  recoilForce: 5
-  reloadTime: 0
-  magazineSize: 0
-  bulletPerTap: 0
+  impactForce: 8000
+  recoilForce: 8
+  reloadTime: 1.2
+  magazineSize: 12
+  weaponDamage: 20
+  bulletPerTap: 1
   bulletsShot: 0
   shooting: 0
   canShoot: 0
@@ -117,8 +118,8 @@ MonoBehaviour:
   layerShooted:
     serializedVersion: 2
     m_Bits: 512
-  shootSound: {fileID: 0}
-  reloadSound: {fileID: 0}
+  shootSound: {fileID: 8300000, guid: f9721a29f34f1094687891fed09cd707, type: 3}
+  reloadSound: {fileID: 8300000, guid: 36409ac784e57a548afbd0927604a555, type: 3}
   bulletTrailPrefab: {fileID: 1801005539186797718, guid: 897e6b7a31cda794b91623feb1abe858,
     type: 3}
 --- !u!61 &2632794409836858036

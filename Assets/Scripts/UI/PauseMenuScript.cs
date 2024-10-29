@@ -14,18 +14,23 @@ public class PauseMenuScript : MonoBehaviour
     
     public void Pause()
     {
+        AudioManager.GetInstance().PlaySoundButton();
         pausePanel.SetActive(true);
         Time.timeScale = 0;
+        Fungus.Flowchart.BroadcastFungusMessage("PauseDialogues");
     }
 
     public void Resume()
     {
+        AudioManager.GetInstance().PlayConfirmButton();
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+        Fungus.Flowchart.BroadcastFungusMessage("ResumeDialogues"); 
     }
 
     public void Home()
     {
+        AudioManager.GetInstance().PlaySoundButton();
         SceneManager.LoadScene("Menu"); 
     }
 }

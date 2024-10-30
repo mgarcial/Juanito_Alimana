@@ -27,37 +27,62 @@ public class BossBehaviour : MonoBehaviour, IDamageable
     public Vector3 growSize = new Vector3(5f, 5f, 5f);
     public float growthDuration = 2f;
     private Vector3 initialSize;
+    [SerializeField] private GameObject left;
+    [SerializeField] private GameObject right;
     public bool isPushOnly => true;
+
+    private int attackCount;
+    private int maxAttacks;
+
+    private float tiredDuration = 5f;
+    public float attackInterval = 1.5f;
 
     private void Awake()
     {
         state = pedroStates.Awaken;
+        StartCoroutine(Awaken());
         healthBar = GetComponentInChildren<HealthbarBehaviour>();
     }
     private void Start()
     {
         initialSize = boss.localScale;
         hitPoints = maxHitPoints;
+        left.SetActive(false);
+        right.SetActive(false);
     }
 
-    private void Update()
-    {
-        switch(state)
-        {
-            case pedroStates.Awaken:
-                StartCoroutine(Awaken());
-            break;
-            case pedroStates.Normal:
-
-            break;
-        }
-    }
     private void Death()
     {
         state = pedroStates.Dead;
         WinGame();
     }
 
+    private IEnumerator Attack()
+    {
+        //Make him attack a few times
+        while (attackCount > 0 && state == pedroStates.Normal)
+        {
+            Debug.Log("El boss realiza un ataque");
+            attackCount--;
+            yield return new WaitForSeconds(attackInterval);
+        }
+        //then it gets tired
+        state = pedroStates.Tired;
+        StartCoroutine(TiredState());
+
+    }
+
+    private IEnumerator TiredState()
+    {
+        Debug.Log("El boss está cansado...");
+        left.SetActive(true);
+        right.SetActive(true);
+        yield return new WaitForSeconds(tiredDuration);
+        Debug.Log("El boss ha recuperado su energía");
+        state = pedroStates.Normal;
+        GenerateAttacks();
+        StartCoroutine(Attack());
+    }
     private IEnumerator Awaken()
     {
         float elapsedTime = 0;
@@ -71,9 +96,17 @@ public class BossBehaviour : MonoBehaviour, IDamageable
         if (boss.localScale == growSize) 
         {
             state = pedroStates.Normal;
+            GenerateAttacks();
+            StartCoroutine(Attack());
         }
     }
-
+    private void GenerateAttacks()
+    {
+        maxAttacks = Random.Range(3, 6);
+        attackCount = maxAttacks;
+        left.SetActive(false);
+        right.SetActive(false);
+    }
     void WinGame()
     {
         WinPanel.SetActive(true);

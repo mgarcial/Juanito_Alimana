@@ -30,6 +30,7 @@ public class PauseMenuScript : MonoBehaviour
     public void Home()
     {
         AudioManager.GetInstance().PlaySoundButton();
-        SceneManager.LoadScene("Menu"); 
+        SceneManager.LoadScene("Menu");
+        Time.timeScale = 1;
     }
 }

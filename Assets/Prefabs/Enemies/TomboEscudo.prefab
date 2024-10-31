@@ -77,6 +77,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6922493, y: 2.0899448}
   m_EdgeRadius: 0
+--- !u!1 &772748569959048170
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6739940901371765743}
+  m_Layer: 0
+  m_Name: GroundFallCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6739940901371765743
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772748569959048170}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.011, y: 0.012, z: 0.44}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2239046818325254145}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2333819947755917528
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +185,7 @@ GameObject:
   - component: {fileID: 4742170808886673346}
   - component: {fileID: 277526794969180228}
   - component: {fileID: 2420345817939173528}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TomboEscudo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,6 +208,7 @@ Transform:
   - {fileID: 5467234664047895910}
   - {fileID: 3191319697342832768}
   - {fileID: 7546171938624298965}
+  - {fileID: 6739940901371765743}
   - {fileID: 6054249142567284075}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
@@ -272,14 +304,17 @@ MonoBehaviour:
   detectionRange: 10
   stopChaseDistance: 15
   groundCheckPoint: {fileID: 7546171938624298965}
+  groundFallCheckPoint: {fileID: 6739940901371765743}
   checkDistance: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   aboutToFall: 0
+  noGround: 0
   currentTarget: {fileID: 0}
   state: 0
   playerDetected: 0
+  enemyCollider: {fileID: 2420345817939173528}
   movingRight: 1
   playerPosition: {x: 0, y: 0, z: 0}
   startingTarget: {fileID: 0}

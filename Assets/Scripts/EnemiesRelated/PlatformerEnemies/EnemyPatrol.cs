@@ -22,12 +22,15 @@ public class EnemyPatrol : MonoBehaviour
     public float stopChaseDistance = 15f;
     [Header("Enemy Checks")]
     [SerializeField] private Transform groundCheckPoint;
+    [SerializeField] private Transform groundFallCheckPoint;
     [SerializeField] private float checkDistance = 1.0f;
     [SerializeField] private LayerMask groundLayer; 
     [SerializeField] private bool aboutToFall;
+    [SerializeField] private bool noGround;
     [SerializeField] private Transform currentTarget;
     [SerializeField] private State state;
     [SerializeField] private bool playerDetected = false;
+    [SerializeField] Collider2D enemyCollider;
     public bool movingRight = true;
     public Vector3 playerPosition;
     [Header("Things to Assign")]
@@ -56,15 +59,18 @@ public class EnemyPatrol : MonoBehaviour
             default:
             case State.Patrolling:
                 Patrol();
+                CheckIsAboutToFall();
                 CheckGround();
                 FindPlayer();
                 break;
             case State.ChasePlayer:
+                CheckIsAboutToFall();
                 CheckGround();
                 ChasePlayer();
                 break;
             case State.BackToStart:
                 BackToStart();
+                CheckGround();
                 break;
         }
 
@@ -136,7 +142,7 @@ public class EnemyPatrol : MonoBehaviour
         }
     }
 
-    private void CheckGround()
+    private void CheckIsAboutToFall()
     {
         Debug.DrawRay(groundCheckPoint.position, Vector3.down, Color.yellow, 3.0f);
         if (Physics2D.Raycast(groundCheckPoint.position, Vector3.down, checkDistance, groundLayer))
@@ -147,6 +153,19 @@ public class EnemyPatrol : MonoBehaviour
         {
             aboutToFall = true;
             state = State.BackToStart;
+            //rb.gravityScale = 1000;
+        }
+    }
+    private void CheckGround()
+    {
+        if (Physics2D.Raycast(groundCheckPoint.position, Vector3.down, checkDistance, groundLayer))
+        {
+            noGround = false;          
+        }
+        else
+        {
+            noGround= true;
+            enemyCollider.isTrigger = true;
         }
     }
     public bool IsAboutToFall()

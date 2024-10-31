@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 7372494500996890884}
   - component: {fileID: 2286926972494266628}
   - component: {fileID: 7109938212396895190}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PedroNavaja
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,6 +321,7 @@ MonoBehaviour:
   attackPositions: []
   boss: {fileID: 7026286334825838519}
   WinPanel: {fileID: 0}
+  hintPanel: {fileID: 0}
   growSize: {x: 5, y: 5, z: 5}
   growthDuration: 2
   left: {fileID: 7180819242161445497}

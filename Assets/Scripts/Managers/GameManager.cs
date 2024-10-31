@@ -54,11 +54,11 @@ public class GameManager : MonoBehaviour
     {
         CleanLevel();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        AudioManager.GetInstance().PlayConfirmButton();
         Destroy(gameObject);
     }
     public void WinLevel()
     {
-        AudioManager.GetInstance().PlayConfirmButton();
         Time.timeScale = 0f;
         UnlockNextLevel();
         winPanel.SetActive(true);

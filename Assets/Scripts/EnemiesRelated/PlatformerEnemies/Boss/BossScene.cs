@@ -21,6 +21,7 @@ public class BossScene : MonoBehaviour
             {
             bossCamera.Priority = 20;
             StartCoroutine(Jump());
+            AudioManager.GetInstance().PlayBossMusic();
             PedroNavaja.SetActive(true);
         }
     }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR;
 
 
 public class BossBehaviour : MonoBehaviour, IDamageable
@@ -9,7 +10,7 @@ public class BossBehaviour : MonoBehaviour, IDamageable
     {
         Tired,
         Enraged,
-        Normal, 
+        Normal,
         Awaken,
         Dead
     }
@@ -17,13 +18,25 @@ public class BossBehaviour : MonoBehaviour, IDamageable
     [Header("Stats")]
     [SerializeField] private int hitPoints;
     [SerializeField] private int maxHitPoints;
+    [SerializeField] HealthbarBehaviour healthBar;
+
     [Header("Checks")]
     private Transform playerPos;
-    HealthbarBehaviour healthBar;
     [SerializeField] private pedroStates state;
+
+    [Header("AttackPattern")]
+    [SerializeField] private Transform leftHand;
+    [SerializeField] private Transform rightHand;
+    private Vector3 leftHandInitialPos;
+    private Vector3 rightHandInitialPos;
+    public float attackSpeed = 2f;
+    private bool isLeftHandTurn = true;
+    public float attackInterval = 1.5f;
+    [SerializeField] private Transform[] attackPositions;
 
     [SerializeField] private Transform boss;
     [SerializeField] private GameObject WinPanel;
+    [SerializeField] private GameObject hintPanel;
     public Vector3 growSize = new Vector3(5f, 5f, 5f);
     public float growthDuration = 2f;
     private Vector3 initialSize;
@@ -35,18 +48,17 @@ public class BossBehaviour : MonoBehaviour, IDamageable
     private int maxAttacks;
 
     private float tiredDuration = 5f;
-    public float attackInterval = 1.5f;
 
     private void Awake()
-    {
-        state = pedroStates.Awaken;
+    { 
         StartCoroutine(Awaken());
-        healthBar = GetComponentInChildren<HealthbarBehaviour>();
+        state = pedroStates.Awaken;
     }
     private void Start()
     {
         initialSize = boss.localScale;
         hitPoints = maxHitPoints;
+        healthBar.SetHealth(hitPoints, maxHitPoints);
         left.SetActive(false);
         right.SetActive(false);
     }
@@ -62,25 +74,62 @@ public class BossBehaviour : MonoBehaviour, IDamageable
         //Make him attack a few times
         while (attackCount > 0 && state == pedroStates.Normal)
         {
-            Debug.Log("El boss realiza un ataque");
+            PerformAttack();
             attackCount--;
             yield return new WaitForSeconds(attackInterval);
         }
-        //then it gets tired
-        state = pedroStates.Tired;
-        StartCoroutine(TiredState());
-
+        if (attackCount <= 0)
+        {
+            //then it gets tired
+            state = pedroStates.Tired;
+            StartCoroutine(TiredState());
+        }
     }
+    private void PerformAttack()
+    {
+        Transform randomAttackPosition = attackPositions[Random.Range(0, attackPositions.Length)];
 
+        if (isLeftHandTurn)
+        {
+            StartCoroutine(SlapHand(leftHand, leftHandInitialPos, randomAttackPosition.position));
+        }
+        else
+        {
+            StartCoroutine(SlapHand(rightHand, rightHandInitialPos, randomAttackPosition.position));
+        }
+        isLeftHandTurn = !isLeftHandTurn;
+    }
+    private IEnumerator SlapHand(Transform hand, Vector3 initialPosition, Vector3 targetPosition)
+    {
+        while (Vector3.Distance(hand.position, targetPosition) > 0.1f)
+        {
+            hand.position = Vector3.MoveTowards(hand.position, targetPosition, attackSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.2f);
+
+        while (Vector3.Distance(hand.position, initialPosition) > 0.1f)
+        {
+            hand.position = Vector3.MoveTowards(hand.position, initialPosition, attackSpeed * Time.deltaTime);
+            yield return null;
+        }
+    }
     private IEnumerator TiredState()
     {
         Debug.Log("El boss está cansado...");
         left.SetActive(true);
         right.SetActive(true);
+        leftHand.gameObject.SetActive(false);
+        rightHand.gameObject.SetActive(false);
+        hintPanel.SetActive(true);  
+        //trigger animacion de caerse
         yield return new WaitForSeconds(tiredDuration);
         Debug.Log("El boss ha recuperado su energía");
         state = pedroStates.Normal;
         GenerateAttacks();
+        hintPanel.SetActive(false);
+
         StartCoroutine(Attack());
     }
     private IEnumerator Awaken()
@@ -95,6 +144,8 @@ public class BossBehaviour : MonoBehaviour, IDamageable
         boss.localScale = growSize;
         if (boss.localScale == growSize) 
         {
+            leftHandInitialPos = leftHand.position;
+            rightHandInitialPos = rightHand.position;
             state = pedroStates.Normal;
             GenerateAttacks();
             StartCoroutine(Attack());
@@ -106,6 +157,8 @@ public class BossBehaviour : MonoBehaviour, IDamageable
         attackCount = maxAttacks;
         left.SetActive(false);
         right.SetActive(false);
+        leftHand.gameObject.SetActive(true);
+        rightHand.gameObject.SetActive(true);
     }
     void WinGame()
     {

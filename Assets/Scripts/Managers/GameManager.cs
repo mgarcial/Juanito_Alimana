@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
         AudioManager.GetInstance().PlayDeathSound();
         AudioManager.GetInstance().PlayDeathMusic();
         Time.timeScale = 0f;
-        player.Die();
     }
 
     public void Retry()

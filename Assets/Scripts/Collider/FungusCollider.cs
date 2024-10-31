@@ -8,15 +8,18 @@ public class FungusCollider : MonoBehaviour
     public Flowchart flowchart;
     public string blockName;
     public GameObject player;
+
+    [SerializeField] private Rigidbody2D rb;
     private bool hasActivated = false;
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        rb = other.GetComponentInParent<Rigidbody2D>();
         if(other.CompareTag("Player") && !hasActivated) 
         {
-            flowchart.ExecuteBlock(blockName); 
-            player.GetComponent<PlayerController>().enabled = false;
-            player.GetComponent<CharacterJump>().enabled = false;
+            PlayerController playerController = other.GetComponent<PlayerController>();
+            flowchart.ExecuteBlock(blockName);
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
             hasActivated = true;
         }
     }
@@ -24,9 +27,9 @@ public class FungusCollider : MonoBehaviour
     void Update()
     {
         if(hasActivated && !flowchart.HasExecutingBlocks()) 
-        { 
-            player.GetComponent<PlayerController>().enabled = true;
-            player.GetComponent<CharacterJump>().enabled = true;
+        {
+            rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         }
     }
 }

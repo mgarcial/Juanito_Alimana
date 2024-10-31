@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 //This script handles moving the character on the X axis, both on the ground and in the air.
 
@@ -45,6 +46,13 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
     private bool playerFacingRight;
     public bool isDead = false;
 
+    [Header("HealthStats")]
+    private int health;
+    private int maxHealth = 20;
+    [SerializeField] private float invulnerabilityDuration = 2f;
+    public bool isInvulnerable = false;
+    [SerializeField] HealthbarBehaviour healthBar;
+
     [Header("GunThings")]
     private Gun currentGun;
     public Transform weaponHolder;
@@ -63,7 +71,9 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
         }
         // Find the character's Rigidbody and ground detection script
         body = GetComponent<Rigidbody2D>(); // Use Rigidbody for 3D physics
-        ground = GetComponent<CharacterGround>(); // Make sure this is adapted for 3D
+        ground = GetComponent<CharacterGround>(); // Make sure this is adapted for
+        health = maxHealth;
+        healthBar.SetHealth(health, maxHealth);
     }
 
     private void Update()
@@ -204,21 +214,31 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
 
     public void TakeHit(int dmg)
     {
-        if(hitEffects != null)
+        if (!isInvulnerable)
         {
+            health -= dmg;
+            healthBar.SetHealth(health, maxHealth);
+            StartCoroutine(InvulnerabilityTimer());
             AudioManager.GetInstance().PlayHitPlayerSound();
             hitEffects.SetActive(true);
             Invoke("DeactivateParticles", 1f);
+
+            if (health <= 0)
+            {
+                Die();
+            }
         }
+    }
+    private IEnumerator InvulnerabilityTimer()
+    {
+        isInvulnerable = true;
+        yield return new WaitForSeconds(invulnerabilityDuration);
+        isInvulnerable = false;
     }
 
     public void Die()
     {
-       if(isDead)
-        {
-            AudioManager.GetInstance().PlayDeathSound();
-            //Destroy(gameObject);
-        }
+        GameManager.Instance.GameOver();
     }
 
     public Vector3 GetPosition()

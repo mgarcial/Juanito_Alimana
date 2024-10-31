@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class BossScene : MonoBehaviour
     public GameObject PedroNavaja;
     public float zMoveDistance = 5f;
     public float zMoveDuration = 1f;
+    [SerializeField] private CinemachineVirtualCamera bossCamera;
 
     [SerializeField] Collider2D bossCollider;
 
@@ -17,6 +19,7 @@ public class BossScene : MonoBehaviour
     {
         if(collision.CompareTag("Player"))
             {
+            bossCamera.Priority = 20;
             StartCoroutine(Jump());
             PedroNavaja.SetActive(true);
         }

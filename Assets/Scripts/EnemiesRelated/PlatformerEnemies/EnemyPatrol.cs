@@ -101,6 +101,14 @@ public class EnemyPatrol : MonoBehaviour
         Vector3 direction = (currentTarget.position - transform.position).normalized;
         rb.MovePosition(transform.position + direction * patrolSpeed * Time.deltaTime);
         movingRight = direction.x > 0;
+        if (direction.x > 0 && transform.localScale.z > 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, -Mathf.Abs(transform.localScale.z));
+        }
+        else if (direction.x < 0 && transform.localScale.z < 0)
+        {
+            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, Mathf.Abs(transform.localScale.z));
+        }
         if (Vector3.Distance(transform.position, currentTarget.position) < distanceToPoint)
         {
             currentTarget = currentTarget == pointA ? pointB : pointA; 
@@ -153,7 +161,6 @@ public class EnemyPatrol : MonoBehaviour
         {
             aboutToFall = true;
             state = State.BackToStart;
-            //rb.gravityScale = 1000;
         }
     }
     private void CheckGround()
@@ -164,8 +171,12 @@ public class EnemyPatrol : MonoBehaviour
         }
         else
         {
-            noGround= true;
-            enemyCollider.isTrigger = true;
+            noGround = true;
+            if (noGround)
+            {
+                rb.gravityScale = 1000;
+                enemyCollider.isTrigger = true;
+            }
         }
     }
     public bool IsAboutToFall()

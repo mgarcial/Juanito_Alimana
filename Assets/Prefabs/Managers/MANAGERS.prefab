@@ -122,6 +122,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -70121887477982828, guid: c3880dd29b09bc446b4c07a9e3fd53cc,
         type: 3}
+      propertyPath: bossBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 92c00b6f0c6f6764f942022c0ffe4af3, type: 3}
+    - target: {fileID: -70121887477982828, guid: c3880dd29b09bc446b4c07a9e3fd53cc,
+        type: 3}
       propertyPath: backgroundMusicClip
       value: 
       objectReference: {fileID: 8300000, guid: 612caa5fa0660b947bb5e1b4981de815, type: 3}

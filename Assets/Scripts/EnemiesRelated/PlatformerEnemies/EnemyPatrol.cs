@@ -11,7 +11,8 @@ public class EnemyPatrol : MonoBehaviour
     {
         Patrolling,
         ChasePlayer,
-        BackToStart
+        BackToStart, 
+        Knockedback
     }
     [Header("EnemyyStats")]
     public float patrolSpeed = 2f;
@@ -31,6 +32,7 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private State state;
     [SerializeField] private bool playerDetected = false;
     [SerializeField] Collider2D[] enemyCollider;
+    private bool isPatrolling;
     public bool movingRight = true;
     public Vector3 playerPosition;
     [Header("Things to Assign")]
@@ -58,7 +60,7 @@ public class EnemyPatrol : MonoBehaviour
         {
             default:
             case State.Patrolling:
-                Patrol();
+                if(isPatrolling) Patrol();
                 CheckIsAboutToFall();
                 CheckGround();
                 FindPlayer();
@@ -181,6 +183,20 @@ public class EnemyPatrol : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void StopPatrol(float duration)
+    {
+        if (isPatrolling)
+        {
+            StartCoroutine(TemporarilyDisablePatrol(duration));
+        }
+    }
+    private IEnumerator TemporarilyDisablePatrol(float duration)
+    {
+        isPatrolling = false;
+        yield return new WaitForSeconds(duration);
+        isPatrolling = true;
     }
     public bool IsAboutToFall()
     {

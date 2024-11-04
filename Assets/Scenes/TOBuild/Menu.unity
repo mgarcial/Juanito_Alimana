@@ -3648,7 +3648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Configurame eeeeestaaa...
+  m_text: 'Configurame esta. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f28f5dc46efefa47bdd456f5bb107ae, type: 2}
   m_sharedMaterial: {fileID: 748763791088896586, guid: 8f28f5dc46efefa47bdd456f5bb107ae,
@@ -3901,7 +3901,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "La buena pa...disfrute del juego m\xE1s bien"
+  m_text: "La buena pa... Disfrute de las aventuras de Juanito Alima\xF1a, y que
+    no le mamen tanto gallo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f28f5dc46efefa47bdd456f5bb107ae, type: 2}
   m_sharedMaterial: {fileID: 748763791088896586, guid: 8f28f5dc46efefa47bdd456f5bb107ae,

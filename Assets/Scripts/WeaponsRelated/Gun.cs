@@ -11,6 +11,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     [Tooltip("Este es para la semi auto, los otros en 0")][SerializeField] private float timeBetweenShots;
     [SerializeField] private float impactForce = 200f;
     [SerializeField] private float recoilForce = 5f;
+    [SerializeField] private float knockbackDuration = 0.2f;
     [SerializeField] private float reloadTime;
     [SerializeField] private int magazineSize;
     [SerializeField] private int weaponDamage;
@@ -122,6 +123,9 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             if (damageable != null)
             { 
                 damageable.TakeHit(weaponDamage);
+                EnemyPatrol enemy = hit.transform.GetComponentInChildren<EnemyPatrol>();
+                hit.rigidbody.velocity = Vector3.zero;
+                enemy.StopPatrol(knockbackDuration);
                 hit.rigidbody.AddForce(-hit.normal * impactForce, ForceMode2D.Impulse);
                 if (noShieldEnemy != null)
                 {

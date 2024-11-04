@@ -123,6 +123,10 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             { 
                 damageable.TakeHit(weaponDamage);
                 hit.rigidbody.AddForce(-hit.normal * impactForce, ForceMode2D.Impulse);
+                if (noShieldEnemy != null)
+                {
+                    noShieldEnemy.TakeHit(weaponDamage);
+                }
             }
         }
         

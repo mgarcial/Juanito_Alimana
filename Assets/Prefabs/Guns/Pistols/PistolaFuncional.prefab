@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7589907133089021829}
   - component: {fileID: 2157805851470811537}
   - component: {fileID: 3498041739739933142}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PistolaFuncional
   m_TagString: Untagged
   m_Icon: {fileID: 0}

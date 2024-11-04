@@ -72,6 +72,9 @@ public class PlayerController : MonoBehaviour, IPickableGun, IDamageable
         // Find the character's Rigidbody and ground detection script
         body = GetComponent<Rigidbody2D>(); // Use Rigidbody for 3D physics
         ground = GetComponent<CharacterGround>(); // Make sure this is adapted for
+    }
+    private void Start()
+    {
         health = maxHealth;
         healthBar.SetHealth(health, maxHealth);
     }

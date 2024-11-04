@@ -30,7 +30,7 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private Transform currentTarget;
     [SerializeField] private State state;
     [SerializeField] private bool playerDetected = false;
-    [SerializeField] Collider2D enemyCollider;
+    [SerializeField] Collider2D[] enemyCollider;
     public bool movingRight = true;
     public Vector3 playerPosition;
     [Header("Things to Assign")]
@@ -165,7 +165,7 @@ public class EnemyPatrol : MonoBehaviour
     }
     private void CheckGround()
     {
-        if (Physics2D.Raycast(groundCheckPoint.position, Vector3.down, checkDistance, groundLayer))
+        if (Physics2D.Raycast(groundCheckPoint.position, Vector3.down, 12000f, groundLayer))
         {
             noGround = false;          
         }
@@ -175,7 +175,10 @@ public class EnemyPatrol : MonoBehaviour
             if (noGround)
             {
                 rb.gravityScale = 1000;
-                enemyCollider.isTrigger = true;
+                for (int i = 0; i < enemyCollider.Length; i++)
+                {
+                    enemyCollider[i].isTrigger = true;
+                }
             }
         }
     }

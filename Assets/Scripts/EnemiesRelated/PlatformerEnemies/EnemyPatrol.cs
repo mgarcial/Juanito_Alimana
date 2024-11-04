@@ -32,7 +32,7 @@ public class EnemyPatrol : MonoBehaviour
     [SerializeField] private State state;
     [SerializeField] private bool playerDetected = false;
     [SerializeField] Collider2D[] enemyCollider;
-    private bool isPatrolling;
+    private bool isPatrolling = true;
     public bool movingRight = true;
     public Vector3 playerPosition;
     [Header("Things to Assign")]
@@ -60,7 +60,10 @@ public class EnemyPatrol : MonoBehaviour
         {
             default:
             case State.Patrolling:
-                if(isPatrolling) Patrol();
+                if (isPatrolling)
+                {
+                    Patrol();
+                }
                 CheckIsAboutToFall();
                 CheckGround();
                 FindPlayer();

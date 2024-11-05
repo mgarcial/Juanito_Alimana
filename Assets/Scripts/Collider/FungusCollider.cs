@@ -10,17 +10,17 @@ public class FungusCollider : MonoBehaviour
     public GameObject player;
 
     [SerializeField] private Rigidbody2D rb;
-    private bool hasActivated = false;
+    [SerializeField] private bool hasActivated;
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        hasActivated = true;
         rb = other.GetComponentInParent<Rigidbody2D>();
-        if(other.CompareTag("Player") && !hasActivated) 
+        if(other.CompareTag("Player") && hasActivated) 
         {
             PlayerController playerController = other.GetComponent<PlayerController>();
             flowchart.ExecuteBlock(blockName);
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            hasActivated = true;
         }
     }
 
@@ -30,6 +30,7 @@ public class FungusCollider : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+            hasActivated = false;
         }
     }
 }

@@ -102,10 +102,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 35
-  timeBetweenShooting: 1.1
+  timeBetweenShooting: 1
   timeBetweenShots: 0
-  impactForce: 35
+  impactForce: 15
   recoilForce: 8
+  knockbackDuration: 0.4
   reloadTime: 1.2
   magazineSize: 12
   weaponDamage: 6

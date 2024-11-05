@@ -135,8 +135,9 @@ MonoBehaviour:
   range: 25
   timeBetweenShooting: 0.8
   timeBetweenShots: 0
-  impactForce: 2000
+  impactForce: 4
   recoilForce: 5
+  knockbackDuration: 0.2
   reloadTime: 1
   magazineSize: 8
   weaponDamage: 4

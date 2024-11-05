@@ -1413,6 +1413,11 @@ PrefabInstance:
       propertyPath: m_SelectedVertices.Array.data[11]
       value: 92
       objectReference: {fileID: 0}
+    - target: {fileID: 7421625987022272682, guid: d9e0ffb1c9f37624481e62c47020ba35,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8378551685772077619, guid: d9e0ffb1c9f37624481e62c47020ba35,
         type: 3}
       propertyPath: m_LocalPosition.x

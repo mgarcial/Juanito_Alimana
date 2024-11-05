@@ -16,15 +16,18 @@ public class HealthbarBehaviour : MonoBehaviour
     }
     public void SetHealth(float health, float maxHealth)
     {
-        slider.gameObject.SetActive(health < maxHealth);
         slider.value = health;
         slider.maxValue = maxHealth;
+        slider.gameObject.SetActive(true);
         slider.fillRect.GetComponentInChildren<Image>().color = Color.Lerp(low, high, slider.normalizedValue);
     }
 
     private void Update()
     {
         healthBar.rotation = Quaternion.identity;
+        Vector3 currentScale = transform.localScale;
+        currentScale.x = Mathf.Abs(currentScale.x);
+        transform.localScale = currentScale;
     }
 
 }

@@ -24,25 +24,6 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
         enemy = GetComponent<EnemyPatrol>();
     }
 
-    private void Update()
-    {
-        if (enemyGun != null && enemyGun.canShoot)
-        {
-            DetectPlayerAndShoot();
-        }
-    }
-
-    private void DetectPlayerAndShoot()
-    {
-        float distanceToPlayer = Vector3.Distance(transform.position, PlayerController.Instance.GetPosition());
-        if (distanceToPlayer <= shootingRange)
-        {
-            enemyGun.bulletsShot = enemyGun.bulletPerTap;
-            enemyGun.Shoot();
-            enemyGun.canShoot = false;
-        }
-    }
-
     public void PickUpGun(Gun gun)
     {
         if (isGunEquipped)

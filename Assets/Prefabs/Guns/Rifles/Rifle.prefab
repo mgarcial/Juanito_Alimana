@@ -132,10 +132,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 30
-  timeBetweenShooting: 0.4
+  timeBetweenShooting: 1.2
   timeBetweenShots: 0
-  impactForce: 4000
+  impactForce: 25
   recoilForce: 5
+  knockbackDuration: 0.8
   reloadTime: 0.8
   magazineSize: 30
   weaponDamage: 0

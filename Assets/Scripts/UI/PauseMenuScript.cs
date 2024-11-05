@@ -1,3 +1,4 @@
+using Fungus;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
-    public GameObject pausePanel; 
+    public GameObject pausePanel;
 
     void Update()
     {
@@ -31,6 +32,7 @@ public class PauseMenuScript : MonoBehaviour
     public void Home()
     {
         AudioManager.GetInstance().PlaySoundButton();
-        SceneManager.LoadScene("Menu"); 
+        SceneManager.LoadScene("Menu");
+        Time.timeScale = 1;
     }
 }

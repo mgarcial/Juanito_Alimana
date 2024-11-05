@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
         AudioManager.GetInstance().PlayDeathSound();
         AudioManager.GetInstance().PlayDeathMusic();
         Time.timeScale = 0f;
-        player.Die();
     }
 
     public void Retry()
@@ -55,11 +54,11 @@ public class GameManager : MonoBehaviour
     {
         CleanLevel();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        AudioManager.GetInstance().PlayConfirmButton();
         Destroy(gameObject);
     }
     public void WinLevel()
     {
-        AudioManager.GetInstance().PlayConfirmButton();
         Time.timeScale = 0f;
         UnlockNextLevel();
         winPanel.SetActive(true);

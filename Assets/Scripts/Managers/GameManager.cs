@@ -1,18 +1,93 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static GameManager Instance { get; private set; }
+    [SerializeField] private  PlayerController player;
+    public GameObject gameOverPanel;
+    public GameObject winPanel;
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); 
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Start()
     {
-        
+        player = FindAnyObjectByType<PlayerController>();
+        AudioManager.GetInstance().PlayBackgroundMusic();
     }
+    public void GameOver()
+    {
+        gameOverPanel.SetActive(true);
+        AudioManager.GetInstance().PlayDeathSound();
+        AudioManager.GetInstance().PlayDeathMusic();
+        Time.timeScale = 0f;
+        player.Die();
+    }
+
+    public void Retry()
+    {
+        AudioManager.GetInstance().PlaySoundButton();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameOverPanel.SetActive(false);
+        CleanLevel();
+    }
+
+    public void CleanLevel()
+    {
+        //EnemyManager.instance.ClearEnemiesList();
+        Time.timeScale = 1f;
+    }
+
+    public void NextLevel()
+    {
+        CleanLevel();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        Destroy(gameObject);
+    }
+    public void WinLevel()
+    {
+        AudioManager.GetInstance().PlayConfirmButton();
+        Time.timeScale = 0f;
+        UnlockNextLevel();
+        winPanel.SetActive(true);
+
+    }
+    public void Home()
+    {
+        AudioManager.GetInstance().PlaySoundButton();
+        SceneManager.LoadScene("Menu");
+    }
+    private void UnlockNextLevel()
+    {
+        int currentLvl = Preferences.GetCurrentLvl();
+        Preferences.SetMaxLvl(currentLvl + 1);
+    }
+    /*
+    public void RestartGame()
+    {
+        if(player.isDead)
+        {
+            StartCoroutine(ReloadScene());
+        }
+    }
+
+    private IEnumerator ReloadScene()
+    {
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+    */
 }

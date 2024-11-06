@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
+using TMPro;
 
 public abstract class Gun : MonoBehaviour, IPooledObject
 {
@@ -32,11 +33,16 @@ public abstract class Gun : MonoBehaviour, IPooledObject
 
     [SerializeField] GameObject bulletTrailPrefab;
 
+    public TextMeshProUGUI ammoDisplay;
+    public Image reloadIcon; 
+
     private void Awake()
     {
         bulletsLeft = magazineSize;
         canShoot = true;
+        UpdateAmmoDisplay();
     }
+
     public float Range
     {
         get { return range; }
@@ -71,15 +77,17 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             AudioManager.GetInstance().PlayShootSound(shootSound);
             bulletsLeft--;
             bulletsShot--;
+            UpdateAmmoDisplay();
             Invoke("ResetShot", timeBetweenShooting);
             if(bulletsShot > 0 && bulletsLeft > 0) 
-            Invoke("Shoot", timeBetweenShots); 
+                Invoke("Shoot", timeBetweenShots); 
         }
         else
         {
             Reload();
         }
     }
+
     public void ResetShot()
     {
         canShoot = true;
@@ -88,6 +96,7 @@ public abstract class Gun : MonoBehaviour, IPooledObject
     public void Reload()
     {
         reloading = true;
+         UpdateAmmoDisplay();
         AudioManager.GetInstance().PlayReloadSound(reloadSound);
         Invoke("ReloadFinished", reloadTime);
     }
@@ -96,7 +105,9 @@ public abstract class Gun : MonoBehaviour, IPooledObject
         reloading = false;
         bulletsLeft = magazineSize;
         canShoot = true;
+        UpdateAmmoDisplay();
     }
+
     private void RaycastShoot()
     {
 
@@ -134,5 +145,23 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             }
         }
         
-    }   
+    }
+
+    private void UpdateAmmoDisplay()
+    {
+        if (ammoDisplay != null && reloadIcon != null)
+        {
+            if(reloading)
+            {
+                ammoDisplay.gameObject.SetActive(false); 
+                reloadIcon.gameObject.SetActive(true);
+            }
+            else
+            {
+                ammoDisplay.gameObject.SetActive(true); 
+                reloadIcon.gameObject.SetActive(false);
+                ammoDisplay.text = $"{bulletsLeft} <sprite name=\"bulletIcon\">";
+            }
+        }
+    }
 }

@@ -14,10 +14,10 @@ public class FungusCollider : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        hasActivated = true;
         rb = other.GetComponentInParent<Rigidbody2D>();
-        if(other.CompareTag("Player") && hasActivated) 
+        if(other.CompareTag("Player") && !hasActivated) 
         {
+            hasActivated = true;
             PlayerController playerController = other.GetComponent<PlayerController>();
             flowchart.ExecuteBlock(blockName);
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -30,7 +30,6 @@ public class FungusCollider : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;
-            hasActivated = false;
         }
     }
 }

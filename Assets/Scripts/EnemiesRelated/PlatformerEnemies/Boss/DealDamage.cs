@@ -14,4 +14,15 @@ public class DealDamage : MonoBehaviour
             player.TakeHit(5);
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        IDamageable player = collision.gameObject.GetComponent<IDamageable>();
+        PlayerController playerInvul = collision.gameObject.GetComponent<PlayerController>();
+        if (player != null && !playerInvul.isInvulnerable)
+        {
+            Debug.Log("hi");
+            player.TakeHit(5);
+        }
+    }
 }

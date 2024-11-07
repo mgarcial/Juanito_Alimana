@@ -1,3 +1,4 @@
+using MoonSharp.Interpreter.Interop.StandardDescriptors.HardwiredDescriptors;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,6 +8,9 @@ public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource effectsSource; //Este es el source para los soniditos de OneShot
     [SerializeField] private AudioSource musicSource; //Este pa la bgm
+    [SerializeField] private AudioSource bossSource;
+    [SerializeField] private float defaultVolume=0.6f;
+    [SerializeField] private float transitionTime = 2f;
     [Header("Audios")] //Aqui se agregan los audios que se meten
     [SerializeField] private AudioClip hitEnemy;
     [SerializeField] private AudioClip death;
@@ -24,6 +28,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip confirmButton;
 
     [SerializeField] private AudioClip backgroundMusicClip;
+
 
     [SerializeField] private static AudioManager instance;
     public static AudioManager GetInstance() => instance;
@@ -52,10 +57,42 @@ public class AudioManager : MonoBehaviour
         musicSource.clip = lost;
         musicSource.Play();
     }
+
     public void PlayBossMusic()
     {
-        musicSource.clip = bossBGM;
-        musicSource.Play();
+        AudioSource playingNow = musicSource;
+        AudioSource target = bossSource;
+        if (playingNow.isPlaying == false) 
+        {
+            playingNow = bossSource;
+            target = musicSource;
+        }
+
+        StartCoroutine(FadeClip(playingNow, target));
+    }
+    public IEnumerator FadeClip(AudioSource playingNow, AudioSource target)
+    {
+        float percentage = 0;
+        while(playingNow.volume > 0)
+        {
+            playingNow.volume = Mathf.Lerp(defaultVolume,0,percentage);
+            percentage += Time.deltaTime / transitionTime;
+            yield return null;
+        }
+
+        playingNow.Pause(); 
+        if (target.isPlaying == false)
+            target.Play();
+        target.UnPause();
+        percentage = 0;
+
+        while (target.volume < defaultVolume)
+        {
+            target.volume = Mathf.Lerp(0,defaultVolume, percentage);
+            percentage += Time.deltaTime / transitionTime;
+            yield return null;
+        }
+
     }
     public void PlayShootSound(AudioClip clip)
     {

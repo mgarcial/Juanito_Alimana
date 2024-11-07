@@ -21,8 +21,7 @@ public class BossScene : MonoBehaviour
             {
             bossCamera.Priority = 20;
             StartCoroutine(Jump());
-            AudioManager.GetInstance().PlayBossMusic();
-            PedroNavaja.SetActive(true);
+            AudioManager.GetInstance().PlayBossMusic();            
         }
     }
     public IEnumerator Jump()
@@ -48,5 +47,6 @@ public class BossScene : MonoBehaviour
             yield return null;
         }
         bossCollider.isTrigger = true;
+        PedroNavaja.SetActive(true);
     }
 }

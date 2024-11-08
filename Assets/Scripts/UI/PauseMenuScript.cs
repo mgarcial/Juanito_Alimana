@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 public class PauseMenuScript : MonoBehaviour
 {
     public GameObject pausePanel;
-    //[SerializeField] RectTransform pausePanelRect; 
-    //[SerializeField] float topPosY, midPosY; 
-    //[SerializeField] float tweenDuration; 
-    //[SerializeField] CanvasGroup canvasGroup; //dark panel 
+    private RectTransform pauseRectTransform;
 
+    private void Start()
+    {
+        pauseRectTransform = pausePanel.GetComponent<RectTransform>();
+        pauseRectTransform.anchoredPosition = new Vector2(0, Screen.height);
+
+    }
     void Update()
     {
         
@@ -23,16 +26,16 @@ public class PauseMenuScript : MonoBehaviour
     {
         AudioManager.GetInstance().PlaySoundButton();
         pausePanel.SetActive(true);
+        pauseRectTransform.DOAnchorPos(Vector2.zero, 1f).SetEase(Ease.OutExpo).SetUpdate(true);
         Time.timeScale = 0;
-        // PauseMenuIntro(); 
         Fungus.Flowchart.BroadcastFungusMessage("PauseDialogues");
     }
 
     public void Resume()
     {
-        // PauseMenuOutro(); 
         AudioManager.GetInstance().PlayConfirmButton();
-        pausePanel.SetActive(false);
+        pauseRectTransform.DOAnchorPos(new Vector2(0, Screen.height), 1f).SetEase(Ease.InExpo)
+            .OnComplete(() => pausePanel.SetActive(false));
         Time.timeScale = 1;
         Fungus.Flowchart.BroadcastFungusMessage("ResumeDialogues"); 
     }
@@ -43,18 +46,4 @@ public class PauseMenuScript : MonoBehaviour
         SceneManager.LoadScene("Menu");
         Time.timeScale = 1;
     }
-
-/*
-    void PauseMenuIntro()
-    {
-        canvasGroup.DOFade(1, tweenDuration).SetUpdate(true); 
-        pausePanelRect.DOAnchorPosY(midPosY, tweenDuration).SetUpdate(true); 
-
-    }
-
-    void PauseMenuOutro()
-    {
-        canvasGroup.DOFade(0, tweenDuration).SetUpdate(true); 
-         pausePanelRect.DOAnchorPosY(topPosY, tweenDuration).SetUpdate(true); 
-    } */
 }

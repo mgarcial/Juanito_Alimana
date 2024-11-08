@@ -41,8 +41,8 @@ public class GameManager : MonoBehaviour
         gameOverPanel.SetActive(true);
         deathCanvasGroup.alpha = 0.4f;
         Sequence deathSequence = DOTween.Sequence();
-        deathSequence.Append(gameOverPanel.transform.DOScale(1.1f, 1.5f).From(1.3f).SetEase(Ease.InOutQuad));
-        deathSequence.Join(deathCanvasGroup.DOFade(1, 1.5f)).SetUpdate(true); // Aumentar la opacidad
+        deathSequence.Append(gameOverPanel.transform.DOScale(1.1f, 3f).From(1.3f).SetEase(Ease.InOutQuad));
+        deathSequence.Join(deathCanvasGroup.DOFade(1, 3f)).SetUpdate(true); // Aumentar la opacidad
         deathSequence.Play();
         AudioManager.GetInstance().PlayDeathSound();
         AudioManager.GetInstance().PlayDeathMusic();

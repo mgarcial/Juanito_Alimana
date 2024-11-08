@@ -337,11 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 4789703514785334281}
-  pausePanelRect: {fileID: 7982913984257812185}
-  topPosY: 750
-  midPosY: 0
-  tweenDuration: 0.4
-  canvasGroup: {fileID: 622412728122635749}
+  blackPanel: {fileID: 5738621221987596434}
 --- !u!1 &5738621221987596434
 GameObject:
   m_ObjectHideFlags: 0

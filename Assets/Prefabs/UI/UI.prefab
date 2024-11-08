@@ -57,7 +57,7 @@ Canvas:
   m_OverridePixelPerfect: 1
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 2
@@ -925,6 +925,7 @@ GameObject:
   - component: {fileID: 845212122234569067}
   - component: {fileID: 4086412002437228379}
   - component: {fileID: 2202613812868474167}
+  - component: {fileID: 1251374214367009962}
   m_Layer: 5
   m_Name: WinPanel
   m_TagString: Untagged
@@ -991,6 +992,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &1251374214367009962
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2881692997866446080}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4015786889258888202
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1083,7 @@ GameObject:
   - component: {fileID: 2879260519419911795}
   - component: {fileID: 4376207689398263770}
   - component: {fileID: 1986264458198549255}
+  - component: {fileID: 9093153111209974134}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -1137,6 +1151,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &9093153111209974134
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4228775582293492081}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4585805073776972627
 GameObject:
   m_ObjectHideFlags: 0

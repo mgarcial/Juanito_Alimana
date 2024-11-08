@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening; 
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     [SerializeField] private  PlayerController player;
     public GameObject gameOverPanel;
+    private CanvasGroup deathCanvasGroup;
     public GameObject winPanel;
     private void Awake()
     {
@@ -27,10 +29,21 @@ public class GameManager : MonoBehaviour
     {
         player = FindAnyObjectByType<PlayerController>();
         AudioManager.GetInstance().PlayBackgroundMusic();
+        deathCanvasGroup = gameOverPanel.GetComponent<CanvasGroup>();
+        if (deathCanvasGroup == null)
+        {
+            deathCanvasGroup = gameOverPanel.AddComponent<CanvasGroup>();
+        }
+        deathCanvasGroup.alpha = 0;
     }
     public void GameOver()
     {
         gameOverPanel.SetActive(true);
+        deathCanvasGroup.alpha = 0.4f;
+        Sequence deathSequence = DOTween.Sequence();
+        deathSequence.Append(gameOverPanel.transform.DOScale(1.1f, 1.5f).From(1.3f).SetEase(Ease.InOutQuad));
+        deathSequence.Join(deathCanvasGroup.DOFade(1, 1.5f)).SetUpdate(true); // Aumentar la opacidad
+        deathSequence.Play();
         AudioManager.GetInstance().PlayDeathSound();
         AudioManager.GetInstance().PlayDeathMusic();
         Time.timeScale = 0f;
@@ -59,9 +72,18 @@ public class GameManager : MonoBehaviour
     }
     public void WinLevel()
     {
+        winPanel.SetActive(true);
+        winPanel.transform.localScale = Vector3.zero;
+        winPanel.transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack).SetUpdate(true);
+        CanvasGroup canvasGroup = winPanel.GetComponent<CanvasGroup>();
+        if (canvasGroup != null)
+        {
+            canvasGroup.DOFade(1, 0.5f);
+        }
         Time.timeScale = 0f;
         UnlockNextLevel();
-        winPanel.SetActive(true);
+        
+
 
     }
     public void Home()

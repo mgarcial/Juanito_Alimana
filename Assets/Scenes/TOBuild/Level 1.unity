@@ -42912,6 +42912,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 451169113602558156, guid: 833c33b43b26541489c3f8f4ca250e14,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 451169113602558156, guid: 833c33b43b26541489c3f8f4ca250e14,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 789177414839628008, guid: 833c33b43b26541489c3f8f4ca250e14,
         type: 3}
       propertyPath: m_text

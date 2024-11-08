@@ -18737,7 +18737,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585283943}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -43114,7 +43114,7 @@ PrefabInstance:
     - target: {fileID: 5864274581318362048, guid: 833c33b43b26541489c3f8f4ca250e14,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5864274581318362048, guid: 833c33b43b26541489c3f8f4ca250e14,
         type: 3}

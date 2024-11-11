@@ -109,7 +109,7 @@ MonoBehaviour:
   knockbackDuration: 0.1
   reloadTime: 0.8
   magazineSize: 25
-  weaponDamage: 1
+  weaponDamage: 2
   bulletPerTap: 3
   bulletsShot: 0
   shooting: 0

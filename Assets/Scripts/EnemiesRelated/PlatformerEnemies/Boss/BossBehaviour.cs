@@ -168,6 +168,7 @@ public class BossBehaviour : MonoBehaviour, IDamageable
     public void TakeHit(int dmg)
     {
         hitPoints -= dmg;
+        AudioManager.GetInstance().PlayHitEnemySound();
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
         {

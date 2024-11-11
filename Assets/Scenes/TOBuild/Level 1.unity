@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19041,7 +19041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 716430312}
+  selectedFlowchart: {fileID: 2031696658}
 --- !u!4 &603843161
 Transform:
   m_ObjectHideFlags: 1
@@ -24348,7 +24348,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks: []
+  selectedBlocks:
+  - {fileID: 716430314}
   selectedCommands: []
   variables: []
   description: 
@@ -67840,7 +67841,7 @@ MonoBehaviour:
   scrollPos: {x: 134.15088, y: 28.36485}
   variablesScrollPos: {x: 0, y: 0}
   variablesExpanded: 1
-  blockViewHeight: 420
+  blockViewHeight: 545
   zoom: 0.8200002
   scrollViewRect:
     serializedVersion: 2
@@ -67850,7 +67851,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 2031696669}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 2031696675}
   variables: []
   description: 
   stepPause: 0
@@ -67903,7 +67905,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 67
+    x: 74.31708
     y: 67.872345
     width: 81.707306
     height: 40
@@ -68066,7 +68068,7 @@ MonoBehaviour:
   storyText: Papi vea...
   description: 
   character: {fileID: 1146586915}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 6a467c55ea08c7a4dbe1b24602d085fe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -70385,6 +70387,42 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 784163331}
     m_Modifications:
+    - target: {fileID: 1600310867950222622, guid: ebe3925eb4be12347940084a18dcd266,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3456080356974061845, guid: ebe3925eb4be12347940084a18dcd266,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522135344089531801, guid: ebe3925eb4be12347940084a18dcd266,
+        type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522135344089531801, guid: ebe3925eb4be12347940084a18dcd266,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e8ab00ef0d9684dcb9deb52811d91218,
+        type: 3}
+    - target: {fileID: 5522135344089531801, guid: ebe3925eb4be12347940084a18dcd266,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.9528302
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522135344089531801, guid: ebe3925eb4be12347940084a18dcd266,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5522135344089531801, guid: ebe3925eb4be12347940084a18dcd266,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.4000089
+      objectReference: {fileID: 0}
     - target: {fileID: 7462072648534887922, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
       propertyPath: m_Pivot.x
@@ -70438,7 +70476,7 @@ PrefabInstance:
     - target: {fileID: 7462072648534887922, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7462072648534887922, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
@@ -70448,27 +70486,27 @@ PrefabInstance:
     - target: {fileID: 7462072648534887922, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7462072648534887922, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7462072648534887922, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7462072648534887922, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -57.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7462072648534887922, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.9852805
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7462072648534887922, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
@@ -70485,10 +70523,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7791181884036356250, guid: ebe3925eb4be12347940084a18dcd266,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7992105851494569413, guid: ebe3925eb4be12347940084a18dcd266,
         type: 3}
       propertyPath: m_Name
       value: SayDialog
+      objectReference: {fileID: 0}
+    - target: {fileID: 7992105851494569413, guid: ebe3925eb4be12347940084a18dcd266,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

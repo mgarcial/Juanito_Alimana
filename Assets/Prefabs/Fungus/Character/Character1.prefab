@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameText: "Juanito Alima\xF1a"
-  nameColor: {r: 1, g: 0.5400758, b: 0, a: 1}
+  nameColor: {r: 0.9056604, g: 0.48954615, b: 0, a: 1}
   soundEffect: {fileID: 0}
-  portraits: []
+  portraits:
+  - {fileID: 21300000, guid: 4d5c827f0b9e83945865d4e7aed8eed4, type: 3}
   portraitsFace: 0
   setSayDialog: {fileID: 0}
   description: 

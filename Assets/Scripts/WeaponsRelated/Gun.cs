@@ -140,10 +140,10 @@ public abstract class Gun : MonoBehaviour, IPooledObject
                     hit.rigidbody.velocity = Vector3.zero;
                     enemy.StopPatrol(knockbackDuration);
                     hit.rigidbody.AddForce(-hit.normal * impactForce, ForceMode2D.Impulse);
-                }
-                else if (noShieldEnemy != null)
+                 if (noShieldEnemy != null)
                 {
                     noShieldEnemy.TakeHit(weaponDamage);
+                }
                 }
             }
         }

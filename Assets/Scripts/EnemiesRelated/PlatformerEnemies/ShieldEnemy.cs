@@ -28,6 +28,7 @@ public class NoShieldEnemy : Enemy
     new public void TakeHit(int dmg)
     {
         hitPoints -= dmg;
+        Debug.Log($"took {dmg}");
         healthBar.SetHealth(hitPoints, maxHitPoints);
         if (hitPoints <= 0)
         {

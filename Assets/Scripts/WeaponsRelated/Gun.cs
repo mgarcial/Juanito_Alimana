@@ -135,10 +135,13 @@ public abstract class Gun : MonoBehaviour, IPooledObject
             { 
                 damageable.TakeHit(weaponDamage);
                 EnemyPatrol enemy = hit.transform.GetComponentInChildren<EnemyPatrol>();
-                hit.rigidbody.velocity = Vector3.zero;
-                enemy.StopPatrol(knockbackDuration);
-                hit.rigidbody.AddForce(-hit.normal * impactForce, ForceMode2D.Impulse);
-                if (noShieldEnemy != null)
+                if (enemy != null)
+                {
+                    hit.rigidbody.velocity = Vector3.zero;
+                    enemy.StopPatrol(knockbackDuration);
+                    hit.rigidbody.AddForce(-hit.normal * impactForce, ForceMode2D.Impulse);
+                }
+                else if (noShieldEnemy != null)
                 {
                     noShieldEnemy.TakeHit(weaponDamage);
                 }

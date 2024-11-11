@@ -15,7 +15,7 @@ public class BossScene : MonoBehaviour
 
     [SerializeField] Collider2D bossCollider;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.CompareTag("Player"))
             {
@@ -23,7 +23,16 @@ public class BossScene : MonoBehaviour
             StartCoroutine(Jump());
             AudioManager.GetInstance().PlayBossMusic();            
         }
+    } */
+
+    public void ActivateBoss()
+    {
+    bossCamera.Priority = 20;
+    StartCoroutine(Jump());
+    AudioManager.GetInstance().PlayBossMusic();
     }
+
+
     public IEnumerator Jump()
     {
         Debug.Log("memato");

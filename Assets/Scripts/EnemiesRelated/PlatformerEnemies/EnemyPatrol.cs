@@ -75,6 +75,7 @@ public class EnemyPatrol : MonoBehaviour
                 break;
             case State.BackToStart:
                 BackToStart();
+                FindPlayer();
                 CheckGround();
                 break;
         }

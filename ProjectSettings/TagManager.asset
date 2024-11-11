@@ -22,8 +22,8 @@ TagManager:
   - Bullet
   - FungusColl
   - Guns
-  - 
-  - 
+  - PlayerBulletCollider
+  - Shield
   - 
   - 
   - 

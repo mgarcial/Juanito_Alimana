@@ -7,7 +7,8 @@ using DG.Tweening;
 
 public class LevelSelector : MonoBehaviour
 {
-    public GameObject fadePanel;  
+
+    public GameObject fadePanel;
     private CanvasGroup fadeCanvasGroup;
     private Button[] levelButtons;
     private int highestLevel;
@@ -24,10 +25,10 @@ public class LevelSelector : MonoBehaviour
                 levelButtons[i].interactable = false;
             }
         }
-
         fadeCanvasGroup = fadePanel.GetComponent<CanvasGroup>();
         fadeCanvasGroup.alpha = 0;
         fadePanel.SetActive(false);
+
     }
     public void LoadLevel(int levelNum)
     {
@@ -41,14 +42,13 @@ public class LevelSelector : MonoBehaviour
     }
     private IEnumerator LoadLevelAfterDelay(int levelNum)
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
+
         fadePanel.SetActive(true);
         fadeCanvasGroup.DOFade(1f, 1f).OnComplete(() =>
         {
             SceneManager.LoadScene("Level " + levelNum);
-
         });
-        
     }
     // Update is called once per frame
     void Update()

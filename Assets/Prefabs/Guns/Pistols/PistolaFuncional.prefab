@@ -140,7 +140,7 @@ MonoBehaviour:
   knockbackDuration: 0.2
   reloadTime: 1
   magazineSize: 8
-  weaponDamage: 4
+  weaponDamage: 8
   bulletPerTap: 1
   bulletsShot: 0
   shooting: 0
@@ -154,6 +154,8 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: a4db2bf6916f283428e474be80feeb39, type: 3}
   bulletTrailPrefab: {fileID: 1801005539186797718, guid: 897e6b7a31cda794b91623feb1abe858,
     type: 3}
+  ammoDisplay: {fileID: 0}
+  reloadIcon: {fileID: 0}
 --- !u!61 &3498041739739933142
 BoxCollider2D:
   m_ObjectHideFlags: 0

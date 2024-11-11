@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IPickableGun, IDamageable
+public class Enemy : MonoBehaviour, IDamageable
 {
 
     [Header("Enemy stats")]
@@ -22,25 +22,6 @@ public class Enemy : MonoBehaviour, IPickableGun, IDamageable
     private void Start()
     {
         enemy = GetComponent<EnemyPatrol>();
-    }
-
-    public void PickUpGun(Gun gun)
-    {
-        if (isGunEquipped)
-        {
-            Destroy(enemyGun.gameObject);
-            Debug.Log($"Destroying {enemyGun}");
-            isGunEquipped=false;
-        }
-
-        if (!isGunEquipped) 
-        {
-            enemyGun = Instantiate(gun, weaponHolder.position, weaponHolder.rotation, weaponHolder);
-            enemyGun.SetGunHolder(this);
-            isGunEquipped = true; 
-        }
-       
-        Debug.Log("Picked up gun: " + enemyGun);
     }
     public bool IsWeaponEquipped()
     {

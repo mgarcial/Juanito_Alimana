@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19040,7 +19040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61dddfdc5e0e44ca298d8f46f7f5a915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedFlowchart: {fileID: 2031696658}
+  selectedFlowchart: {fileID: 716430312}
 --- !u!4 &603843161
 Transform:
   m_ObjectHideFlags: 1
@@ -24236,7 +24236,8 @@ MonoBehaviour:
     height: 859
   selectedBlocks:
   - {fileID: 716430314}
-  selectedCommands: []
+  selectedCommands:
+  - {fileID: 716430313}
   variables: []
   description: 
   stepPause: 0
@@ -24324,7 +24325,7 @@ MonoBehaviour:
   storyText: Papi si de casualidad ve que le cuesta saltar de un techo a otro...
   description: 
   character: {fileID: 1146586915}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 6a467c55ea08c7a4dbe1b24602d085fe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -24420,7 +24421,7 @@ MonoBehaviour:
   storyText: "Salte mientras dispara hacia abajo, as\xED llega un poco m\xE1s lejos"
   description: 
   character: {fileID: 1146586915}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 6a467c55ea08c7a4dbe1b24602d085fe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -67911,7 +67912,7 @@ MonoBehaviour:
   selectedBlocks:
   - {fileID: 2031696669}
   selectedCommands:
-  - {fileID: 2031696675}
+  - {fileID: 2031696671}
   variables: []
   description: 
   stepPause: 0
@@ -68017,7 +68018,7 @@ MonoBehaviour:
   storyText: "Empezar\xE9 con la patrulla de hoy entonces"
   description: 
   character: {fileID: 2028079356}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 4d5c827f0b9e83945865d4e7aed8eed4, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -68044,7 +68045,7 @@ MonoBehaviour:
   storyText: De una parce
   description: 
   character: {fileID: 2028079356}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 4d5c827f0b9e83945865d4e7aed8eed4, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -68072,7 +68073,7 @@ MonoBehaviour:
     mirando
   description: 
   character: {fileID: 1146586915}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 6a467c55ea08c7a4dbe1b24602d085fe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1
@@ -68100,7 +68101,7 @@ MonoBehaviour:
     guardadita
   description: 
   character: {fileID: 1146586915}
-  portrait: {fileID: 0}
+  portrait: {fileID: 21300000, guid: 6a467c55ea08c7a4dbe1b24602d085fe, type: 3}
   voiceOverClip: {fileID: 0}
   showAlways: 1
   showCount: 1

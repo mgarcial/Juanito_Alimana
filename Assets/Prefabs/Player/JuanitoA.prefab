@@ -488,7 +488,7 @@ MonoBehaviour:
   variableJumpHeight: 1
   jumpCutOff: 2
   speedLimit: 1
-  coyoteTime: 0.3
+  coyoteTime: 0.18
   jumpBuffer: 0
   jumpSpeed: 0
   gravMultiplier: 0

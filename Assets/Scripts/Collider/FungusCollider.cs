@@ -20,13 +20,17 @@ public class FungusCollider : MonoBehaviour
             hasActivated = true;
             PlayerController playerController = other.GetComponent<PlayerController>();
             flowchart.ExecuteBlock(blockName);
+        }
+        while(flowchart.HasExecutingBlocks())
+        {
             rb.constraints = RigidbodyConstraints2D.FreezeAll;
         }
+
     }
 
     void Update()
     {
-        if(hasActivated && !flowchart.HasExecutingBlocks()) 
+        if (!flowchart.HasExecutingBlocks())
         {
             rb.constraints = RigidbodyConstraints2D.None;
             rb.constraints = RigidbodyConstraints2D.FreezeRotation;

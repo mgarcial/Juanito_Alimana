@@ -9,6 +9,7 @@ public class LevelSelector : MonoBehaviour
 {
 
     public GameObject fadePanel;
+    public GameObject warningPanel;
     private CanvasGroup fadeCanvasGroup;
     private Button[] levelButtons;
     private int highestLevel;
@@ -50,9 +51,14 @@ public class LevelSelector : MonoBehaviour
             SceneManager.LoadScene("Level " + levelNum);
         });
     }
-    // Update is called once per frame
-    void Update()
+    public void ActiveWarning()
     {
-        
+        warningPanel.SetActive(true);
+    }
+    public void ResetGame()
+    {
+        AudioManager.GetInstance().PlayConfirmButton();
+        Preferences.ClearMaxLevel();
+        SceneManager.LoadScene("Menu");
     }
 }
